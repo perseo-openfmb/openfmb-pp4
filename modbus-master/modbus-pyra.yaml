@@ -1,0 +1,1024 @@
+#validar +-1 registro en el mapeo
+name: piranometro
+log-level: Warn
+adapter: 0.0.0.0
+remote-ip: "?"
+port: "?"
+unit-identifier: "?"
+response_timeout_ms: 1000
+always-write-multiple-registers: false
+auto_polling:
+  max_register_gaps: 0
+  max_bit_gaps: 0
+heartbeats: []
+file:
+  id: openfmb-adapter-template
+  edition: 2.0
+  version: 2.1.0.0
+  plugin: modbus-master
+profiles:
+- name: MeterReadingProfile
+  poll_period_ms: 1000
+  mapping:
+    readingMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    meter:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: "?"
+    meterReading:
+      conductingEquipmentTerminalReading:
+        terminal:
+          aCDCTerminal:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+            connected:
+              value:
+                bool-field-type: ignored
+            sequenceNumber:
+              value:
+                int32-field-type: ignored
+          phases:
+            value:
+              enum-field-type: ignored
+      phaseMMTN:
+        phsA:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+        phsAB:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+        phsB:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+        phsBC:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+        phsC:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+        phsCA:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+      readingMMTR:
+        logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        DmdVAh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: message
+        DmdVArh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: message
+        DmdWh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: message
+        SupVAh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: message
+        SupVArh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: message
+        SupWh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: message
+        TotVAh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: message
+        TotVArh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: message
+        TotWh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: message
+      readingMMXU:
+        logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        A:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                source-type: holding_register
+                register-mapping: float32
+                scale: 1
+                lower_index: 2
+                upper_index: 3
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                source-type: holding_register
+                register-mapping: float32
+                scale: 1
+                lower_index: 56
+                upper_index: 57
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                source-type: holding_register
+                register-mapping: float32
+                scale: 1
+                lower_index: 58
+                upper_index: 59
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                source-type: holding_register
+                register-mapping: float32
+                scale: 1
+                lower_index: 80
+                upper_index: 81
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                source-type: holding_register
+                register-mapping: float32
+                scale: 1
+                lower_index: 82
+                upper_index: 83
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+        ClcMth:
+          setVal:
+            enum-field-type: ignored
+        Hz:
+          mag:
+            double-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: message
+          units:
+            multiplier:
+              value:
+                enum-field-type: ignored
+            SIUnit:
+              enum-field-type: ignored
+        PF:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+        PFSign:
+          setVal:
+            enum-field-type: ignored
+        PhV:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+        PPV:
+          phsAB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsBC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsCA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+        VA:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+        VAr:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+        W:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+...

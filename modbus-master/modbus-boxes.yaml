@@ -1,0 +1,3019 @@
+name: modbox
+log-level: Warn
+adapter: 0.0.0.0
+remote-ip: "?"
+port: "?"
+unit-identifier: "?"
+response_timeout_ms: 1000
+always-write-multiple-registers: false
+auto_polling:
+  max_register_gaps: 0
+  max_bit_gaps: 0
+heartbeats: []
+file:
+  id: openfmb-adapter-template
+  edition: 2.0
+  version: 2.1.0.0
+  plugin: modbus-master
+profiles:
+- name: SwitchStatusProfile
+  poll_period_ms: 1000
+  mapping:
+    statusMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: ignored
+    protectedSwitch:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    switchStatus:
+      statusValue:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        modBlk:
+          value:
+            bool-field-type: ignored
+      switchStatusXSWI:
+        logicalNodeForEventAndStatus:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          Beh:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          EEHealth:
+            d:
+              value:
+                string-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+          HotLineTag:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          RemoteBlk:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        DynamicTest:
+          q:
+            quality-field-type: ignored
+          stVal:
+            enum-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        Pos:
+          phs3:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: mapped
+              source-type: coil
+              enum-mapping-type: single_bit
+              index: 0
+              when-true: DbPosKind_closed
+              when-false: DbPosKind_open
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        ProtectionPickup:
+          phs3:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+- name: SwitchStatusProfile
+  poll_period_ms: 1000
+  mapping:
+    statusMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    protectedSwitch:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    switchStatus:
+      statusValue:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        modBlk:
+          value:
+            bool-field-type: ignored
+      switchStatusXSWI:
+        logicalNodeForEventAndStatus:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          Beh:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          EEHealth:
+            d:
+              value:
+                string-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+          HotLineTag:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          RemoteBlk:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        DynamicTest:
+          q:
+            quality-field-type: ignored
+          stVal:
+            enum-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        Pos:
+          phs3:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: mapped
+              source-type: coil
+              enum-mapping-type: single_bit
+              index: 1
+              when-true: DbPosKind_closed
+              when-false: DbPosKind_open
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        ProtectionPickup:
+          phs3:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+- name: SwitchStatusProfile
+  poll_period_ms: 1000
+  mapping:
+    statusMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    protectedSwitch:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    switchStatus:
+      statusValue:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        modBlk:
+          value:
+            bool-field-type: ignored
+      switchStatusXSWI:
+        logicalNodeForEventAndStatus:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          Beh:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          EEHealth:
+            d:
+              value:
+                string-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+          HotLineTag:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          RemoteBlk:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        DynamicTest:
+          q:
+            quality-field-type: ignored
+          stVal:
+            enum-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        Pos:
+          phs3:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: mapped
+              source-type: coil
+              enum-mapping-type: single_bit
+              index: 2
+              when-true: DbPosKind_closed
+              when-false: DbPosKind_open
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        ProtectionPickup:
+          phs3:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+- name: SwitchStatusProfile
+  poll_period_ms: 1000
+  mapping:
+    statusMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    protectedSwitch:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    switchStatus:
+      statusValue:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        modBlk:
+          value:
+            bool-field-type: ignored
+      switchStatusXSWI:
+        logicalNodeForEventAndStatus:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          Beh:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          EEHealth:
+            d:
+              value:
+                string-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+          HotLineTag:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          RemoteBlk:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        DynamicTest:
+          q:
+            quality-field-type: ignored
+          stVal:
+            enum-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        Pos:
+          phs3:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: mapped
+              source-type: coil
+              enum-mapping-type: single_bit
+              index: 3
+              when-true: DbPosKind_closed
+              when-false: DbPosKind_open
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        ProtectionPickup:
+          phs3:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored              
+- name: SwitchStatusProfile
+  poll_period_ms: 1000
+  mapping:
+    statusMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    protectedSwitch:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    switchStatus:
+      statusValue:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        modBlk:
+          value:
+            bool-field-type: ignored
+      switchStatusXSWI:
+        logicalNodeForEventAndStatus:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          Beh:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          EEHealth:
+            d:
+              value:
+                string-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+          HotLineTag:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          RemoteBlk:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        DynamicTest:
+          q:
+            quality-field-type: ignored
+          stVal:
+            enum-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        Pos:
+          phs3:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: mapped
+              source-type: coil
+              enum-mapping-type: single_bit
+              index: 4
+              when-true: DbPosKind_closed
+              when-false: DbPosKind_open
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        ProtectionPickup:
+          phs3:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored              
+- name: SwitchStatusProfile
+  poll_period_ms: 1000
+  mapping:
+    statusMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    protectedSwitch:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    switchStatus:
+      statusValue:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        modBlk:
+          value:
+            bool-field-type: ignored
+      switchStatusXSWI:
+        logicalNodeForEventAndStatus:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          Beh:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          EEHealth:
+            d:
+              value:
+                string-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+          HotLineTag:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          RemoteBlk:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        DynamicTest:
+          q:
+            quality-field-type: ignored
+          stVal:
+            enum-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        Pos:
+          phs3:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: mapped
+              source-type: coil
+              enum-mapping-type: single_bit
+              index: 5
+              when-true: DbPosKind_closed
+              when-false: DbPosKind_open
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        ProtectionPickup:
+          phs3:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+- name: SwitchStatusProfile
+  poll_period_ms: 1000
+  mapping:
+    statusMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    protectedSwitch:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    switchStatus:
+      statusValue:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        modBlk:
+          value:
+            bool-field-type: ignored
+      switchStatusXSWI:
+        logicalNodeForEventAndStatus:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          Beh:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          EEHealth:
+            d:
+              value:
+                string-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+          HotLineTag:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          RemoteBlk:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        DynamicTest:
+          q:
+            quality-field-type: ignored
+          stVal:
+            enum-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        Pos:
+          phs3:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: mapped
+              source-type: coil
+              enum-mapping-type: single_bit
+              index: 6
+              when-true: DbPosKind_closed
+              when-false: DbPosKind_open
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        ProtectionPickup:
+          phs3:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+- name: SwitchStatusProfile
+  poll_period_ms: 1000
+  mapping:
+    statusMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    protectedSwitch:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    switchStatus:
+      statusValue:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        modBlk:
+          value:
+            bool-field-type: ignored
+      switchStatusXSWI:
+        logicalNodeForEventAndStatus:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          Beh:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          EEHealth:
+            d:
+              value:
+                string-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+          HotLineTag:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          RemoteBlk:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        DynamicTest:
+          q:
+            quality-field-type: ignored
+          stVal:
+            enum-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        Pos:
+          phs3:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: mapped
+              source-type: coil
+              enum-mapping-type: single_bit
+              index: 7
+              when-true: DbPosKind_closed
+              when-false: DbPosKind_open
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        ProtectionPickup:
+          phs3:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+- name: SwitchStatusProfile
+  poll_period_ms: 1000
+  mapping:
+    statusMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    protectedSwitch:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    switchStatus:
+      statusValue:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        modBlk:
+          value:
+            bool-field-type: ignored
+      switchStatusXSWI:
+        logicalNodeForEventAndStatus:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          Beh:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          EEHealth:
+            d:
+              value:
+                string-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+          HotLineTag:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          RemoteBlk:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        DynamicTest:
+          q:
+            quality-field-type: ignored
+          stVal:
+            enum-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        Pos:
+          phs3:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: mapped
+              source-type: coil
+              enum-mapping-type: single_bit
+              index: 8
+              when-true: DbPosKind_closed
+              when-false: DbPosKind_open
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        ProtectionPickup:
+          phs3:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+- name: SwitchStatusProfile
+  poll_period_ms: 1000
+  mapping:
+    statusMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    protectedSwitch:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    switchStatus:
+      statusValue:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        modBlk:
+          value:
+            bool-field-type: ignored
+      switchStatusXSWI:
+        logicalNodeForEventAndStatus:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          Beh:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          EEHealth:
+            d:
+              value:
+                string-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+          HotLineTag:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          RemoteBlk:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        DynamicTest:
+          q:
+            quality-field-type: ignored
+          stVal:
+            enum-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        Pos:
+          phs3:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: mapped
+              source-type: coil
+              enum-mapping-type: single_bit
+              index: 9
+              when-true: DbPosKind_closed
+              when-false: DbPosKind_open
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        ProtectionPickup:
+          phs3:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+- name: SwitchStatusProfile
+  poll_period_ms: 1000
+  mapping:
+    statusMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    protectedSwitch:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    switchStatus:
+      statusValue:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        modBlk:
+          value:
+            bool-field-type: ignored
+      switchStatusXSWI:
+        logicalNodeForEventAndStatus:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          Beh:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          EEHealth:
+            d:
+              value:
+                string-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+          HotLineTag:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          RemoteBlk:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        DynamicTest:
+          q:
+            quality-field-type: ignored
+          stVal:
+            enum-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        Pos:
+          phs3:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: mapped
+              source-type: coil
+              enum-mapping-type: single_bit
+              index: 10
+              when-true: DbPosKind_closed
+              when-false: DbPosKind_open
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        ProtectionPickup:
+          phs3:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+- name: SwitchStatusProfile
+  poll_period_ms: 1000
+  mapping:
+    statusMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    protectedSwitch:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    switchStatus:
+      statusValue:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        modBlk:
+          value:
+            bool-field-type: ignored
+      switchStatusXSWI:
+        logicalNodeForEventAndStatus:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          Beh:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          EEHealth:
+            d:
+              value:
+                string-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+          HotLineTag:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          RemoteBlk:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        DynamicTest:
+          q:
+            quality-field-type: ignored
+          stVal:
+            enum-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        Pos:
+          phs3:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: mapped
+              source-type: coil
+              enum-mapping-type: single_bit
+              index: 11
+              when-true: DbPosKind_closed
+              when-false: DbPosKind_open
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            q:
+              quality-field-type: ignored
+            stVal:
+              enum-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        ProtectionPickup:
+          phs3:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            q:
+              quality-field-type: ignored
+            stVal:
+              bool-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+
+- name: SwitchDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    protectedSwitch:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    switchDiscreteControl:
+      controlValue:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        modBlk:
+          value:
+            bool-field-type: ignored
+        reset:
+          value:
+            bool-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      switchDiscreteControlXSWI:
+        logicalNodeForControl:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+        Pos:
+          phs3:
+            ctlVal:
+              bool-field-type: mapped
+              when-true:
+              - output-type: write_single_coil
+                command-id: first
+                index: 0
+                value: true
+              when-false:
+              - output-type: write_single_coil
+                command-id: first
+                index: 0
+                value: false
+          phsA:
+            ctlVal:
+              bool-field-type: ignored
+          phsB:
+            ctlVal:
+              bool-field-type: ignored
+          phsC:
+            ctlVal:
+              bool-field-type: ignored
+        ResetProtectionPickup:
+          ctlVal:
+            bool-field-type: ignored
+- name: SwitchDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    protectedSwitch:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    switchDiscreteControl:
+      controlValue:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        modBlk:
+          value:
+            bool-field-type: ignored
+        reset:
+          value:
+            bool-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      switchDiscreteControlXSWI:
+        logicalNodeForControl:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+        Pos:
+          phs3:
+            ctlVal:
+              bool-field-type: mapped
+              when-true:
+              - output-type: write_single_coil
+                command-id: first
+                index: 1
+                value: true
+              when-false:
+              - output-type: write_single_coil
+                command-id: first
+                index: 1
+                value: false
+          phsA:
+            ctlVal:
+              bool-field-type: ignored
+          phsB:
+            ctlVal:
+              bool-field-type: ignored
+          phsC:
+            ctlVal:
+              bool-field-type: ignored
+        ResetProtectionPickup:
+          ctlVal:
+            bool-field-type: ignored
+- name: SwitchDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    protectedSwitch:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    switchDiscreteControl:
+      controlValue:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        modBlk:
+          value:
+            bool-field-type: ignored
+        reset:
+          value:
+            bool-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      switchDiscreteControlXSWI:
+        logicalNodeForControl:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+        Pos:
+          phs3:
+            ctlVal:
+              bool-field-type: mapped
+              when-true:
+              - output-type: write_single_coil
+                command-id: first
+                index: 2
+                value: true
+              when-false:
+              - output-type: write_single_coil
+                command-id: first
+                index: 2
+                value: false
+          phsA:
+            ctlVal:
+              bool-field-type: ignored
+          phsB:
+            ctlVal:
+              bool-field-type: ignored
+          phsC:
+            ctlVal:
+              bool-field-type: ignored
+        ResetProtectionPickup:
+          ctlVal:
+            bool-field-type: ignored
+- name: SwitchDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    protectedSwitch:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    switchDiscreteControl:
+      controlValue:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        modBlk:
+          value:
+            bool-field-type: ignored
+        reset:
+          value:
+            bool-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      switchDiscreteControlXSWI:
+        logicalNodeForControl:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+        Pos:
+          phs3:
+            ctlVal:
+              bool-field-type: mapped
+              when-true:
+              - output-type: write_single_coil
+                command-id: first
+                index: 3
+                value: true
+              when-false:
+              - output-type: write_single_coil
+                command-id: first
+                index: 3
+                value: false
+          phsA:
+            ctlVal:
+              bool-field-type: ignored
+          phsB:
+            ctlVal:
+              bool-field-type: ignored
+          phsC:
+            ctlVal:
+              bool-field-type: ignored
+        ResetProtectionPickup:
+          ctlVal:
+            bool-field-type: ignored
+- name: SwitchDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    protectedSwitch:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    switchDiscreteControl:
+      controlValue:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        modBlk:
+          value:
+            bool-field-type: ignored
+        reset:
+          value:
+            bool-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      switchDiscreteControlXSWI:
+        logicalNodeForControl:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+        Pos:
+          phs3:
+            ctlVal:
+              bool-field-type: mapped
+              when-true:
+              - output-type: write_single_coil
+                command-id: first
+                index: 4
+                value: true
+              when-false:
+              - output-type: write_single_coil
+                command-id: first
+                index: 4
+                value: false
+          phsA:
+            ctlVal:
+              bool-field-type: ignored
+          phsB:
+            ctlVal:
+              bool-field-type: ignored
+          phsC:
+            ctlVal:
+              bool-field-type: ignored
+        ResetProtectionPickup:
+          ctlVal:
+            bool-field-type: ignored
+- name: SwitchDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    protectedSwitch:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    switchDiscreteControl:
+      controlValue:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        modBlk:
+          value:
+            bool-field-type: ignored
+        reset:
+          value:
+            bool-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      switchDiscreteControlXSWI:
+        logicalNodeForControl:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+        Pos:
+          phs3:
+            ctlVal:
+              bool-field-type: mapped
+              when-true:
+              - output-type: write_single_coil
+                command-id: first
+                index: 5
+                value: true
+              when-false:
+              - output-type: write_single_coil
+                command-id: first
+                index: 5
+                value: false
+          phsA:
+            ctlVal:
+              bool-field-type: ignored
+          phsB:
+            ctlVal:
+              bool-field-type: ignored
+          phsC:
+            ctlVal:
+              bool-field-type: ignored
+        ResetProtectionPickup:
+          ctlVal:
+            bool-field-type: ignored
+- name: SwitchDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    protectedSwitch:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    switchDiscreteControl:
+      controlValue:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        modBlk:
+          value:
+            bool-field-type: ignored
+        reset:
+          value:
+            bool-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      switchDiscreteControlXSWI:
+        logicalNodeForControl:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+        Pos:
+          phs3:
+            ctlVal:
+              bool-field-type: mapped
+              when-true:
+              - output-type: write_single_coil
+                command-id: first
+                index: 6
+                value: true
+              when-false:
+              - output-type: write_single_coil
+                command-id: first
+                index: 6
+                value: false
+          phsA:
+            ctlVal:
+              bool-field-type: ignored
+          phsB:
+            ctlVal:
+              bool-field-type: ignored
+          phsC:
+            ctlVal:
+              bool-field-type: ignored
+        ResetProtectionPickup:
+          ctlVal:
+            bool-field-type: ignored
+- name: SwitchDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    protectedSwitch:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    switchDiscreteControl:
+      controlValue:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        modBlk:
+          value:
+            bool-field-type: ignored
+        reset:
+          value:
+            bool-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      switchDiscreteControlXSWI:
+        logicalNodeForControl:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+        Pos:
+          phs3:
+            ctlVal:
+              bool-field-type: mapped
+              when-true:
+              - output-type: write_single_coil
+                command-id: first
+                index: 7
+                value: true
+              when-false:
+              - output-type: write_single_coil
+                command-id: first
+                index: 7
+                value: false
+          phsA:
+            ctlVal:
+              bool-field-type: ignored
+          phsB:
+            ctlVal:
+              bool-field-type: ignored
+          phsC:
+            ctlVal:
+              bool-field-type: ignored
+        ResetProtectionPickup:
+          ctlVal:
+            bool-field-type: ignored
+- name: SwitchDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    protectedSwitch:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    switchDiscreteControl:
+      controlValue:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        modBlk:
+          value:
+            bool-field-type: ignored
+        reset:
+          value:
+            bool-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      switchDiscreteControlXSWI:
+        logicalNodeForControl:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+        Pos:
+          phs3:
+            ctlVal:
+              bool-field-type: mapped
+              when-true:
+              - output-type: write_single_coil
+                command-id: first
+                index: 8
+                value: true
+              when-false:
+              - output-type: write_single_coil
+                command-id: first
+                index: 8
+                value: false
+          phsA:
+            ctlVal:
+              bool-field-type: ignored
+          phsB:
+            ctlVal:
+              bool-field-type: ignored
+          phsC:
+            ctlVal:
+              bool-field-type: ignored
+        ResetProtectionPickup:
+          ctlVal:
+            bool-field-type: ignored
+- name: SwitchDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    protectedSwitch:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    switchDiscreteControl:
+      controlValue:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        modBlk:
+          value:
+            bool-field-type: ignored
+        reset:
+          value:
+            bool-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      switchDiscreteControlXSWI:
+        logicalNodeForControl:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+        Pos:
+          phs3:
+            ctlVal:
+              bool-field-type: mapped
+              when-true:
+              - output-type: write_single_coil
+                command-id: first
+                index: 9
+                value: true
+              when-false:
+              - output-type: write_single_coil
+                command-id: first
+                index: 9
+                value: false
+          phsA:
+            ctlVal:
+              bool-field-type: ignored
+          phsB:
+            ctlVal:
+              bool-field-type: ignored
+          phsC:
+            ctlVal:
+              bool-field-type: ignored
+        ResetProtectionPickup:
+          ctlVal:
+            bool-field-type: ignored
+- name: SwitchDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    protectedSwitch:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    switchDiscreteControl:
+      controlValue:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        modBlk:
+          value:
+            bool-field-type: ignored
+        reset:
+          value:
+            bool-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      switchDiscreteControlXSWI:
+        logicalNodeForControl:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+        Pos:
+          phs3:
+            ctlVal:
+              bool-field-type: mapped
+              when-true:
+              - output-type: write_single_coil
+                command-id: first
+                index: 10
+                value: true
+              when-false:
+              - output-type: write_single_coil
+                command-id: first
+                index: 10
+                value: false
+          phsA:
+            ctlVal:
+              bool-field-type: ignored
+          phsB:
+            ctlVal:
+              bool-field-type: ignored
+          phsC:
+            ctlVal:
+              bool-field-type: ignored
+        ResetProtectionPickup:
+          ctlVal:
+            bool-field-type: ignored
+- name: SwitchDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    protectedSwitch:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    switchDiscreteControl:
+      controlValue:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        modBlk:
+          value:
+            bool-field-type: ignored
+        reset:
+          value:
+            bool-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      switchDiscreteControlXSWI:
+        logicalNodeForControl:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+        Pos:
+          phs3:
+            ctlVal:
+              bool-field-type: mapped
+              when-true:
+              - output-type: write_single_coil
+                command-id: first
+                index: 11
+                value: true
+              when-false:
+              - output-type: write_single_coil
+                command-id: first
+                index: 11
+                value: false
+          phsA:
+            ctlVal:
+              bool-field-type: ignored
+          phsB:
+            ctlVal:
+              bool-field-type: ignored
+          phsC:
+            ctlVal:
+              bool-field-type: ignored
+        ResetProtectionPickup:
+          ctlVal:
+            bool-field-type: ignored

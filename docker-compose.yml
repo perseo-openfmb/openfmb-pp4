@@ -1,0 +1,70 @@
+services:
+  nats:
+    image: nats
+    ports:
+      - "4222:4222"
+    expose:
+      - 4222
+    restart: unless-stopped 
+  adapter:
+    image: oesinc/openfmb.adapters:a30d1d0
+    depends_on:
+      - nats
+    volumes:
+      - ./config:/cfg
+      - ./modbus-master:/modbus-master
+      - ./modbus-outstation:/modbus-outstation
+    command: -c /cfg/adapter.yaml
+    restart: unless-stopped 
+  hmi:
+    image: juangcjudea/udea_perseo_p4:v2.1
+    # image: oesinc/openfmb.hmi:v2.1.0
+    depends_on:
+      - nats
+    volumes:
+      - ./hmi:/cfg
+    environment:
+      APP_CONF: /cfg/config/app.toml
+      APP_DIR_NAME: /cfg
+    ports:
+      - "32771:32771"
+    expose:
+      - 32771
+    restart: unless-stopped 
+  timescale:
+    image: timescale/timescaledb:latest-pg12-oss
+    container_name: timescaledb
+    depends_on:
+      - adapter
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ./timescaledb_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped 
+  grafana:
+    #Siempre usar esta version de grafana
+    image: grafana/grafana:11.5.1
+    container_name: grafana
+    environment:
+      - GF_SECURITY_ALLOW_EMBEDDING=true
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_NAME=UdeA
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    depends_on:
+      - timescale
+    volumes:
+      - ./grafana_data:/var/lib/grafana
+    user: "0"
+  reverse_proxy:
+    image: juangcjudea/udea_perseo_p4_reverse_proxy:lastest
+    depends_on:
+      - hmi
+      - grafana
+    ports:
+      - "8010:8010"
+    restart: unless-stopped

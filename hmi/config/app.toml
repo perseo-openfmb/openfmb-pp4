@@ -1,0 +1,10 @@
+[hmi]
+environment = "dev" # dev or prod
+app_name = "openfmb-hmi" # name of the application
+log-level = "Debug" # Off, Error, Info, Debug, Trace
+server_port = 32771
+
+[nats]
+prod_uri = "nats:4222"
+dev_uri = "nats:4222"
+

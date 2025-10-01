@@ -1,0 +1,6709 @@
+name: slave_100_CC
+log-level: Warn
+adapter: 0.0.0.0
+remote-ip: 172.21.33.27
+# port: 502
+# unit-identifier: 100
+port: 5070
+unit-identifier: 1
+response_timeout_ms: 1000
+always-write-multiple-registers: false
+auto_polling:
+  max_register_gaps: 0
+  max_bit_gaps: 0
+heartbeats: []
+file:
+  id: openfmb-adapter-template
+  edition: 2.0
+  version: 2.1.0.0
+  plugin: modbus-master
+profiles:
+- name: MeterReadingProfile
+  poll_period_ms: 1000
+  mapping:
+    readingMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: ignored
+    meter:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    meterReading:
+      conductingEquipmentTerminalReading:
+        terminal:
+          aCDCTerminal:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+            connected:
+              value:
+                bool-field-type: ignored
+            sequenceNumber:
+              value:
+                int32-field-type: ignored
+          phases:
+            value:
+              enum-field-type: ignored
+      phaseMMTN:
+        phsA:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        phsAB:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        phsB:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        phsBC:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        phsC:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        phsCA:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+      readingMMTR:
+        logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        DmdVAh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        DmdVArh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        DmdWh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        SupVAh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        SupVArh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        SupWh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        TotVAh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        TotVArh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        TotWh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+      readingMMXU:
+        logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        A:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        ClcMth:
+          setVal:
+            enum-field-type: ignored
+        Hz:
+          mag:
+            double-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+          units:
+            multiplier:
+              value:
+                enum-field-type: ignored
+            SIUnit:
+              enum-field-type: ignored
+        PF:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        PFSign:
+          setVal:
+            enum-field-type: ignored
+        PhV:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        PPV:
+          phsAB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsBC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsCA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        VA:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 807
+                register-mapping: uint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 808
+                register-mapping: uint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 809
+                register-mapping: uint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 810
+                register-mapping: uint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 811
+                register-mapping: uint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        VAr:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 812
+                register-mapping: uint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 813
+                register-mapping: uint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 814
+                register-mapping: uint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 815
+                register-mapping: uint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 816
+                register-mapping: uint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        W:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 817
+                register-mapping: uint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 818
+                register-mapping: uint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 819
+                register-mapping: sint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 820
+                register-mapping: sint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 821
+                register-mapping: sint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+- name: MeterReadingProfile
+  poll_period_ms: 1000
+  mapping:
+    readingMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: ignored
+    meter:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    meterReading:
+      conductingEquipmentTerminalReading:
+        terminal:
+          aCDCTerminal:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+            connected:
+              value:
+                bool-field-type: ignored
+            sequenceNumber:
+              value:
+                int32-field-type: ignored
+          phases:
+            value:
+              enum-field-type: ignored
+      phaseMMTN:
+        phsA:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        phsAB:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        phsB:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        phsBC:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        phsC:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        phsCA:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+      readingMMTR:
+        logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        DmdVAh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        DmdVArh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        DmdWh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        SupVAh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        SupVArh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        SupWh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        TotVAh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        TotVArh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        TotWh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+      readingMMXU:
+        logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        A:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        ClcMth:
+          setVal:
+            enum-field-type: ignored
+        Hz:
+          mag:
+            double-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+          units:
+            multiplier:
+              value:
+                enum-field-type: ignored
+            SIUnit:
+              enum-field-type: ignored
+        PF:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        PFSign:
+          setVal:
+            enum-field-type: ignored
+        PhV:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        PPV:
+          phsAB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsBC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsCA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        VA:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 822
+                register-mapping: sint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 823
+                register-mapping: sint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 824
+                register-mapping: sint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 825
+                register-mapping: sint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                lower_index: 830
+                register-mapping: uint32
+                scale: 1.0
+                source-type: holding_register
+                upper_index: 829
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        VAr:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 839
+                register-mapping: uint16
+                scale: 10.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 840
+                register-mapping: sint16
+                scale: 10.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 841
+                register-mapping: sint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 842
+                register-mapping: uint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 843
+                register-mapping: uint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        W:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 844
+                register-mapping: uint16
+                scale: 10.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 845
+                register-mapping: uint16
+                scale: 0.01
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 849
+                register-mapping: uint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 850
+                register-mapping: sint16
+                scale: 10.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 854
+                register-mapping: uint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+- name: MeterReadingProfile
+  poll_period_ms: 1000
+  mapping:
+    readingMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: ignored
+    meter:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    meterReading:
+      conductingEquipmentTerminalReading:
+        terminal:
+          aCDCTerminal:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+            connected:
+              value:
+                bool-field-type: ignored
+            sequenceNumber:
+              value:
+                int32-field-type: ignored
+          phases:
+            value:
+              enum-field-type: ignored
+      phaseMMTN:
+        phsA:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        phsAB:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        phsB:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        phsBC:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        phsC:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        phsCA:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+      readingMMTR:
+        logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        DmdVAh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        DmdVArh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        DmdWh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        SupVAh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        SupVArh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        SupWh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        TotVAh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        TotVArh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        TotWh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+      readingMMXU:
+        logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        A:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        ClcMth:
+          setVal:
+            enum-field-type: ignored
+        Hz:
+          mag:
+            double-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+          units:
+            multiplier:
+              value:
+                enum-field-type: ignored
+            SIUnit:
+              enum-field-type: ignored
+        PF:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        PFSign:
+          setVal:
+            enum-field-type: ignored
+        PhV:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        PPV:
+          phsAB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsBC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsCA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        VA:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 859
+                register-mapping: sint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 864
+                register-mapping: sint16
+                scale: 10.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 865
+                register-mapping: sint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 2708
+                register-mapping: sint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 2902
+                register-mapping: uint16
+                scale: 10.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        VAr:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        W:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+- name: ResourceDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: ignored
+    conductingEquipment:
+      namedObject:
+        description:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      mRID:
+        string-field-type: primary_uuid
+        value: '?'
+    resourceDiscreteControl:
+      identifiedObject:
+        description:
+          value:
+            string-field-type: ignored
+        mRID:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      analogcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        AnOut:
+          ctlVal:
+            command-id: first
+            double-field-type: mapped
+            index: 805
+            output-type: write_single_register_uint16
+            scale: 1.0
+        Phase:
+          value:
+            enum-field-type: ignored
+      booleancontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        SPCSO:
+          ctlVal:
+            bool-field-type: ignored
+      integercontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        ISCSO:
+          ctlVal:
+            int32-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      stringcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        StrOut:
+          ctlVal:
+            string-field-type: ignored
+- name: ResourceDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: ignored
+    conductingEquipment:
+      namedObject:
+        description:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      mRID:
+        string-field-type: primary_uuid
+        value: '?'
+    resourceDiscreteControl:
+      identifiedObject:
+        description:
+          value:
+            string-field-type: ignored
+        mRID:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      analogcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        AnOut:
+          ctlVal:
+            command-id: first
+            double-field-type: mapped
+            index: 806
+            output-type: write_single_register_uint16
+            scale: 1.0
+        Phase:
+          value:
+            enum-field-type: ignored
+      booleancontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        SPCSO:
+          ctlVal:
+            bool-field-type: ignored
+      integercontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        ISCSO:
+          ctlVal:
+            int32-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      stringcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        StrOut:
+          ctlVal:
+            string-field-type: ignored
+- name: ResourceDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: ignored
+    conductingEquipment:
+      namedObject:
+        description:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      mRID:
+        string-field-type: primary_uuid
+        value: '?'
+    resourceDiscreteControl:
+      identifiedObject:
+        description:
+          value:
+            string-field-type: ignored
+        mRID:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      analogcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        AnOut:
+          ctlVal:
+            command-id: first
+            double-field-type: mapped
+            index: 2699
+            output-type: write_single_register_int16
+            scale: 1.0
+        Phase:
+          value:
+            enum-field-type: ignored
+      booleancontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        SPCSO:
+          ctlVal:
+            bool-field-type: ignored
+      integercontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        ISCSO:
+          ctlVal:
+            int32-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      stringcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        StrOut:
+          ctlVal:
+            string-field-type: ignored
+- name: ResourceDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: ignored
+    conductingEquipment:
+      namedObject:
+        description:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      mRID:
+        string-field-type: primary_uuid
+        value: '?'
+    resourceDiscreteControl:
+      identifiedObject:
+        description:
+          value:
+            string-field-type: ignored
+        mRID:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      analogcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        AnOut:
+          ctlVal:
+            command-id: first
+            double-field-type: mapped
+            index: 2700
+            output-type: write_single_register_uint16
+            scale: 1.0
+        Phase:
+          value:
+            enum-field-type: ignored
+      booleancontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        SPCSO:
+          ctlVal:
+            bool-field-type: ignored
+      integercontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        ISCSO:
+          ctlVal:
+            int32-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      stringcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        StrOut:
+          ctlVal:
+            string-field-type: ignored
+- name: ResourceDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: ignored
+    conductingEquipment:
+      namedObject:
+        description:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      mRID:
+        string-field-type: primary_uuid
+        value: '?'
+    resourceDiscreteControl:
+      identifiedObject:
+        description:
+          value:
+            string-field-type: ignored
+        mRID:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      analogcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        AnOut:
+          ctlVal:
+            command-id: first
+            double-field-type: mapped
+            index: 2701
+            output-type: write_single_register_uint16
+            scale: 1.0
+        Phase:
+          value:
+            enum-field-type: ignored
+      booleancontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        SPCSO:
+          ctlVal:
+            bool-field-type: ignored
+      integercontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        ISCSO:
+          ctlVal:
+            int32-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      stringcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        StrOut:
+          ctlVal:
+            string-field-type: ignored
+- name: ResourceDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: ignored
+    conductingEquipment:
+      namedObject:
+        description:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      mRID:
+        string-field-type: primary_uuid
+        value: '?'
+    resourceDiscreteControl:
+      identifiedObject:
+        description:
+          value:
+            string-field-type: ignored
+        mRID:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      analogcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        AnOut:
+          ctlVal:
+            command-id: first
+            double-field-type: mapped
+            index: 2702
+            output-type: write_single_register_int16
+            scale: 0.01
+        Phase:
+          value:
+            enum-field-type: ignored
+      booleancontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        SPCSO:
+          ctlVal:
+            bool-field-type: ignored
+      integercontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        ISCSO:
+          ctlVal:
+            int32-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      stringcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        StrOut:
+          ctlVal:
+            string-field-type: ignored
+- name: ResourceDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: ignored
+    conductingEquipment:
+      namedObject:
+        description:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      mRID:
+        string-field-type: primary_uuid
+        value: '?'
+    resourceDiscreteControl:
+      identifiedObject:
+        description:
+          value:
+            string-field-type: ignored
+        mRID:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      analogcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        AnOut:
+          ctlVal:
+            command-id: first
+            double-field-type: mapped
+            index: 2703
+            output-type: write_single_register_int16
+            scale: 0.1
+        Phase:
+          value:
+            enum-field-type: ignored
+      booleancontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        SPCSO:
+          ctlVal:
+            bool-field-type: ignored
+      integercontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        ISCSO:
+          ctlVal:
+            int32-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      stringcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        StrOut:
+          ctlVal:
+            string-field-type: ignored
+- name: ResourceDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: ignored
+    conductingEquipment:
+      namedObject:
+        description:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      mRID:
+        string-field-type: primary_uuid
+        value: '?'
+    resourceDiscreteControl:
+      identifiedObject:
+        description:
+          value:
+            string-field-type: ignored
+        mRID:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      analogcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        AnOut:
+          ctlVal:
+            command-id: first
+            double-field-type: mapped
+            index: 2704
+            output-type: write_single_register_int16
+            scale: 1.0
+        Phase:
+          value:
+            enum-field-type: ignored
+      booleancontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        SPCSO:
+          ctlVal:
+            bool-field-type: ignored
+      integercontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        ISCSO:
+          ctlVal:
+            int32-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      stringcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        StrOut:
+          ctlVal:
+            string-field-type: ignored
+- name: ResourceDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: ignored
+    conductingEquipment:
+      namedObject:
+        description:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      mRID:
+        string-field-type: primary_uuid
+        value: '?'
+    resourceDiscreteControl:
+      identifiedObject:
+        description:
+          value:
+            string-field-type: ignored
+        mRID:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      analogcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        AnOut:
+          ctlVal:
+            command-id: first
+            double-field-type: mapped
+            index: 2705
+            output-type: write_single_register_int16
+            scale: 0.01
+        Phase:
+          value:
+            enum-field-type: ignored
+      booleancontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        SPCSO:
+          ctlVal:
+            bool-field-type: ignored
+      integercontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        ISCSO:
+          ctlVal:
+            int32-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      stringcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        StrOut:
+          ctlVal:
+            string-field-type: ignored
+- name: ResourceDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: ignored
+    conductingEquipment:
+      namedObject:
+        description:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      mRID:
+        string-field-type: primary_uuid
+        value: '?'
+    resourceDiscreteControl:
+      identifiedObject:
+        description:
+          value:
+            string-field-type: ignored
+        mRID:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      analogcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        AnOut:
+          ctlVal:
+            command-id: first
+            double-field-type: mapped
+            index: 2706
+            output-type: write_single_register_int16
+            scale: 1.0
+        Phase:
+          value:
+            enum-field-type: ignored
+      booleancontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        SPCSO:
+          ctlVal:
+            bool-field-type: ignored
+      integercontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        ISCSO:
+          ctlVal:
+            int32-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      stringcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        StrOut:
+          ctlVal:
+            string-field-type: ignored
+- name: ResourceDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: ignored
+    conductingEquipment:
+      namedObject:
+        description:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      mRID:
+        string-field-type: primary_uuid
+        value: '?'
+    resourceDiscreteControl:
+      identifiedObject:
+        description:
+          value:
+            string-field-type: ignored
+        mRID:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      analogcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        AnOut:
+          ctlVal:
+            command-id: first
+            double-field-type: mapped
+            index: 2707
+            output-type: write_single_register_int16
+            scale: 1.0
+        Phase:
+          value:
+            enum-field-type: ignored
+      booleancontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        SPCSO:
+          ctlVal:
+            bool-field-type: ignored
+      integercontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        ISCSO:
+          ctlVal:
+            int32-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      stringcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        StrOut:
+          ctlVal:
+            string-field-type: ignored
+- name: ResourceDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: ignored
+    conductingEquipment:
+      namedObject:
+        description:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      mRID:
+        string-field-type: primary_uuid
+        value: '?'
+    resourceDiscreteControl:
+      identifiedObject:
+        description:
+          value:
+            string-field-type: ignored
+        mRID:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      analogcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        AnOut:
+          ctlVal:
+            command-id: first
+            double-field-type: mapped
+            index: 2709
+            output-type: write_single_register_uint16
+            scale: 10.0
+        Phase:
+          value:
+            enum-field-type: ignored
+      booleancontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        SPCSO:
+          ctlVal:
+            bool-field-type: ignored
+      integercontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        ISCSO:
+          ctlVal:
+            int32-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      stringcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        StrOut:
+          ctlVal:
+            string-field-type: ignored
+- name: ResourceDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: ignored
+    conductingEquipment:
+      namedObject:
+        description:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      mRID:
+        string-field-type: primary_uuid
+        value: '?'
+    resourceDiscreteControl:
+      identifiedObject:
+        description:
+          value:
+            string-field-type: ignored
+        mRID:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      analogcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        AnOut:
+          ctlVal:
+            command-id: first
+            double-field-type: mapped
+            index: 2710
+            output-type: write_single_register_uint16
+            scale: 1.0
+        Phase:
+          value:
+            enum-field-type: ignored
+      booleancontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        SPCSO:
+          ctlVal:
+            bool-field-type: ignored
+      integercontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        ISCSO:
+          ctlVal:
+            int32-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      stringcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        StrOut:
+          ctlVal:
+            string-field-type: ignored
+- name: ResourceDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: ignored
+    conductingEquipment:
+      namedObject:
+        description:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      mRID:
+        string-field-type: primary_uuid
+        value: '?'
+    resourceDiscreteControl:
+      identifiedObject:
+        description:
+          value:
+            string-field-type: ignored
+        mRID:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      analogcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        AnOut:
+          ctlVal:
+            command-id: first
+            double-field-type: mapped
+            index: 2711
+            output-type: write_single_register_uint16
+            scale: 1.0
+        Phase:
+          value:
+            enum-field-type: ignored
+      booleancontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        SPCSO:
+          ctlVal:
+            bool-field-type: ignored
+      integercontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        ISCSO:
+          ctlVal:
+            int32-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      stringcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        StrOut:
+          ctlVal:
+            string-field-type: ignored
+- name: ResourceDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: ignored
+    conductingEquipment:
+      namedObject:
+        description:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      mRID:
+        string-field-type: primary_uuid
+        value: '?'
+    resourceDiscreteControl:
+      identifiedObject:
+        description:
+          value:
+            string-field-type: ignored
+        mRID:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      analogcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        AnOut:
+          ctlVal:
+            command-id: first
+            double-field-type: mapped
+            index: 2899
+            output-type: write_single_register_uint16
+            scale: 1.0
+        Phase:
+          value:
+            enum-field-type: ignored
+      booleancontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        SPCSO:
+          ctlVal:
+            bool-field-type: ignored
+      integercontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        ISCSO:
+          ctlVal:
+            int32-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      stringcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        StrOut:
+          ctlVal:
+            string-field-type: ignored
+- name: ResourceDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: ignored
+    conductingEquipment:
+      namedObject:
+        description:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      mRID:
+        string-field-type: primary_uuid
+        value: '?'
+    resourceDiscreteControl:
+      identifiedObject:
+        description:
+          value:
+            string-field-type: ignored
+        mRID:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      analogcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        AnOut:
+          ctlVal:
+            command-id: first
+            double-field-type: mapped
+            index: 2900
+            output-type: write_single_register_uint16
+            scale: 10.0
+        Phase:
+          value:
+            enum-field-type: ignored
+      booleancontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        SPCSO:
+          ctlVal:
+            bool-field-type: ignored
+      integercontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        ISCSO:
+          ctlVal:
+            int32-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      stringcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        StrOut:
+          ctlVal:
+            string-field-type: ignored
+- name: ResourceDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: ignored
+    conductingEquipment:
+      namedObject:
+        description:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      mRID:
+        string-field-type: primary_uuid
+        value: '?'
+    resourceDiscreteControl:
+      identifiedObject:
+        description:
+          value:
+            string-field-type: ignored
+        mRID:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      analogcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        AnOut:
+          ctlVal:
+            command-id: first
+            double-field-type: mapped
+            index: 2901
+            output-type: write_single_register_uint16
+            scale: 1.0
+        Phase:
+          value:
+            enum-field-type: ignored
+      booleancontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        SPCSO:
+          ctlVal:
+            bool-field-type: ignored
+      integercontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        ISCSO:
+          ctlVal:
+            int32-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      stringcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        StrOut:
+          ctlVal:
+            string-field-type: ignored
+- name: ResourceDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: ignored
+    conductingEquipment:
+      namedObject:
+        description:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      mRID:
+        string-field-type: primary_uuid
+        value: '?'
+    resourceDiscreteControl:
+      identifiedObject:
+        description:
+          value:
+            string-field-type: ignored
+        mRID:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      analogcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        AnOut:
+          ctlVal:
+            command-id: first
+            double-field-type: mapped
+            index: 4700
+            output-type: write_single_register_uint16
+            scale: 1.0
+        Phase:
+          value:
+            enum-field-type: ignored
+      booleancontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        SPCSO:
+          ctlVal:
+            bool-field-type: ignored
+      integercontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        ISCSO:
+          ctlVal:
+            int32-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      stringcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        StrOut:
+          ctlVal:
+            string-field-type: ignored
+- name: ResourceDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: ignored
+    conductingEquipment:
+      namedObject:
+        description:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      mRID:
+        string-field-type: primary_uuid
+        value: '?'
+    resourceDiscreteControl:
+      identifiedObject:
+        description:
+          value:
+            string-field-type: ignored
+        mRID:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      analogcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        AnOut:
+          ctlVal:
+            command-id: first
+            double-field-type: mapped
+            index: 4701
+            output-type: write_single_register_uint16
+            scale: 1.0
+        Phase:
+          value:
+            enum-field-type: ignored
+      booleancontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        SPCSO:
+          ctlVal:
+            bool-field-type: ignored
+      integercontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        ISCSO:
+          ctlVal:
+            int32-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      stringcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        StrOut:
+          ctlVal:
+            string-field-type: ignored
+- name: ResourceDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: ignored
+    conductingEquipment:
+      namedObject:
+        description:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      mRID:
+        string-field-type: primary_uuid
+        value: '?'
+    resourceDiscreteControl:
+      identifiedObject:
+        description:
+          value:
+            string-field-type: ignored
+        mRID:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      analogcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        AnOut:
+          ctlVal:
+            command-id: first
+            double-field-type: mapped
+            index: 4702
+            output-type: write_single_register_uint16
+            scale: 1.0
+        Phase:
+          value:
+            enum-field-type: ignored
+      booleancontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        SPCSO:
+          ctlVal:
+            bool-field-type: ignored
+      integercontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        ISCSO:
+          ctlVal:
+            int32-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      stringcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        StrOut:
+          ctlVal:
+            string-field-type: ignored
+- name: ResourceDiscreteControlProfile
+  poll_period_ms: 1000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: ignored
+    conductingEquipment:
+      namedObject:
+        description:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      mRID:
+        string-field-type: primary_uuid
+        value: '?'
+    resourceDiscreteControl:
+      identifiedObject:
+        description:
+          value:
+            string-field-type: ignored
+        mRID:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      analogcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        AnOut:
+          ctlVal:
+            command-id: first
+            double-field-type: mapped
+            index: 4703
+            output-type: write_single_register_uint16
+            scale: 1.0
+        Phase:
+          value:
+            enum-field-type: ignored
+      booleancontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        SPCSO:
+          ctlVal:
+            bool-field-type: ignored
+      integercontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        ISCSO:
+          ctlVal:
+            int32-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      stringcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        StrOut:
+          ctlVal:
+            string-field-type: ignored
+
+################# Lectura del 2700
+
+- name: MeterReadingProfile
+  poll_period_ms: 1000
+  mapping:
+    readingMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    meter:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    meterReading:
+      conductingEquipmentTerminalReading:
+        terminal:
+          aCDCTerminal:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+            connected:
+              value:
+                bool-field-type: ignored
+            sequenceNumber:
+              value:
+                int32-field-type: ignored
+          phases:
+            value:
+              enum-field-type: ignored
+      phaseMMTN:
+        phsA:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        phsAB:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        phsB:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        phsBC:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        phsC:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        phsCA:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+      readingMMTR:
+        logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        DmdVAh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        DmdVArh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        DmdWh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        SupVAh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        SupVArh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        SupWh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        TotVAh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        TotVArh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+        TotWh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+      readingMMXU:
+        logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        A:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        ClcMth:
+          setVal:
+            enum-field-type: ignored
+        Hz:
+          mag:
+            double-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+          units:
+            multiplier:
+              value:
+                enum-field-type: ignored
+            SIUnit:
+              enum-field-type: ignored
+        PF:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        PFSign:
+          setVal:
+            enum-field-type: ignored
+        PhV:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        PPV:
+          phsAB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsBC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsCA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        VA:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 2699
+                register-mapping: sint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        VAr:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+        W:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: ignored

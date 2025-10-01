@@ -1,0 +1,687 @@
+file:
+  id: openfmb-adapter-main
+  edition: 2.0
+  version: 2.1.0.0
+  plugin: ''
+logging:
+  logger-name: application
+  console:
+    enabled: true
+  rotating-file:
+    enabled: true
+    path: adapter.log
+    max-size: 1048576
+    max-files: 3
+plugins:
+  capture:
+    enabled: false
+    file: capture.txt
+  replay:
+    enabled: false
+    file: capture.txt
+  dnp3-master:
+    enabled: false
+    thread-pool-size: 1
+    masters: []
+  dnp3-outstation:
+    enabled: false
+    thread-pool-size: 1
+    outstations: []
+  modbus-master:
+    enabled: true
+    thread-pool-size: 1
+    sessions:
+    ####################################################################
+    #################### MEDIDORES MODBUS (BLANCOS) ####################
+    ####################################################################
+
+    # Medidor blanco 1
+     - path: modbus-master/modbus-meter.yaml
+       local-path: modbus-master/modbus-meter.yaml
+       session-name: SessionMeter1
+       overrides:
+       - key: profiles[0].mapping.meter.conductingEquipment.mRID.value
+         value: 00000001-0001-0020-0000-000000000001
+       - key: remote-ip
+         value: 192.168.0.8
+       - key: unit-identifier
+         value: 1
+       - key: port
+         value: 26
+
+    # Medidor blanco 1
+     - path: modbus-master/modbus-meter.yaml
+       local-path: modbus-master/modbus-meter.yaml
+       session-name: SessionMeter2
+       overrides:
+       - key: profiles[0].mapping.meter.conductingEquipment.mRID.value
+         value: 00000001-0002-0020-0000-000000000001
+       - key: remote-ip
+         value: 192.168.0.8
+       - key: unit-identifier
+         value: 1
+       - key: port
+         value: 26
+
+    ####################################################################
+    ######################### MEDIDOR FRONIUS ##########################
+    ####################################################################
+        
+    # #Medidor - Quattro
+    # - path: modbus-master/modbus-meter.yaml
+    #   local-path: modbus-master/modbus-meter.yaml
+    #   session-name: SessionMeter3
+    #   overrides:
+    #   - key: profiles[0].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000001-0003-0020-0000-000000000001
+    #   - key: remote-ip
+    #     # value: 192.168.0.10 # 192.168.0.7
+    #     value: 172.26.0.1
+    #   - key: unit-identifier
+    #     value: 3
+    #   - key: port
+    #     value: 5050 # 26  
+
+    # #Medidor - Carga Programable 
+    # - path: modbus-master/modbus-meter.yaml
+    #   local-path: modbus-master/modbus-meter.yaml
+    #   session-name: SessionMeter4
+    #   overrides:
+    #   - key: profiles[0].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000001-0004-0020-0000-000000000001
+    #   - key: remote-ip
+    #     # value: 192.168.0.10 # 192.168.0.7
+    #     value: 172.26.0.1
+    #   - key: unit-identifier
+    #     value: 4
+    #   - key: port
+    #     value: 5050 # 26
+
+    # #Medidor - Electrolizador de Hidrógeno
+    # - path: modbus-master/modbus-meter.yaml
+    #   local-path: modbus-master/modbus-meter.yaml
+    #   session-name: SessionMeter5
+    #   overrides:
+    #   - key: profiles[0].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000001-0005-0020-0000-000000000001
+    #   - key: remote-ip
+    #     # value: 192.168.0.10 # 192.168.0.7
+    #     value: 172.26.0.1
+    #   - key: unit-identifier
+    #     value: 5
+    #   - key: port
+    #     value: 5050 # 26        
+
+    # #Medidor - Microinversores Enphase
+    # - path: modbus-master/modbus-meter.yaml
+    #   local-path: modbus-master/modbus-meter.yaml
+    #   session-name: SessionMeter6
+    #   overrides:
+    #   - key: profiles[0].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000001-0006-0020-0000-000000000001
+    #   - key: remote-ip
+    #     # value: 192.168.0.10 # 192.168.0.7
+    #     value: 172.26.0.1
+    #   - key: unit-identifier
+    #     value: 6
+    #   - key: port
+    #     value: 5050 # 26
+
+    # #Medidor - Gabinete Iluminación P1
+    # - path: modbus-master/modbus-meter.yaml
+    #   local-path: modbus-master/modbus-meter.yaml
+    #   session-name: SessionMeter7
+    #   overrides:
+    #   - key: profiles[0].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000001-0007-0020-0000-000000000001
+    #   - key: remote-ip
+    #     # value: 192.168.0.10 # 192.168.0.7
+    #     value: 172.26.0.1
+    #   - key: unit-identifier
+    #     value: 7
+    #   - key: port
+    #     value: 5050 # 26   
+
+    # #Medidor - Gabinete Iluminación P2
+    # - path: modbus-master/modbus-meter.yaml
+    #   local-path: modbus-master/modbus-meter.yaml
+    #   session-name: SessionMeter8
+    #   overrides:
+    #   - key: profiles[0].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000001-0008-0020-0000-000000000001
+    #   - key: remote-ip
+    #     # value: 192.168.0.10 # 192.168.0.7
+    #     value: 172.26.0.1
+    #   - key: unit-identifier
+    #     value: 8
+    #   - key: port
+    #     value: 5050 # 26        
+
+    # #Medidor - Gabinete Iluminación P3
+    # - path: modbus-master/modbus-meter.yaml
+    #   local-path: modbus-master/modbus-meter.yaml
+    #   session-name: SessionMeter9
+    #   overrides:
+    #   - key: profiles[0].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000001-0009-0020-0000-000000000001
+    #   - key: remote-ip
+    #     # value: 192.168.0.10 # 192.168.0.7
+    #     value: 172.26.0.1
+    #   - key: unit-identifier
+    #     value: 9
+    #   - key: port
+    #     value: 5050 # 26    
+
+    # #Medidor - Gabinete Resistencias
+    # - path: modbus-master/modbus-meter.yaml
+    #   local-path: modbus-master/modbus-meter.yaml
+    #   session-name: SessionMeter10
+    #   overrides:
+    #   - key: profiles[0].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000001-0010-0020-0000-000000000001
+    #   - key: remote-ip
+    #     # value: 192.168.0.10 # 192.168.0.7
+    #     value: 172.26.0.1
+    #   - key: unit-identifier
+    #     value: 10
+    #   - key: port
+    #     value: 5050 # 26           
+
+    # # Piranómetro
+    # # - path: modbus-master/modbus-pyra.yaml
+    # #   local-path: modbus-master/modbus-pyra.yaml
+    # #   session-name: SessionPyranometer1
+    # #   overrides:
+    # #   - key: profiles[0].mapping.meter.conductingEquipment.mRID.value
+    # #     value: 00000003-0001-0005-0000-000000000001
+    # #   - key: remote-ip
+    # #     value: 192.168.0.15
+    # #   - key: unit-identifier
+    # #     value: 1
+    # #   - key: port
+    # #     value: 2000
+
+    # # Relevos
+    # - path: modbus-master/modbus-boxes.yaml
+    #   local-path: modbus-master/modbus-boxes.yaml
+    #   session-name: SessionBox1
+    #   overrides:
+    #   - key: remote-ip
+    #     value: 172.26.0.1
+    #   - key: unit-identifier
+    #     value: 1
+    #   - key: port
+    #     value: 5050
+    #   # Status
+    #   #Modbox 1 - Cx
+    #   - key: profiles[0].mapping.protectedSwitch.conductingEquipment.mRID.value
+    #     value: 00000002-0001-1001-0000-000000000001
+    #   - key: profiles[1].mapping.protectedSwitch.conductingEquipment.mRID.value
+    #     value: 00000002-0001-1001-0000-000000000002
+    #   - key: profiles[2].mapping.protectedSwitch.conductingEquipment.mRID.value
+    #     value: 00000002-0001-1001-0000-000000000003
+    #   - key: profiles[3].mapping.protectedSwitch.conductingEquipment.mRID.value
+    #     value: 00000002-0001-1001-0000-000000000004
+    #   - key: profiles[4].mapping.protectedSwitch.conductingEquipment.mRID.value
+    #     value: 00000002-0001-1001-0000-000000000005
+    #   - key: profiles[5].mapping.protectedSwitch.conductingEquipment.mRID.value
+    #     value: 00000002-0001-1001-0000-000000000006
+    #   - key: profiles[6].mapping.protectedSwitch.conductingEquipment.mRID.value
+    #     value: 00000002-0001-1001-0000-000000000007
+    #   - key: profiles[7].mapping.protectedSwitch.conductingEquipment.mRID.value
+    #     value: 00000002-0001-1001-0000-000000000008
+    #   - key: profiles[8].mapping.protectedSwitch.conductingEquipment.mRID.value
+    #     value: 00000002-0001-1001-0000-000000000009
+    #   - key: profiles[9].mapping.protectedSwitch.conductingEquipment.mRID.value
+    #     value: 00000002-0001-1001-0000-000000000010
+    #   - key: profiles[10].mapping.protectedSwitch.conductingEquipment.mRID.value
+    #     value: 00000002-0001-1001-0000-000000000011
+    #   - key: profiles[11].mapping.protectedSwitch.conductingEquipment.mRID.value
+    #     value: 00000002-0001-1001-0000-000000000012
+    #   # Control
+    #   - key: profiles[12].mapping.protectedSwitch.conductingEquipment.mRID.value
+    #     value: 00000002-0001-1001-0000-000000000001
+    #   - key: profiles[13].mapping.protectedSwitch.conductingEquipment.mRID.value
+    #     value: 00000002-0001-1001-0000-000000000002
+    #   - key: profiles[14].mapping.protectedSwitch.conductingEquipment.mRID.value
+    #     value: 00000002-0001-1001-0000-000000000003
+    #   - key: profiles[15].mapping.protectedSwitch.conductingEquipment.mRID.value
+    #     value: 00000002-0001-1001-0000-000000000004
+    #   - key: profiles[16].mapping.protectedSwitch.conductingEquipment.mRID.value
+    #     value: 00000002-0001-1001-0000-000000000005
+    #   - key: profiles[17].mapping.protectedSwitch.conductingEquipment.mRID.value
+    #     value: 00000002-0001-1001-0000-000000000006
+    #   - key: profiles[18].mapping.protectedSwitch.conductingEquipment.mRID.value
+    #     value: 00000002-0001-1001-0000-000000000007
+    #   - key: profiles[19].mapping.protectedSwitch.conductingEquipment.mRID.value
+    #     value: 00000002-0001-1001-0000-000000000008
+    #   - key: profiles[20].mapping.protectedSwitch.conductingEquipment.mRID.value
+    #     value: 00000002-0001-1001-0000-000000000009
+    #   - key: profiles[21].mapping.protectedSwitch.conductingEquipment.mRID.value
+    #     value: 00000002-0001-1001-0000-000000000010
+    #   - key: profiles[22].mapping.protectedSwitch.conductingEquipment.mRID.value
+    #     value: 00000002-0001-1001-0000-000000000011
+    #   - key: profiles[23].mapping.protectedSwitch.conductingEquipment.mRID.value
+    #     value: 00000002-0001-1001-0000-000000000012
+
+    # # # Fronius
+    # - path: modbus-master/modbus-fronius.yaml
+    #   local-path: modbus-master/modbus-fronius.yaml
+    #   session-name: SessionFronius
+    #   overrides:
+    #   - key: remote-ip
+    #     value: 172.26.0.1
+    #   - key: unit-identifier
+    #     value: 2
+    #   - key: port
+    #     value: 502
+    #     #Lectura
+    #   - key: profiles[0].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000004-0001-0015-0000-000000000001
+    #   - key: profiles[1].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000004-0001-0015-0000-000000000002
+    #   - key: profiles[2].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000004-0001-0015-0000-000000000003
+    #   - key: profiles[3].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000004-0001-0015-0000-000000000004
+    #   - key: profiles[4].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000004-0001-0015-0000-000000000005
+    #   - key: profiles[5].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000004-0001-0015-0000-000000000006
+    #   - key: profiles[6].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000004-0001-0015-0000-000000000007
+    #   - key: profiles[7].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000004-0001-0015-0000-000000000008
+    #   - key: profiles[8].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000004-0001-0015-0000-000000000009
+    #   - key: profiles[9].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000004-0001-0015-0000-000000000010
+    #   - key: profiles[10].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000004-0001-0015-0000-000000000011
+    #   - key: profiles[11].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000004-0001-0002-0000-000000000012
+    #     #-----Control
+    #   - key: profiles[12].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000000212
+    #   - key: profiles[13].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000000213
+    #   - key: profiles[14].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000000215
+    #   - key: profiles[15].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000000216
+    #   - key: profiles[16].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000000217
+    #   - key: profiles[17].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040162
+    #   - key: profiles[18].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040164
+    #   - key: profiles[19].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040165
+    #   - key: profiles[20].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040166
+    #   - key: profiles[21].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040167
+    #   - key: profiles[22].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040240
+    #   - key: profiles[23].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040241
+    #   - key: profiles[24].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040242
+    #     #registro de limite de potencia 40243 depende del habilitador 40247
+    #   - key: profiles[25].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-004024740243
+    #   - key: profiles[26].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040244
+    #   - key: profiles[27].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040245
+    #   - key: profiles[28].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040246
+    #   # - key: profiles[29].mapping.conductingEquipment.mRID.value
+    #   - key: profiles[29].mapping.protectedSwitch.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040247
+    #   - key: profiles[30].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040248
+    #   - key: profiles[31].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040249
+    #   - key: profiles[32].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040250
+    #   - key: profiles[33].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040251
+    #   - key: profiles[34].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040252
+    #   - key: profiles[35].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040254
+    #   - key: profiles[36].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040256
+    #   - key: profiles[37].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040257
+    #   - key: profiles[38].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040258
+    #   - key: profiles[39].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040260
+    #   - key: profiles[40].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040319
+    #   - key: profiles[41].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040321
+    #   - key: profiles[42].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040326
+    #   - key: profiles[43].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040327
+    #   - key: profiles[44].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040331
+    #   #lectura regs 64b 
+    #   - key: profiles[45].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-0001-0000-200000000502
+    #   - key: profiles[46].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-0001-0000-200000000506
+    #   - key: profiles[47].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-0001-0000-200000000510
+    #   - key: profiles[48].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-0001-0000-200000040197
+    #   - key: profiles[49].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-0001-0000-200000040201
+    #   - key: profiles[50].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-0001-0000-200000040205
+    #   - key: profiles[51].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-0001-0000-200000040209
+    #   - key: profiles[52].mapping.conductingEquipment.mRID.value
+    #     value: 00000004-0001-0001-0000-200000040213
+    #   - key: profiles[53].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000004-0001-0001-0000-200000040217
+    #     #status de habilitador
+    #   - key: profiles[54].mapping.protectedSwitch.conductingEquipment.mRID.value
+    #     value: 00000004-0001-1001-0000-000000040247
+    #     #lectura de pot activa
+    #   - key: profiles[55].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000004-0001-0001-0000-000000040243
+
+# Color control
+################################################################################################    
+    #- path: modbus-master/modbus-master-CC_slave_100.yaml
+    #  local-path: modbus-master/modbus-master-CC_slave_100.yaml
+    #  session-name: Session_slave_100
+    #  overrides:
+      # - key: profiles[0].mapping.meter.conductingEquipment.mRID.value
+      #   value: 00000006-0001-0015-0000-000000000001
+      # - key: profiles[1].mapping.meter.conductingEquipment.mRID.value
+      #   value: 00000006-0001-0015-0000-000000000002
+      # - key: profiles[2].mapping.meter.conductingEquipment.mRID.value
+      #   value: 00000006-0001-0005-0000-000000000003        
+      # - key: profiles[3].mapping.conductingEquipment.mRID.value
+      #   value: 00000006-0001-1001-0000-000000000806
+      # - key: profiles[4].mapping.conductingEquipment.mRID.value
+      #   value: 00000006-0001-1001-0000-000000000807
+      # - key: profiles[5].mapping.conductingEquipment.mRID.value
+      #   value: 00000006-0001-1001-0000-000000002700
+      # - key: profiles[6].mapping.conductingEquipment.mRID.value
+      #   value: 00000006-0001-1001-0000-000000002701
+      # - key: profiles[7].mapping.conductingEquipment.mRID.value
+      #   value: 00000006-0001-1001-0000-000000002702
+      # - key: profiles[8].mapping.conductingEquipment.mRID.value
+      #   value: 00000006-0001-1001-0000-000000002703
+      # - key: profiles[9].mapping.conductingEquipment.mRID.value
+      #   value: 00000006-0001-1001-0000-000000002704
+      # - key: profiles[10].mapping.conductingEquipment.mRID.value
+      #   value: 00000006-0001-1001-0000-000000002705
+      # - key: profiles[11].mapping.conductingEquipment.mRID.value
+      #   value: 00000006-0001-1001-0000-000000002706
+      # - key: profiles[12].mapping.conductingEquipment.mRID.value
+      #   value: 00000006-0001-1001-0000-000000002707
+      # - key: profiles[13].mapping.conductingEquipment.mRID.value
+      #   value: 00000006-0001-1001-0000-000000002708
+      # - key: profiles[14].mapping.conductingEquipment.mRID.value
+      #   value: 00000006-0001-1001-0000-000000002710
+      # - key: profiles[15].mapping.conductingEquipment.mRID.value
+      #   value: 00000006-0001-1001-0000-000000002711
+      # - key: profiles[16].mapping.conductingEquipment.mRID.value
+      #   value: 00000006-0001-1001-0000-000000002712
+      # - key: profiles[17].mapping.conductingEquipment.mRID.value
+      #   value: 00000006-0001-1001-0000-000000002900
+      # - key: profiles[18].mapping.conductingEquipment.mRID.value
+      #   value: 00000006-0001-1001-0000-000000002901
+      # - key: profiles[19].mapping.conductingEquipment.mRID.value
+      #   value: 00000006-0001-1001-0000-000000002902
+      # - key: profiles[20].mapping.conductingEquipment.mRID.value
+      #   value: 00000006-0001-1001-0000-000000004701
+      # - key: profiles[21].mapping.conductingEquipment.mRID.value
+      #   value: 00000006-0001-1001-0000-000000004702
+      # - key: profiles[22].mapping.conductingEquipment.mRID.value
+      #   value: 00000006-0001-1001-0000-000000004703
+      # - key: profiles[23].mapping.conductingEquipment.mRID.value
+      #   value: 00000006-0001-1001-0000-000000004704
+     # - key: profiles[0].mapping.conductingEquipment.mRID.value
+     #   value: 00000006-0001-1001-0000-000000002700        
+     # - key: profiles[1].mapping.meter.conductingEquipment.mRID.value
+     #   value: 00000006-0000-0001-0000-000000002700        
+
+    # - path: modbus-master/modbus-master-CC_slave_245.yaml
+    #   local-path: modbus-master/modbus-master-CC_slave_245.yaml
+    #   session-name: Session_slave_245
+    #   overrides:
+    #   - key: profiles[0].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000006-0001-0015-0000-000000000001
+    #   - key: profiles[1].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000006-0001-0015-0000-000000000002
+    #   - key: profiles[2].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000006-0001-0015-0000-000000000003
+    #   - key: profiles[3].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000006-0001-0009-0000-000000000004
+    #   - key: profiles[4].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000774      
+  
+    # - path: modbus-master/modbus-master-CC_slave_246.yaml
+    #   local-path: modbus-master/modbus-master-CC_slave_246.yaml
+    #   session-name: Session_slave_246
+    #   overrides:
+    #   - key: profiles[0].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000006-0001-0015-0000-000000000001
+    #   - key: profiles[1].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000006-0001-0015-0000-000000000002
+    #   - key: profiles[2].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000006-0001-0015-0000-000000000003
+    #   - key: profiles[3].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000006-0001-0015-0000-000000000004
+    #   - key: profiles[4].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000006-0001-0008-0000-000000000005
+    #   - key: profiles[5].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000022
+    #   - key: profiles[6].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000030
+    #   - key: profiles[7].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000033
+    #   - key: profiles[8].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000037
+    #   - key: profiles[9].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000038
+    #   - key: profiles[10].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000039
+    #   - key: profiles[11].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000040
+    #   - key: profiles[12].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000041
+    #   - key: profiles[13].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000056
+    #   - key: profiles[14].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000062
+    #   - key: profiles[15].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000065
+    #   - key: profiles[16].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000066
+    #   - key: profiles[17].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000067
+    #   - key: profiles[18].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000068
+    #   - key: profiles[19].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000071
+    #   - key: profiles[20].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000072
+    #   - key: profiles[21].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000096
+    #   - key: profiles[22].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000098
+    #   - key: profiles[23].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000100
+    #   - key: profiles[24].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000102
+    #   - key: profiles[25].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000103
+    #   - key: profiles[26].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000105
+    #   - key: profiles[27].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000106
+    #   - key: profiles[28].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000107
+    #   - key: profiles[29].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000108
+    #   - key: profiles[30].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000109
+    #   - key: profiles[31].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000110
+    #   - key: profiles[32].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000111
+    #   - key: profiles[33].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000112
+    #   - key: profiles[34].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000113
+    #   - key: profiles[35].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000114
+    #   - key: profiles[36].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000115
+    #   - key: profiles[37].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000116
+    #   - key: profiles[38].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000117
+    #   - key: profiles[39].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000118
+    #   - key: profiles[40].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000119
+    #   - key: profiles[41].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000120
+    #   - key: profiles[42].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000121
+    #   - key: profiles[43].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000122
+    #   - key: profiles[44].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000123
+    #   - key: profiles[45].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000124
+    #   - key: profiles[46].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000125
+    #   - key: profiles[47].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000126
+    #   - key: profiles[48].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000127
+    #   - key: profiles[49].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000128
+    #   - key: profiles[50].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000129
+    #   - key: profiles[51].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000130
+    #   - key: profiles[52].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000131
+    #   - key: profiles[53].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000132
+    #   - key: profiles[54].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000133
+    #   - key: profiles[55].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000134
+    #   - key: profiles[56].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000135
+    #   - key: profiles[57].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000136
+    #   - key: profiles[58].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000137
+    #   - key: profiles[59].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000138
+    #   - key: profiles[60].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000139
+    #   - key: profiles[61].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000140
+    #   - key: profiles[62].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000141
+    #   - key: profiles[63].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000142
+    #   - key: profiles[64].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000143
+    #   - key: profiles[65].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000144  
+  
+    # - path: modbus-master/modbus-master-CC_slave_225.yaml
+    #   local-path: modbus-master/modbus-master-CC_slave_225.yaml
+    #   session-name: Session_slave_225
+    #   overrides:
+    #   - key: profiles[0].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000006-0001-0015-0000-000000000001
+    #   - key: profiles[1].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000006-0001-0015-0000-000000000002
+    #   - key: profiles[2].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000006-0001-0015-0000-000000000003
+    #   - key: profiles[3].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000006-0001-0015-0000-000000000004
+    #   - key: profiles[4].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000006-0001-0015-0000-000000000005
+    #   - key: profiles[5].mapping.meter.conductingEquipment.mRID.value
+    #     value: 00000006-0001-0013-0000-000000000006
+    #   - key: profiles[6].mapping.conductingEquipment.mRID.value
+    #     value: 00000006-0001-1001-0000-000000000280  
+
+  #################################################################################################
+  ############## FIN DE LAS CONFIGURACIONES DE LOS DISPOSITIVOS MODBUS ############################
+  #################################################################################################
+    
+  modbus-outstation:
+    enabled: false
+    thread-pool-size: 1
+    sessions: []  
+  mqtt:
+    enabled: false
+    max-queued-messages: 100
+    server-address: 127.0.0.1
+    client-id: client1
+    connect-retry-delay-ms: 5000
+    security:
+      security-type: tls_mutual_auth
+      ca-trusted-cert-file: cert.pem
+      client-private-key-file: client_key.pem
+      client-cert-chain-file: client_cert.pem
+      username: ''
+      password: ''
+    publish:
+    - profile: MeterReadingProfile
+      topic-suffix: '*'
+    subscribe: []
+  nats:
+    enabled: true
+    max-queued-messages: 100
+    connect-url: nats://nats:4222
+    connect-retry-seconds: 5
+    security:
+      security-type: none
+      ca-trusted-cert-file: cert.pem
+      client-private-key-file: client_key.pem
+      client-cert-chain-file: client_cert.pem
+      jwt-creds-file: ''
+    publish:
+    - profile: MeterReadingProfile
+      subject: '*'
+    - profile: ResourceReadingProfile
+      subject: '*'      
+    - profile: SwitchStatusProfile
+      subject: '*'                
+    subscribe:
+    - profile: SwitchDiscreteControlProfile
+      subject: '*'
+    - profile: ResourceDiscreteControlProfile
+      subject: '*'            
+  timescaledb:
+    enabled: true
+    database-url: postgresql://postgres:password@timescaledb:5432/openfmb
+    store-measurement: true
+    table-name: data
+    store-raw-message: false
+    raw-table-name: raw_data
+    raw-data-format: 0
+    max-queued-messages: 100
+    connect-retry-seconds: 5
+    data-store-interval-seconds: 0
+...
