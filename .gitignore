@@ -1,0 +1,13 @@
+# .old files
+# Ignore old files
+*.old
+
+# .env files
+# Ignore environment variable files
+.env
+
+# vscode settings
+.vscode/
+
+# timescaleDB database files
+timescale_data/

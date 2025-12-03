@@ -85,8 +85,8 @@ services:
     ports:
       - "80:80"
     environment:
-      PGADMIN_DEFAULT_EMAIL: perseo@udea.edu.co
-      PGADMIN_DEFAULT_PASSWORD: m1cr0r3d
+      PGADMIN_DEFAULT_EMAIL: ${EMAIL_PGADMIN}
+      PGADMIN_DEFAULT_PASSWORD: ${PASS_PGADMIN}
     volumes:
       - pgadmin_data:/var/lib/pgadmin
     networks:
