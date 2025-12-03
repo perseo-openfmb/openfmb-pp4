@@ -1,12 +1,10 @@
 name: slave_100_CC
 log-level: Warn
 adapter: 0.0.0.0
-remote-ip: 172.21.33.27
-# port: 502
-# unit-identifier: 100
-port: 5070
-unit-identifier: 1
-response_timeout_ms: 1000
+remote-ip: 192.168.0.102
+port: 502
+unit-identifier: 100
+response_timeout_ms: 5000
 always-write-multiple-registers: false
 auto_polling:
   max_register_gaps: 0
@@ -19,7 +17,7 @@ file:
   plugin: modbus-master
 profiles:
 - name: MeterReadingProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   mapping:
     readingMessageInfo:
       messageInfo:
@@ -34,7 +32,7 @@ profiles:
             value:
               string-field-type: ignored
         messageTimeStamp:
-          timestamp-field-type: ignored
+          timestamp-field-type: message
     meter:
       conductingEquipment:
         namedObject:
@@ -89,63 +87,63 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         phsAB:
           logicalNode:
             identifiedObject:
@@ -164,63 +162,63 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         phsB:
           logicalNode:
             identifiedObject:
@@ -239,63 +237,63 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         phsBC:
           logicalNode:
             identifiedObject:
@@ -314,63 +312,63 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         phsC:
           logicalNode:
             identifiedObject:
@@ -389,63 +387,63 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         phsCA:
           logicalNode:
             identifiedObject:
@@ -464,63 +462,63 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
       readingMMTR:
         logicalNode:
           identifiedObject:
@@ -539,63 +537,63 @@ profiles:
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
         DmdVArh:
           actVal:
             int64-field-type: ignored
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
         DmdWh:
           actVal:
             int64-field-type: ignored
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
         SupVAh:
           actVal:
             int64-field-type: ignored
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
         SupVArh:
           actVal:
             int64-field-type: ignored
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
         SupWh:
           actVal:
             int64-field-type: ignored
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
         TotVAh:
           actVal:
             int64-field-type: ignored
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
         TotVArh:
           actVal:
             int64-field-type: ignored
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
         TotWh:
           actVal:
             int64-field-type: ignored
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
       readingMMXU:
         logicalNode:
           identifiedObject:
@@ -619,7 +617,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           neut:
             cVal:
               ang:
@@ -630,7 +628,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsA:
             cVal:
               ang:
@@ -641,7 +639,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsB:
             cVal:
               ang:
@@ -652,7 +650,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsC:
             cVal:
               ang:
@@ -663,7 +661,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         ClcMth:
           setVal:
             enum-field-type: ignored
@@ -673,7 +671,7 @@ profiles:
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
           units:
             multiplier:
               value:
@@ -691,7 +689,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           neut:
             cVal:
               ang:
@@ -702,7 +700,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsA:
             cVal:
               ang:
@@ -713,7 +711,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsB:
             cVal:
               ang:
@@ -724,7 +722,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsC:
             cVal:
               ang:
@@ -735,7 +733,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         PFSign:
           setVal:
             enum-field-type: ignored
@@ -750,7 +748,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           neut:
             cVal:
               ang:
@@ -761,7 +759,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsA:
             cVal:
               ang:
@@ -772,7 +770,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsB:
             cVal:
               ang:
@@ -783,7 +781,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsC:
             cVal:
               ang:
@@ -794,7 +792,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         PPV:
           phsAB:
             cVal:
@@ -806,7 +804,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsBC:
             cVal:
               ang:
@@ -817,7 +815,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsCA:
             cVal:
               ang:
@@ -828,24 +826,9 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         VA:
           net:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: mapped
-                index: 807
-                register-mapping: uint16
-                scale: 1.0
-                source-type: holding_register
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          neut:
             cVal:
               ang:
                 value:
@@ -859,8 +842,8 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
-          phsA:
+              timestamp-field-type: message
+          neut:
             cVal:
               ang:
                 value:
@@ -874,8 +857,8 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
-          phsB:
+              timestamp-field-type: message
+          phsA:
             cVal:
               ang:
                 value:
@@ -889,8 +872,8 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
-          phsC:
+              timestamp-field-type: message
+          phsB:
             cVal:
               ang:
                 value:
@@ -904,9 +887,8 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
-        VAr:
-          net:
+              timestamp-field-type: message
+          phsC:
             cVal:
               ang:
                 value:
@@ -920,8 +902,9 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
-          neut:
+              timestamp-field-type: message
+        VAr:
+          net:
             cVal:
               ang:
                 value:
@@ -935,8 +918,8 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
-          phsA:
+              timestamp-field-type: message
+          neut:
             cVal:
               ang:
                 value:
@@ -950,8 +933,8 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
-          phsB:
+              timestamp-field-type: message
+          phsA:
             cVal:
               ang:
                 value:
@@ -965,8 +948,8 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
-          phsC:
+              timestamp-field-type: message
+          phsB:
             cVal:
               ang:
                 value:
@@ -980,9 +963,8 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
-        W:
-          net:
+              timestamp-field-type: message
+          phsC:
             cVal:
               ang:
                 value:
@@ -996,8 +978,9 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
-          neut:
+              timestamp-field-type: message
+        W:
+          net:
             cVal:
               ang:
                 value:
@@ -1011,8 +994,8 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
-          phsA:
+              timestamp-field-type: message
+          neut:
             cVal:
               ang:
                 value:
@@ -1020,14 +1003,14 @@ profiles:
               mag:
                 double-field-type: mapped
                 index: 819
-                register-mapping: sint16
+                register-mapping: uint16
                 scale: 1.0
                 source-type: holding_register
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
-          phsB:
+              timestamp-field-type: message
+          phsA:
             cVal:
               ang:
                 value:
@@ -1041,8 +1024,8 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
-          phsC:
+              timestamp-field-type: message
+          phsB:
             cVal:
               ang:
                 value:
@@ -1056,820 +1039,8 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
-- name: MeterReadingProfile
-  poll_period_ms: 1000
-  mapping:
-    readingMessageInfo:
-      messageInfo:
-        identifiedObject:
-          description:
-            value:
-              string-field-type: ignored
-          mRID:
-            value:
-              string-field-type: generated_uuid
-          name:
-            value:
-              string-field-type: ignored
-        messageTimeStamp:
-          timestamp-field-type: ignored
-    meter:
-      conductingEquipment:
-        namedObject:
-          description:
-            value:
-              string-field-type: ignored
-          name:
-            value:
-              string-field-type: ignored
-        mRID:
-          string-field-type: primary_uuid
-          value: '?'
-    meterReading:
-      conductingEquipmentTerminalReading:
-        terminal:
-          aCDCTerminal:
-            identifiedObject:
-              description:
-                value:
-                  string-field-type: ignored
-              mRID:
-                value:
-                  string-field-type: ignored
-              name:
-                value:
-                  string-field-type: ignored
-            connected:
-              value:
-                bool-field-type: ignored
-            sequenceNumber:
-              value:
-                int32-field-type: ignored
-          phases:
-            value:
-              enum-field-type: ignored
-      phaseMMTN:
-        phsA:
-          logicalNode:
-            identifiedObject:
-              description:
-                value:
-                  string-field-type: ignored
-              mRID:
-                value:
-                  string-field-type: ignored
-              name:
-                value:
-                  string-field-type: ignored
-          DmdVAh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          DmdVArh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          DmdWh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          SupVAh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          SupVArh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          SupWh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          TotVAh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          TotVArh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          TotWh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-        phsAB:
-          logicalNode:
-            identifiedObject:
-              description:
-                value:
-                  string-field-type: ignored
-              mRID:
-                value:
-                  string-field-type: ignored
-              name:
-                value:
-                  string-field-type: ignored
-          DmdVAh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          DmdVArh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          DmdWh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          SupVAh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          SupVArh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          SupWh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          TotVAh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          TotVArh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          TotWh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-        phsB:
-          logicalNode:
-            identifiedObject:
-              description:
-                value:
-                  string-field-type: ignored
-              mRID:
-                value:
-                  string-field-type: ignored
-              name:
-                value:
-                  string-field-type: ignored
-          DmdVAh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          DmdVArh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          DmdWh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          SupVAh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          SupVArh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          SupWh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          TotVAh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          TotVArh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          TotWh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-        phsBC:
-          logicalNode:
-            identifiedObject:
-              description:
-                value:
-                  string-field-type: ignored
-              mRID:
-                value:
-                  string-field-type: ignored
-              name:
-                value:
-                  string-field-type: ignored
-          DmdVAh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          DmdVArh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          DmdWh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          SupVAh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          SupVArh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          SupWh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          TotVAh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          TotVArh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          TotWh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-        phsC:
-          logicalNode:
-            identifiedObject:
-              description:
-                value:
-                  string-field-type: ignored
-              mRID:
-                value:
-                  string-field-type: ignored
-              name:
-                value:
-                  string-field-type: ignored
-          DmdVAh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          DmdVArh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          DmdWh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          SupVAh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          SupVArh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          SupWh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          TotVAh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          TotVArh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          TotWh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-        phsCA:
-          logicalNode:
-            identifiedObject:
-              description:
-                value:
-                  string-field-type: ignored
-              mRID:
-                value:
-                  string-field-type: ignored
-              name:
-                value:
-                  string-field-type: ignored
-          DmdVAh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          DmdVArh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          DmdWh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          SupVAh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          SupVArh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          SupWh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          TotVAh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          TotVArh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          TotWh:
-            actVal:
-              int64-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-      readingMMTR:
-        logicalNode:
-          identifiedObject:
-            description:
-              value:
-                string-field-type: ignored
-            mRID:
-              value:
-                string-field-type: ignored
-            name:
-              value:
-                string-field-type: ignored
-        DmdVAh:
-          actVal:
-            int64-field-type: ignored
-          q:
-            quality-field-type: ignored
-          t:
-            timestamp-field-type: ignored
-        DmdVArh:
-          actVal:
-            int64-field-type: ignored
-          q:
-            quality-field-type: ignored
-          t:
-            timestamp-field-type: ignored
-        DmdWh:
-          actVal:
-            int64-field-type: ignored
-          q:
-            quality-field-type: ignored
-          t:
-            timestamp-field-type: ignored
-        SupVAh:
-          actVal:
-            int64-field-type: ignored
-          q:
-            quality-field-type: ignored
-          t:
-            timestamp-field-type: ignored
-        SupVArh:
-          actVal:
-            int64-field-type: ignored
-          q:
-            quality-field-type: ignored
-          t:
-            timestamp-field-type: ignored
-        SupWh:
-          actVal:
-            int64-field-type: ignored
-          q:
-            quality-field-type: ignored
-          t:
-            timestamp-field-type: ignored
-        TotVAh:
-          actVal:
-            int64-field-type: ignored
-          q:
-            quality-field-type: ignored
-          t:
-            timestamp-field-type: ignored
-        TotVArh:
-          actVal:
-            int64-field-type: ignored
-          q:
-            quality-field-type: ignored
-          t:
-            timestamp-field-type: ignored
-        TotWh:
-          actVal:
-            int64-field-type: ignored
-          q:
-            quality-field-type: ignored
-          t:
-            timestamp-field-type: ignored
-      readingMMXU:
-        logicalNode:
-          identifiedObject:
-            description:
-              value:
-                string-field-type: ignored
-            mRID:
-              value:
-                string-field-type: ignored
-            name:
-              value:
-                string-field-type: ignored
-        A:
-          net:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          neut:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          phsA:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          phsB:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsC:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-        ClcMth:
-          setVal:
-            enum-field-type: ignored
-        Hz:
-          mag:
-            double-field-type: ignored
-          q:
-            quality-field-type: ignored
-          t:
-            timestamp-field-type: ignored
-          units:
-            multiplier:
-              value:
-                enum-field-type: ignored
-            SIUnit:
-              enum-field-type: ignored
-        PF:
-          net:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          neut:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          phsA:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          phsB:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          phsC:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-        PFSign:
-          setVal:
-            enum-field-type: ignored
-        PhV:
-          net:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          neut:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          phsA:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          phsB:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          phsC:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-        PPV:
-          phsAB:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          phsBC:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          phsCA:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: ignored
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-        VA:
-          net:
             cVal:
               ang:
                 value:
@@ -1883,222 +1054,9 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
-          neut:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: mapped
-                index: 823
-                register-mapping: sint16
-                scale: 1.0
-                source-type: holding_register
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          phsA:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: mapped
-                index: 824
-                register-mapping: sint16
-                scale: 1.0
-                source-type: holding_register
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          phsB:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: mapped
-                index: 825
-                register-mapping: sint16
-                scale: 1.0
-                source-type: holding_register
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          phsC:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: mapped
-                lower_index: 830
-                register-mapping: uint32
-                scale: 1.0
-                source-type: holding_register
-                upper_index: 829
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-        VAr:
-          net:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: mapped
-                index: 839
-                register-mapping: uint16
-                scale: 10.0
-                source-type: holding_register
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          neut:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: mapped
-                index: 840
-                register-mapping: sint16
-                scale: 10.0
-                source-type: holding_register
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          phsA:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: mapped
-                index: 841
-                register-mapping: sint16
-                scale: 1.0
-                source-type: holding_register
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          phsB:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: mapped
-                index: 842
-                register-mapping: uint16
-                scale: 1.0
-                source-type: holding_register
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          phsC:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: mapped
-                index: 843
-                register-mapping: uint16
-                scale: 1.0
-                source-type: holding_register
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-        W:
-          net:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: mapped
-                index: 844
-                register-mapping: uint16
-                scale: 10.0
-                source-type: holding_register
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          neut:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: mapped
-                index: 845
-                register-mapping: uint16
-                scale: 0.01
-                source-type: holding_register
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          phsA:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: mapped
-                index: 849
-                register-mapping: uint16
-                scale: 1.0
-                source-type: holding_register
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          phsB:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: mapped
-                index: 850
-                register-mapping: sint16
-                scale: 10.0
-                source-type: holding_register
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
-          phsC:
-            cVal:
-              ang:
-                value:
-                  double-field-type: ignored
-              mag:
-                double-field-type: mapped
-                index: 854
-                register-mapping: uint16
-                scale: 1.0
-                source-type: holding_register
-            q:
-              quality-field-type: ignored
-            t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
 - name: MeterReadingProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   mapping:
     readingMessageInfo:
       messageInfo:
@@ -2113,7 +1071,7 @@ profiles:
             value:
               string-field-type: ignored
         messageTimeStamp:
-          timestamp-field-type: ignored
+          timestamp-field-type: message
     meter:
       conductingEquipment:
         namedObject:
@@ -2168,63 +1126,63 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         phsAB:
           logicalNode:
             identifiedObject:
@@ -2243,63 +1201,63 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         phsB:
           logicalNode:
             identifiedObject:
@@ -2318,63 +1276,63 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         phsBC:
           logicalNode:
             identifiedObject:
@@ -2393,63 +1351,63 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         phsC:
           logicalNode:
             identifiedObject:
@@ -2468,63 +1426,63 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         phsCA:
           logicalNode:
             identifiedObject:
@@ -2543,63 +1501,63 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
       readingMMTR:
         logicalNode:
           identifiedObject:
@@ -2618,63 +1576,63 @@ profiles:
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
         DmdVArh:
           actVal:
             int64-field-type: ignored
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
         DmdWh:
           actVal:
             int64-field-type: ignored
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
         SupVAh:
           actVal:
             int64-field-type: ignored
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
         SupVArh:
           actVal:
             int64-field-type: ignored
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
         SupWh:
           actVal:
             int64-field-type: ignored
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
         TotVAh:
           actVal:
             int64-field-type: ignored
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
         TotVArh:
           actVal:
             int64-field-type: ignored
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
         TotWh:
           actVal:
             int64-field-type: ignored
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
       readingMMXU:
         logicalNode:
           identifiedObject:
@@ -2698,7 +1656,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           neut:
             cVal:
               ang:
@@ -2709,7 +1667,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsA:
             cVal:
               ang:
@@ -2720,7 +1678,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsB:
             cVal:
               ang:
@@ -2731,7 +1689,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsC:
             cVal:
               ang:
@@ -2742,7 +1700,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         ClcMth:
           setVal:
             enum-field-type: ignored
@@ -2752,7 +1710,7 @@ profiles:
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
           units:
             multiplier:
               value:
@@ -2770,7 +1728,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           neut:
             cVal:
               ang:
@@ -2781,7 +1739,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsA:
             cVal:
               ang:
@@ -2792,7 +1750,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsB:
             cVal:
               ang:
@@ -2803,7 +1761,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsC:
             cVal:
               ang:
@@ -2814,7 +1772,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         PFSign:
           setVal:
             enum-field-type: ignored
@@ -2829,7 +1787,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           neut:
             cVal:
               ang:
@@ -2840,7 +1798,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsA:
             cVal:
               ang:
@@ -2851,7 +1809,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsB:
             cVal:
               ang:
@@ -2862,7 +1820,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsC:
             cVal:
               ang:
@@ -2873,7 +1831,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         PPV:
           phsAB:
             cVal:
@@ -2885,7 +1843,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsBC:
             cVal:
               ang:
@@ -2896,7 +1854,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsCA:
             cVal:
               ang:
@@ -2907,7 +1865,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         VA:
           net:
             cVal:
@@ -2916,14 +1874,14 @@ profiles:
                   double-field-type: ignored
               mag:
                 double-field-type: mapped
-                index: 859
+                index: 823
                 register-mapping: sint16
                 scale: 1.0
                 source-type: holding_register
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           neut:
             cVal:
               ang:
@@ -2931,15 +1889,1040 @@ profiles:
                   double-field-type: ignored
               mag:
                 double-field-type: mapped
-                index: 864
+                index: 824
+                register-mapping: sint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 825
+                register-mapping: sint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 826
+                register-mapping: sint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                lower_index: 831
+                register-mapping: uint32
+                scale: 1.0
+                source-type: holding_register
+                upper_index: 830
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+        VAr:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 840
+                register-mapping: uint16
+                scale: 0.1
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 841
+                register-mapping: sint16
+                scale: 0.1
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 842
+                register-mapping: sint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 843
+                register-mapping: uint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 844
+                register-mapping: uint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+        W:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 845
+                register-mapping: uint16
+                scale: 10.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 846
+                register-mapping: uint16
+                scale: 0.01
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 850
+                register-mapping: uint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 851
                 register-mapping: sint16
                 scale: 10.0
                 source-type: holding_register
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 855
+                register-mapping: uint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+- name: MeterReadingProfile
+  poll_period_ms: 5000
+  mapping:
+    readingMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    meter:
+      conductingEquipment:
+        namedObject:
+          description:
+            value:
+              string-field-type: ignored
+          name:
+            value:
+              string-field-type: ignored
+        mRID:
+          string-field-type: primary_uuid
+          value: '?'
+    meterReading:
+      conductingEquipmentTerminalReading:
+        terminal:
+          aCDCTerminal:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+            connected:
+              value:
+                bool-field-type: ignored
+            sequenceNumber:
+              value:
+                int32-field-type: ignored
+          phases:
+            value:
+              enum-field-type: ignored
+      phaseMMTN:
+        phsA:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+        phsAB:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+        phsB:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+        phsBC:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+        phsC:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+        phsCA:
+          logicalNode:
+            identifiedObject:
+              description:
+                value:
+                  string-field-type: ignored
+              mRID:
+                value:
+                  string-field-type: ignored
+              name:
+                value:
+                  string-field-type: ignored
+          DmdVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          DmdVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          DmdWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          SupWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotVAh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotVArh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          TotWh:
+            actVal:
+              int64-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+      readingMMTR:
+        logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        DmdVAh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: message
+        DmdVArh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: message
+        DmdWh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: message
+        SupVAh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: message
+        SupVArh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: message
+        SupWh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: message
+        TotVAh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: message
+        TotVArh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: message
+        TotWh:
+          actVal:
+            int64-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: message
+      readingMMXU:
+        logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        A:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
           phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+        ClcMth:
+          setVal:
+            enum-field-type: ignored
+        Hz:
+          mag:
+            double-field-type: ignored
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: message
+          units:
+            multiplier:
+              value:
+                enum-field-type: ignored
+            SIUnit:
+              enum-field-type: ignored
+        PF:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+        PFSign:
+          setVal:
+            enum-field-type: ignored
+        PhV:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          neut:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+        PPV:
+          phsAB:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsBC:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsCA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: ignored
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+        VA:
+          net:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 860
+                register-mapping: sint16
+                scale: 1.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          neut:
             cVal:
               ang:
                 value:
@@ -2948,12 +2931,27 @@ profiles:
                 double-field-type: mapped
                 index: 865
                 register-mapping: sint16
+                scale: 10.0
+                source-type: holding_register
+            q:
+              quality-field-type: ignored
+            t:
+              timestamp-field-type: message
+          phsA:
+            cVal:
+              ang:
+                value:
+                  double-field-type: ignored
+              mag:
+                double-field-type: mapped
+                index: 866
+                register-mapping: sint16
                 scale: 1.0
                 source-type: holding_register
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsB:
             cVal:
               ang:
@@ -2961,14 +2959,14 @@ profiles:
                   double-field-type: ignored
               mag:
                 double-field-type: mapped
-                index: 2708
+                index: 2709
                 register-mapping: sint16
                 scale: 1.0
                 source-type: holding_register
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsC:
             cVal:
               ang:
@@ -2976,14 +2974,14 @@ profiles:
                   double-field-type: ignored
               mag:
                 double-field-type: mapped
-                index: 2902
+                index: 2903
                 register-mapping: uint16
                 scale: 10.0
                 source-type: holding_register
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         VAr:
           net:
             cVal:
@@ -2995,7 +2993,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           neut:
             cVal:
               ang:
@@ -3006,7 +3004,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsA:
             cVal:
               ang:
@@ -3017,7 +3015,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsB:
             cVal:
               ang:
@@ -3028,7 +3026,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsC:
             cVal:
               ang:
@@ -3039,7 +3037,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         W:
           net:
             cVal:
@@ -3051,7 +3049,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           neut:
             cVal:
               ang:
@@ -3062,7 +3060,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsA:
             cVal:
               ang:
@@ -3073,7 +3071,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsB:
             cVal:
               ang:
@@ -3084,7 +3082,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsC:
             cVal:
               ang:
@@ -3095,9 +3093,9 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
@@ -3115,132 +3113,7 @@ profiles:
             value:
               string-field-type: ignored
         messageTimeStamp:
-          timestamp-field-type: ignored
-    conductingEquipment:
-      namedObject:
-        description:
-          value:
-            string-field-type: ignored
-        name:
-          value:
-            string-field-type: ignored
-      mRID:
-        string-field-type: primary_uuid
-        value: '?'
-    resourceDiscreteControl:
-      identifiedObject:
-        description:
-          value:
-            string-field-type: ignored
-        mRID:
-          value:
-            string-field-type: ignored
-        name:
-          value:
-            string-field-type: ignored
-      check:
-        interlockCheck:
-          value:
-            bool-field-type: ignored
-        synchroCheck:
-          value:
-            bool-field-type: ignored
-      analogcontrolggio:
-      - logicalNode:
-          identifiedObject:
-            description:
-              value:
-                string-field-type: ignored
-            mRID:
-              value:
-                string-field-type: ignored
-            name:
-              value:
-                string-field-type: ignored
-        AnOut:
-          ctlVal:
-            command-id: first
-            double-field-type: mapped
-            index: 805
-            output-type: write_single_register_uint16
-            scale: 1.0
-        Phase:
-          value:
-            enum-field-type: ignored
-      booleancontrolggio:
-      - logicalNode:
-          identifiedObject:
-            description:
-              value:
-                string-field-type: ignored
-            mRID:
-              value:
-                string-field-type: ignored
-            name:
-              value:
-                string-field-type: ignored
-        Phase:
-          value:
-            enum-field-type: ignored
-        SPCSO:
-          ctlVal:
-            bool-field-type: ignored
-      integercontrolggio:
-      - logicalNode:
-          identifiedObject:
-            description:
-              value:
-                string-field-type: ignored
-            mRID:
-              value:
-                string-field-type: ignored
-            name:
-              value:
-                string-field-type: ignored
-        ISCSO:
-          ctlVal:
-            int32-field-type: ignored
-        Phase:
-          value:
-            enum-field-type: ignored
-      stringcontrolggio:
-      - logicalNode:
-          identifiedObject:
-            description:
-              value:
-                string-field-type: ignored
-            mRID:
-              value:
-                string-field-type: ignored
-            name:
-              value:
-                string-field-type: ignored
-        Phase:
-          value:
-            enum-field-type: ignored
-        StrOut:
-          ctlVal:
-            string-field-type: ignored
-- name: ResourceDiscreteControlProfile
-  poll_period_ms: 1000
-  command-order:
-  - first
-  tolerance-ms: 5000
-  mapping:
-    controlMessageInfo:
-      messageInfo:
-        identifiedObject:
-          description:
-            value:
-              string-field-type: ignored
-          mRID:
-            value:
-              string-field-type: generated_uuid
-          name:
-            value:
-              string-field-type: ignored
-        messageTimeStamp:
-          timestamp-field-type: ignored
+          timestamp-field-type: message
     conductingEquipment:
       namedObject:
         description:
@@ -3347,7 +3220,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
@@ -3365,7 +3238,7 @@ profiles:
             value:
               string-field-type: ignored
         messageTimeStamp:
-          timestamp-field-type: ignored
+          timestamp-field-type: message
     conductingEquipment:
       namedObject:
         description:
@@ -3411,132 +3284,7 @@ profiles:
           ctlVal:
             command-id: first
             double-field-type: mapped
-            index: 2699
-            output-type: write_single_register_int16
-            scale: 1.0
-        Phase:
-          value:
-            enum-field-type: ignored
-      booleancontrolggio:
-      - logicalNode:
-          identifiedObject:
-            description:
-              value:
-                string-field-type: ignored
-            mRID:
-              value:
-                string-field-type: ignored
-            name:
-              value:
-                string-field-type: ignored
-        Phase:
-          value:
-            enum-field-type: ignored
-        SPCSO:
-          ctlVal:
-            bool-field-type: ignored
-      integercontrolggio:
-      - logicalNode:
-          identifiedObject:
-            description:
-              value:
-                string-field-type: ignored
-            mRID:
-              value:
-                string-field-type: ignored
-            name:
-              value:
-                string-field-type: ignored
-        ISCSO:
-          ctlVal:
-            int32-field-type: ignored
-        Phase:
-          value:
-            enum-field-type: ignored
-      stringcontrolggio:
-      - logicalNode:
-          identifiedObject:
-            description:
-              value:
-                string-field-type: ignored
-            mRID:
-              value:
-                string-field-type: ignored
-            name:
-              value:
-                string-field-type: ignored
-        Phase:
-          value:
-            enum-field-type: ignored
-        StrOut:
-          ctlVal:
-            string-field-type: ignored
-- name: ResourceDiscreteControlProfile
-  poll_period_ms: 1000
-  command-order:
-  - first
-  tolerance-ms: 5000
-  mapping:
-    controlMessageInfo:
-      messageInfo:
-        identifiedObject:
-          description:
-            value:
-              string-field-type: ignored
-          mRID:
-            value:
-              string-field-type: generated_uuid
-          name:
-            value:
-              string-field-type: ignored
-        messageTimeStamp:
-          timestamp-field-type: ignored
-    conductingEquipment:
-      namedObject:
-        description:
-          value:
-            string-field-type: ignored
-        name:
-          value:
-            string-field-type: ignored
-      mRID:
-        string-field-type: primary_uuid
-        value: '?'
-    resourceDiscreteControl:
-      identifiedObject:
-        description:
-          value:
-            string-field-type: ignored
-        mRID:
-          value:
-            string-field-type: ignored
-        name:
-          value:
-            string-field-type: ignored
-      check:
-        interlockCheck:
-          value:
-            bool-field-type: ignored
-        synchroCheck:
-          value:
-            bool-field-type: ignored
-      analogcontrolggio:
-      - logicalNode:
-          identifiedObject:
-            description:
-              value:
-                string-field-type: ignored
-            mRID:
-              value:
-                string-field-type: ignored
-            name:
-              value:
-                string-field-type: ignored
-        AnOut:
-          ctlVal:
-            command-id: first
-            double-field-type: mapped
-            index: 2700
+            index: 807
             output-type: write_single_register_uint16
             scale: 1.0
         Phase:
@@ -3597,7 +3345,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
@@ -3615,7 +3363,132 @@ profiles:
             value:
               string-field-type: ignored
         messageTimeStamp:
-          timestamp-field-type: ignored
+          timestamp-field-type: message
+    conductingEquipment:
+      namedObject:
+        description:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      mRID:
+        string-field-type: primary_uuid
+        value: '?'
+    resourceDiscreteControl:
+      identifiedObject:
+        description:
+          value:
+            string-field-type: ignored
+        mRID:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      analogcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        AnOut:
+          ctlVal:
+            command-id: first
+            double-field-type: mapped
+            index: 2700
+            output-type: write_single_register_int16
+            scale: 1.0
+        Phase:
+          value:
+            enum-field-type: ignored
+      booleancontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        SPCSO:
+          ctlVal:
+            bool-field-type: ignored
+      integercontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        ISCSO:
+          ctlVal:
+            int32-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      stringcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        StrOut:
+          ctlVal:
+            string-field-type: ignored
+- name: ResourceDiscreteControlProfile
+  poll_period_ms: 5000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
     conductingEquipment:
       namedObject:
         description:
@@ -3722,7 +3595,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
@@ -3740,7 +3613,7 @@ profiles:
             value:
               string-field-type: ignored
         messageTimeStamp:
-          timestamp-field-type: ignored
+          timestamp-field-type: message
     conductingEquipment:
       namedObject:
         description:
@@ -3787,6 +3660,131 @@ profiles:
             command-id: first
             double-field-type: mapped
             index: 2702
+            output-type: write_single_register_uint16
+            scale: 1.0
+        Phase:
+          value:
+            enum-field-type: ignored
+      booleancontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        SPCSO:
+          ctlVal:
+            bool-field-type: ignored
+      integercontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        ISCSO:
+          ctlVal:
+            int32-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      stringcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        StrOut:
+          ctlVal:
+            string-field-type: ignored
+- name: ResourceDiscreteControlProfile
+  poll_period_ms: 5000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    conductingEquipment:
+      namedObject:
+        description:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      mRID:
+        string-field-type: primary_uuid
+        value: '?'
+    resourceDiscreteControl:
+      identifiedObject:
+        description:
+          value:
+            string-field-type: ignored
+        mRID:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      analogcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        AnOut:
+          ctlVal:
+            command-id: first
+            double-field-type: mapped
+            index: 2703
             output-type: write_single_register_int16
             scale: 0.01
         Phase:
@@ -3847,7 +3845,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
@@ -3865,7 +3863,7 @@ profiles:
             value:
               string-field-type: ignored
         messageTimeStamp:
-          timestamp-field-type: ignored
+          timestamp-field-type: message
     conductingEquipment:
       namedObject:
         description:
@@ -3911,7 +3909,7 @@ profiles:
           ctlVal:
             command-id: first
             double-field-type: mapped
-            index: 2703
+            index: 2704
             output-type: write_single_register_int16
             scale: 0.1
         Phase:
@@ -3972,7 +3970,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
@@ -3990,7 +3988,7 @@ profiles:
             value:
               string-field-type: ignored
         messageTimeStamp:
-          timestamp-field-type: ignored
+          timestamp-field-type: message
     conductingEquipment:
       namedObject:
         description:
@@ -4036,7 +4034,7 @@ profiles:
           ctlVal:
             command-id: first
             double-field-type: mapped
-            index: 2704
+            index: 2705
             output-type: write_single_register_int16
             scale: 1.0
         Phase:
@@ -4097,7 +4095,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
@@ -4115,7 +4113,7 @@ profiles:
             value:
               string-field-type: ignored
         messageTimeStamp:
-          timestamp-field-type: ignored
+          timestamp-field-type: message
     conductingEquipment:
       namedObject:
         description:
@@ -4161,7 +4159,7 @@ profiles:
           ctlVal:
             command-id: first
             double-field-type: mapped
-            index: 2705
+            index: 2706
             output-type: write_single_register_int16
             scale: 0.01
         Phase:
@@ -4222,7 +4220,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
@@ -4240,132 +4238,7 @@ profiles:
             value:
               string-field-type: ignored
         messageTimeStamp:
-          timestamp-field-type: ignored
-    conductingEquipment:
-      namedObject:
-        description:
-          value:
-            string-field-type: ignored
-        name:
-          value:
-            string-field-type: ignored
-      mRID:
-        string-field-type: primary_uuid
-        value: '?'
-    resourceDiscreteControl:
-      identifiedObject:
-        description:
-          value:
-            string-field-type: ignored
-        mRID:
-          value:
-            string-field-type: ignored
-        name:
-          value:
-            string-field-type: ignored
-      check:
-        interlockCheck:
-          value:
-            bool-field-type: ignored
-        synchroCheck:
-          value:
-            bool-field-type: ignored
-      analogcontrolggio:
-      - logicalNode:
-          identifiedObject:
-            description:
-              value:
-                string-field-type: ignored
-            mRID:
-              value:
-                string-field-type: ignored
-            name:
-              value:
-                string-field-type: ignored
-        AnOut:
-          ctlVal:
-            command-id: first
-            double-field-type: mapped
-            index: 2706
-            output-type: write_single_register_int16
-            scale: 1.0
-        Phase:
-          value:
-            enum-field-type: ignored
-      booleancontrolggio:
-      - logicalNode:
-          identifiedObject:
-            description:
-              value:
-                string-field-type: ignored
-            mRID:
-              value:
-                string-field-type: ignored
-            name:
-              value:
-                string-field-type: ignored
-        Phase:
-          value:
-            enum-field-type: ignored
-        SPCSO:
-          ctlVal:
-            bool-field-type: ignored
-      integercontrolggio:
-      - logicalNode:
-          identifiedObject:
-            description:
-              value:
-                string-field-type: ignored
-            mRID:
-              value:
-                string-field-type: ignored
-            name:
-              value:
-                string-field-type: ignored
-        ISCSO:
-          ctlVal:
-            int32-field-type: ignored
-        Phase:
-          value:
-            enum-field-type: ignored
-      stringcontrolggio:
-      - logicalNode:
-          identifiedObject:
-            description:
-              value:
-                string-field-type: ignored
-            mRID:
-              value:
-                string-field-type: ignored
-            name:
-              value:
-                string-field-type: ignored
-        Phase:
-          value:
-            enum-field-type: ignored
-        StrOut:
-          ctlVal:
-            string-field-type: ignored
-- name: ResourceDiscreteControlProfile
-  poll_period_ms: 1000
-  command-order:
-  - first
-  tolerance-ms: 5000
-  mapping:
-    controlMessageInfo:
-      messageInfo:
-        identifiedObject:
-          description:
-            value:
-              string-field-type: ignored
-          mRID:
-            value:
-              string-field-type: generated_uuid
-          name:
-            value:
-              string-field-type: ignored
-        messageTimeStamp:
-          timestamp-field-type: ignored
+          timestamp-field-type: message
     conductingEquipment:
       namedObject:
         description:
@@ -4472,7 +4345,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
@@ -4490,7 +4363,7 @@ profiles:
             value:
               string-field-type: ignored
         messageTimeStamp:
-          timestamp-field-type: ignored
+          timestamp-field-type: message
     conductingEquipment:
       namedObject:
         description:
@@ -4536,7 +4409,132 @@ profiles:
           ctlVal:
             command-id: first
             double-field-type: mapped
-            index: 2709
+            index: 2708
+            output-type: write_single_register_int16
+            scale: 1.0
+        Phase:
+          value:
+            enum-field-type: ignored
+      booleancontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        SPCSO:
+          ctlVal:
+            bool-field-type: ignored
+      integercontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        ISCSO:
+          ctlVal:
+            int32-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      stringcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        StrOut:
+          ctlVal:
+            string-field-type: ignored
+- name: ResourceDiscreteControlProfile
+  poll_period_ms: 5000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    conductingEquipment:
+      namedObject:
+        description:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      mRID:
+        string-field-type: primary_uuid
+        value: '?'
+    resourceDiscreteControl:
+      identifiedObject:
+        description:
+          value:
+            string-field-type: ignored
+        mRID:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      analogcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        AnOut:
+          ctlVal:
+            command-id: first
+            double-field-type: mapped
+            index: 2710
             output-type: write_single_register_uint16
             scale: 10.0
         Phase:
@@ -4597,7 +4595,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
@@ -4615,132 +4613,7 @@ profiles:
             value:
               string-field-type: ignored
         messageTimeStamp:
-          timestamp-field-type: ignored
-    conductingEquipment:
-      namedObject:
-        description:
-          value:
-            string-field-type: ignored
-        name:
-          value:
-            string-field-type: ignored
-      mRID:
-        string-field-type: primary_uuid
-        value: '?'
-    resourceDiscreteControl:
-      identifiedObject:
-        description:
-          value:
-            string-field-type: ignored
-        mRID:
-          value:
-            string-field-type: ignored
-        name:
-          value:
-            string-field-type: ignored
-      check:
-        interlockCheck:
-          value:
-            bool-field-type: ignored
-        synchroCheck:
-          value:
-            bool-field-type: ignored
-      analogcontrolggio:
-      - logicalNode:
-          identifiedObject:
-            description:
-              value:
-                string-field-type: ignored
-            mRID:
-              value:
-                string-field-type: ignored
-            name:
-              value:
-                string-field-type: ignored
-        AnOut:
-          ctlVal:
-            command-id: first
-            double-field-type: mapped
-            index: 2710
-            output-type: write_single_register_uint16
-            scale: 1.0
-        Phase:
-          value:
-            enum-field-type: ignored
-      booleancontrolggio:
-      - logicalNode:
-          identifiedObject:
-            description:
-              value:
-                string-field-type: ignored
-            mRID:
-              value:
-                string-field-type: ignored
-            name:
-              value:
-                string-field-type: ignored
-        Phase:
-          value:
-            enum-field-type: ignored
-        SPCSO:
-          ctlVal:
-            bool-field-type: ignored
-      integercontrolggio:
-      - logicalNode:
-          identifiedObject:
-            description:
-              value:
-                string-field-type: ignored
-            mRID:
-              value:
-                string-field-type: ignored
-            name:
-              value:
-                string-field-type: ignored
-        ISCSO:
-          ctlVal:
-            int32-field-type: ignored
-        Phase:
-          value:
-            enum-field-type: ignored
-      stringcontrolggio:
-      - logicalNode:
-          identifiedObject:
-            description:
-              value:
-                string-field-type: ignored
-            mRID:
-              value:
-                string-field-type: ignored
-            name:
-              value:
-                string-field-type: ignored
-        Phase:
-          value:
-            enum-field-type: ignored
-        StrOut:
-          ctlVal:
-            string-field-type: ignored
-- name: ResourceDiscreteControlProfile
-  poll_period_ms: 1000
-  command-order:
-  - first
-  tolerance-ms: 5000
-  mapping:
-    controlMessageInfo:
-      messageInfo:
-        identifiedObject:
-          description:
-            value:
-              string-field-type: ignored
-          mRID:
-            value:
-              string-field-type: generated_uuid
-          name:
-            value:
-              string-field-type: ignored
-        messageTimeStamp:
-          timestamp-field-type: ignored
+          timestamp-field-type: message
     conductingEquipment:
       namedObject:
         description:
@@ -4847,7 +4720,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
@@ -4865,7 +4738,7 @@ profiles:
             value:
               string-field-type: ignored
         messageTimeStamp:
-          timestamp-field-type: ignored
+          timestamp-field-type: message
     conductingEquipment:
       namedObject:
         description:
@@ -4911,7 +4784,7 @@ profiles:
           ctlVal:
             command-id: first
             double-field-type: mapped
-            index: 2899
+            index: 2712
             output-type: write_single_register_uint16
             scale: 1.0
         Phase:
@@ -4972,7 +4845,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
@@ -4990,7 +4863,7 @@ profiles:
             value:
               string-field-type: ignored
         messageTimeStamp:
-          timestamp-field-type: ignored
+          timestamp-field-type: message
     conductingEquipment:
       namedObject:
         description:
@@ -5037,6 +4910,131 @@ profiles:
             command-id: first
             double-field-type: mapped
             index: 2900
+            output-type: write_single_register_uint16
+            scale: 1.0
+        Phase:
+          value:
+            enum-field-type: ignored
+      booleancontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        SPCSO:
+          ctlVal:
+            bool-field-type: ignored
+      integercontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        ISCSO:
+          ctlVal:
+            int32-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      stringcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        StrOut:
+          ctlVal:
+            string-field-type: ignored
+- name: ResourceDiscreteControlProfile
+  poll_period_ms: 5000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    conductingEquipment:
+      namedObject:
+        description:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      mRID:
+        string-field-type: primary_uuid
+        value: '?'
+    resourceDiscreteControl:
+      identifiedObject:
+        description:
+          value:
+            string-field-type: ignored
+        mRID:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      analogcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        AnOut:
+          ctlVal:
+            command-id: first
+            double-field-type: mapped
+            index: 2901
             output-type: write_single_register_uint16
             scale: 10.0
         Phase:
@@ -5097,7 +5095,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
@@ -5115,7 +5113,7 @@ profiles:
             value:
               string-field-type: ignored
         messageTimeStamp:
-          timestamp-field-type: ignored
+          timestamp-field-type: message
     conductingEquipment:
       namedObject:
         description:
@@ -5161,7 +5159,7 @@ profiles:
           ctlVal:
             command-id: first
             double-field-type: mapped
-            index: 2901
+            index: 2902
             output-type: write_single_register_uint16
             scale: 1.0
         Phase:
@@ -5222,7 +5220,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
@@ -5240,132 +5238,7 @@ profiles:
             value:
               string-field-type: ignored
         messageTimeStamp:
-          timestamp-field-type: ignored
-    conductingEquipment:
-      namedObject:
-        description:
-          value:
-            string-field-type: ignored
-        name:
-          value:
-            string-field-type: ignored
-      mRID:
-        string-field-type: primary_uuid
-        value: '?'
-    resourceDiscreteControl:
-      identifiedObject:
-        description:
-          value:
-            string-field-type: ignored
-        mRID:
-          value:
-            string-field-type: ignored
-        name:
-          value:
-            string-field-type: ignored
-      check:
-        interlockCheck:
-          value:
-            bool-field-type: ignored
-        synchroCheck:
-          value:
-            bool-field-type: ignored
-      analogcontrolggio:
-      - logicalNode:
-          identifiedObject:
-            description:
-              value:
-                string-field-type: ignored
-            mRID:
-              value:
-                string-field-type: ignored
-            name:
-              value:
-                string-field-type: ignored
-        AnOut:
-          ctlVal:
-            command-id: first
-            double-field-type: mapped
-            index: 4700
-            output-type: write_single_register_uint16
-            scale: 1.0
-        Phase:
-          value:
-            enum-field-type: ignored
-      booleancontrolggio:
-      - logicalNode:
-          identifiedObject:
-            description:
-              value:
-                string-field-type: ignored
-            mRID:
-              value:
-                string-field-type: ignored
-            name:
-              value:
-                string-field-type: ignored
-        Phase:
-          value:
-            enum-field-type: ignored
-        SPCSO:
-          ctlVal:
-            bool-field-type: ignored
-      integercontrolggio:
-      - logicalNode:
-          identifiedObject:
-            description:
-              value:
-                string-field-type: ignored
-            mRID:
-              value:
-                string-field-type: ignored
-            name:
-              value:
-                string-field-type: ignored
-        ISCSO:
-          ctlVal:
-            int32-field-type: ignored
-        Phase:
-          value:
-            enum-field-type: ignored
-      stringcontrolggio:
-      - logicalNode:
-          identifiedObject:
-            description:
-              value:
-                string-field-type: ignored
-            mRID:
-              value:
-                string-field-type: ignored
-            name:
-              value:
-                string-field-type: ignored
-        Phase:
-          value:
-            enum-field-type: ignored
-        StrOut:
-          ctlVal:
-            string-field-type: ignored
-- name: ResourceDiscreteControlProfile
-  poll_period_ms: 1000
-  command-order:
-  - first
-  tolerance-ms: 5000
-  mapping:
-    controlMessageInfo:
-      messageInfo:
-        identifiedObject:
-          description:
-            value:
-              string-field-type: ignored
-          mRID:
-            value:
-              string-field-type: generated_uuid
-          name:
-            value:
-              string-field-type: ignored
-        messageTimeStamp:
-          timestamp-field-type: ignored
+          timestamp-field-type: message
     conductingEquipment:
       namedObject:
         description:
@@ -5472,7 +5345,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
@@ -5490,7 +5363,7 @@ profiles:
             value:
               string-field-type: ignored
         messageTimeStamp:
-          timestamp-field-type: ignored
+          timestamp-field-type: message
     conductingEquipment:
       namedObject:
         description:
@@ -5597,7 +5470,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
@@ -5615,7 +5488,7 @@ profiles:
             value:
               string-field-type: ignored
         messageTimeStamp:
-          timestamp-field-type: ignored
+          timestamp-field-type: message
     conductingEquipment:
       namedObject:
         description:
@@ -5721,11 +5594,136 @@ profiles:
         StrOut:
           ctlVal:
             string-field-type: ignored
+- name: ResourceDiscreteControlProfile
+  poll_period_ms: 5000
+  command-order:
+  - first
+  tolerance-ms: 5000
+  mapping:
+    controlMessageInfo:
+      messageInfo:
+        identifiedObject:
+          description:
+            value:
+              string-field-type: ignored
+          mRID:
+            value:
+              string-field-type: generated_uuid
+          name:
+            value:
+              string-field-type: ignored
+        messageTimeStamp:
+          timestamp-field-type: message
+    conductingEquipment:
+      namedObject:
+        description:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      mRID:
+        string-field-type: primary_uuid
+        value: '?'
+    resourceDiscreteControl:
+      identifiedObject:
+        description:
+          value:
+            string-field-type: ignored
+        mRID:
+          value:
+            string-field-type: ignored
+        name:
+          value:
+            string-field-type: ignored
+      check:
+        interlockCheck:
+          value:
+            bool-field-type: ignored
+        synchroCheck:
+          value:
+            bool-field-type: ignored
+      analogcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        AnOut:
+          ctlVal:
+            command-id: first
+            double-field-type: mapped
+            index: 4704
+            output-type: write_single_register_uint16
+            scale: 1.0
+        Phase:
+          value:
+            enum-field-type: ignored
+      booleancontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        SPCSO:
+          ctlVal:
+            bool-field-type: ignored
+      integercontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        ISCSO:
+          ctlVal:
+            int32-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      stringcontrolggio:
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+        StrOut:
+          ctlVal:
+            string-field-type: ignored
 
 ################# Lectura del 2700
 
 - name: MeterReadingProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   mapping:
     readingMessageInfo:
       messageInfo:
@@ -5795,63 +5793,63 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         phsAB:
           logicalNode:
             identifiedObject:
@@ -5870,63 +5868,63 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         phsB:
           logicalNode:
             identifiedObject:
@@ -5945,63 +5943,63 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         phsBC:
           logicalNode:
             identifiedObject:
@@ -6020,63 +6018,63 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         phsC:
           logicalNode:
             identifiedObject:
@@ -6095,63 +6093,63 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         phsCA:
           logicalNode:
             identifiedObject:
@@ -6170,63 +6168,63 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           DmdWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           SupWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVAh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotVArh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           TotWh:
             actVal:
               int64-field-type: ignored
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
       readingMMTR:
         logicalNode:
           identifiedObject:
@@ -6245,63 +6243,63 @@ profiles:
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
         DmdVArh:
           actVal:
             int64-field-type: ignored
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
         DmdWh:
           actVal:
             int64-field-type: ignored
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
         SupVAh:
           actVal:
             int64-field-type: ignored
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
         SupVArh:
           actVal:
             int64-field-type: ignored
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
         SupWh:
           actVal:
             int64-field-type: ignored
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
         TotVAh:
           actVal:
             int64-field-type: ignored
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
         TotVArh:
           actVal:
             int64-field-type: ignored
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
         TotWh:
           actVal:
             int64-field-type: ignored
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
       readingMMXU:
         logicalNode:
           identifiedObject:
@@ -6325,7 +6323,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           neut:
             cVal:
               ang:
@@ -6336,7 +6334,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsA:
             cVal:
               ang:
@@ -6347,7 +6345,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsB:
             cVal:
               ang:
@@ -6358,7 +6356,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsC:
             cVal:
               ang:
@@ -6369,7 +6367,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         ClcMth:
           setVal:
             enum-field-type: ignored
@@ -6379,7 +6377,7 @@ profiles:
           q:
             quality-field-type: ignored
           t:
-            timestamp-field-type: ignored
+            timestamp-field-type: message
           units:
             multiplier:
               value:
@@ -6397,7 +6395,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           neut:
             cVal:
               ang:
@@ -6408,7 +6406,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsA:
             cVal:
               ang:
@@ -6419,7 +6417,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsB:
             cVal:
               ang:
@@ -6430,7 +6428,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsC:
             cVal:
               ang:
@@ -6441,7 +6439,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         PFSign:
           setVal:
             enum-field-type: ignored
@@ -6456,7 +6454,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           neut:
             cVal:
               ang:
@@ -6467,7 +6465,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsA:
             cVal:
               ang:
@@ -6478,7 +6476,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsB:
             cVal:
               ang:
@@ -6489,7 +6487,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsC:
             cVal:
               ang:
@@ -6500,7 +6498,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         PPV:
           phsAB:
             cVal:
@@ -6512,7 +6510,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsBC:
             cVal:
               ang:
@@ -6523,7 +6521,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsCA:
             cVal:
               ang:
@@ -6534,7 +6532,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         VA:
           net:
             cVal:
@@ -6546,7 +6544,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           neut:
             cVal:
               ang:
@@ -6557,7 +6555,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsA:
             cVal:
               ang:
@@ -6568,7 +6566,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsB:
             cVal:
               ang:
@@ -6579,7 +6577,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsC:
             cVal:
               ang:
@@ -6587,14 +6585,14 @@ profiles:
                   double-field-type: ignored
               mag:
                 double-field-type: mapped
-                index: 2699
+                index: 2700
                 register-mapping: sint16
                 scale: 1.0
                 source-type: holding_register
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         VAr:
           net:
             cVal:
@@ -6606,7 +6604,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           neut:
             cVal:
               ang:
@@ -6617,7 +6615,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsA:
             cVal:
               ang:
@@ -6628,7 +6626,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsB:
             cVal:
               ang:
@@ -6639,7 +6637,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsC:
             cVal:
               ang:
@@ -6650,7 +6648,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
         W:
           net:
             cVal:
@@ -6662,7 +6660,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           neut:
             cVal:
               ang:
@@ -6673,7 +6671,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsA:
             cVal:
               ang:
@@ -6684,7 +6682,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsB:
             cVal:
               ang:
@@ -6695,7 +6693,7 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message
           phsC:
             cVal:
               ang:
@@ -6706,4 +6704,4 @@ profiles:
             q:
               quality-field-type: ignored
             t:
-              timestamp-field-type: ignored
+              timestamp-field-type: message

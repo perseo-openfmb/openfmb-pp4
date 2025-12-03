@@ -1,5 +1,59 @@
 # Changelog
 
+## 1.12.0
+
+##### Chores
+
+* **deps:**
+  *  update dependency @types/prismjs to v1.26.5 (#741) (fb16ca90)
+  *  bump assistant-sdk version to 0.1.4 (6ecd1896)
+  *  pin dependencies (#627) (74144bf5)
+*  fix shared workflows versions (#736) (72747451)
+*  Remove unused CI workflows (#634) (838fe138)
+* **ci:**  Push PR branches to ops catalog (#735) (abd1e90f)
+
+##### New Features
+
+*  adaptive profiles boost button extension point (#626) (04964dc7)
+* **Recording Rules:**  Show recording rule labels (#636) (e173a5d6)
+
+##### Other Changes
+
+* local (#744) (313db674)
+
+
+## 1.11.0
+
+##### Chores
+
+*  fix version bump (#635) (844dfea2)
+*  Update flamegraph package (#620) (6f31ac78)
+*  Fix plugin.json formatting (#612) (f1f22f27)
+*  Auto deploy to dev/ops (#618) (0b13153e)
+* **annotations:**  Show annotations only on main timeline panels (#624) (c14295b4)
+* **Recording Rules:**  Add disclaimer to metrics from profiles (#611) (4b306a5f)
+
+##### Continuous Integration
+
+*  Use version 2.x.x of plugin workflows (#622) (70ce3fa9)
+
+##### New Features
+
+* **Recording Rules:**  Allow using service_name as group by label (#617) (2825ee75)
+
+##### Bug Fixes
+
+* **Recording Rules:**  Do not pass empty matchers (#616) (602530fe)
+* **GitHub:**  Keep GitHub Integration cookie between tabs (#609) (bb8ee3dd)
+
+
+## 1.10.1
+
+##### Chores
+
+*  Update flamegraph package (#607) (12c37c7e)
+
+
 ## 1.10.0
 
 ##### Chores

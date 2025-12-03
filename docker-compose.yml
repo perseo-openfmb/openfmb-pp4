@@ -1,26 +1,37 @@
+name: openfmb-pp4
+
 services:
   nats:
     image: nats
+    container_name: nats
+    restart: unless-stopped
     ports:
       - "4222:4222"
     expose:
       - 4222
-    restart: unless-stopped 
+    networks:
+      - openfmb
   adapter:
     image: oesinc/openfmb.adapters:a30d1d0
+    container_name: adapter
+    restart: unless-stopped
     depends_on:
-      - nats
+      nats:
+        condition: service_started
     volumes:
       - ./config:/cfg
       - ./modbus-master:/modbus-master
       - ./modbus-outstation:/modbus-outstation
     command: -c /cfg/adapter.yaml
-    restart: unless-stopped 
+    networks:
+      - openfmb
   hmi:
-    image: juangcjudea/udea_perseo_p4:v2.1
-    # image: oesinc/openfmb.hmi:v2.1.0
+    image: oesinc/openfmb.hmi:v2.1.0
+    container_name: hmi
+    restart: unless-stopped
     depends_on:
-      - nats
+      nats:
+        condition: service_started
     volumes:
       - ./hmi:/cfg
     environment:
@@ -30,41 +41,70 @@ services:
       - "32771:32771"
     expose:
       - 32771
-    restart: unless-stopped 
+    networks:
+      - openfmb
   timescale:
     image: timescale/timescaledb:latest-pg12-oss
+    restart: unless-stopped
     container_name: timescaledb
-    depends_on:
-      - adapter
+    ports:
+      - "5432:5432"
     environment:
       POSTGRES_PASSWORD: password
     volumes:
-      - ./timescaledb_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
-    restart: unless-stopped 
+      - ./timescale_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    networks:
+      - openfmb
   grafana:
-    #Siempre usar esta version de grafana
     image: grafana/grafana:11.5.1
-    container_name: grafana
-    environment:
-      - GF_SECURITY_ALLOW_EMBEDDING=true
-      - GF_AUTH_ANONYMOUS_ENABLED=true
-      - GF_AUTH_ANONYMOUS_ORG_NAME=UdeA
-      - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
     restart: unless-stopped
+    container_name: grafana
+    depends_on:
+      timescale:
+        condition: service_healthy
     ports:
       - "3000:3000"
-    depends_on:
-      - timescale
     volumes:
       - ./grafana_data:/var/lib/grafana
-    user: "0"
-  reverse_proxy:
-    image: juangcjudea/udea_perseo_p4_reverse_proxy:lastest
-    depends_on:
-      - hmi
-      - grafana
-    ports:
-      - "8010:8010"
+    user: "1000"
+    networks:
+      - openfmb
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4
     restart: unless-stopped
+    depends_on:
+      timescale:
+        condition: service_healthy
+    ports:
+      - "80:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: perseo@udea.edu.co
+      PGADMIN_DEFAULT_PASSWORD: m1cr0r3d
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - openfmb
+  mi-api-python:
+    build: .
+    container_name: api_python
+    restart: always
+    ports:
+      - "8000:8000"      # Expone el puerto 8000 de la workstation
+    depends_on:
+      - timescale        # Espera a que la DB inicie antes de iniciar la API
+    networks:
+      - openfmb          # Debe estar en la misma red para ver a la DB
+
+networks:
+  openfmb:
+    driver: bridge
+
+volumes:
+  pgadmin_data:

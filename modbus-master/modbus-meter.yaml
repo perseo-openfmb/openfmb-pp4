@@ -1,10 +1,10 @@
-name: medidor
+name: meter
 log-level: Warn
 adapter: 0.0.0.0
 remote-ip: "?"
 port: "?"
 unit-identifier: "?"
-response_timeout_ms: 1000
+response_timeout_ms: 5000
 always-write-multiple-registers: false
 auto_polling:
   max_register_gaps: 0
@@ -17,7 +17,7 @@ file:
   plugin: modbus-master
 profiles:
 - name: MeterReadingProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   mapping:
     readingMessageInfo:
       messageInfo:
@@ -613,12 +613,7 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: mapped
-                source-type: holding_register
-                register-mapping: float32
-                scale: 1
-                lower_index: 3000
-                upper_index: 2999
+                double-field-type: ignored
             q:
               quality-field-type: ignored
             t:
@@ -629,12 +624,7 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: mapped
-                source-type: holding_register
-                register-mapping: float32
-                scale: 1
-                lower_index: 3002
-                upper_index: 3001
+                double-field-type: ignored
             q:
               quality-field-type: ignored
             t:
@@ -645,12 +635,7 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: mapped
-                source-type: holding_register
-                register-mapping: float32
-                scale: 1
-                lower_index: 3004
-                upper_index: 3003
+                double-field-type: ignored
             q:
               quality-field-type: ignored
             t:
@@ -677,12 +662,7 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: mapped
-                source-type: holding_register
-                register-mapping: float32
-                scale: 1
-                lower_index: 3020
-                upper_index: 3019
+                double-field-type: ignored
             q:
               quality-field-type: ignored
             t:
@@ -692,12 +672,7 @@ profiles:
             enum-field-type: ignored
         Hz:
           mag:
-            double-field-type: mapped
-            source-type: holding_register
-            register-mapping: float32
-            scale: 1
-            lower_index: 3022
-            upper_index: 3021
+            double-field-type: ignored
           q:
             quality-field-type: ignored
           t:
@@ -715,12 +690,7 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: mapped
-                source-type: holding_register
-                register-mapping: float32
-                scale: 1
-                lower_index: 3024
-                upper_index: 3023
+                double-field-type: ignored
             q:
               quality-field-type: ignored
             t:
@@ -731,12 +701,7 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: mapped
-                source-type: holding_register
-                register-mapping: float32
-                scale: 1
-                lower_index: 3026
-                upper_index: 3025
+                double-field-type: ignored
             q:
               quality-field-type: ignored
             t:
@@ -747,12 +712,7 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: mapped
-                source-type: holding_register
-                register-mapping: float32
-                scale: 1
-                lower_index: 3028
-                upper_index: 3027
+                double-field-type: ignored
             q:
               quality-field-type: ignored
             t:
@@ -763,12 +723,7 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: mapped
-                source-type: holding_register
-                register-mapping: float32
-                scale: 1
-                lower_index: 3030
-                upper_index: 3029
+                double-field-type: ignored
             q:
               quality-field-type: ignored
             t:
@@ -779,12 +734,7 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: mapped
-                source-type: holding_register
-                register-mapping: float32
-                scale: 1
-                lower_index: 3032
-                upper_index: 3031
+                double-field-type: ignored
             q:
               quality-field-type: ignored
             t:
@@ -815,12 +765,7 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: mapped
-                source-type: holding_register
-                register-mapping: float32
-                scale: 1
-                lower_index: 3054
-                upper_index: 3053
+                double-field-type: ignored
             q:
               quality-field-type: ignored
             t:
@@ -831,12 +776,7 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: mapped
-                source-type: holding_register
-                register-mapping: float32
-                scale: 1
-                lower_index: 3056
-                upper_index: 3055
+                double-field-type: ignored
             q:
               quality-field-type: ignored
             t:
@@ -847,12 +787,7 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: mapped
-                source-type: holding_register
-                register-mapping: float32
-                scale: 1
-                lower_index: 3058
-                upper_index: 3057
+                double-field-type: ignored
             q:
               quality-field-type: ignored
             t:
@@ -912,12 +847,7 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: mapped
-                source-type: holding_register
-                register-mapping: float32
-                scale: 1
-                lower_index: 3084
-                upper_index: 3083
+                double-field-type: ignored
             q:
               quality-field-type: ignored
             t:

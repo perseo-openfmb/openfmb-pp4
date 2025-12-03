@@ -4,7 +4,7 @@ adapter: 0.0.0.0
 remote-ip: "?"
 port: "?"
 unit-identifier: "?"
-response_timeout_ms: 1000
+response_timeout_ms: 5000
 always-write-multiple-registers: false
 auto_polling:
   max_register_gaps: 0
@@ -17,7 +17,7 @@ file:
   plugin: modbus-master
 profiles:
 - name: SwitchStatusProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   mapping:
     statusMessageInfo:
       messageInfo:
@@ -171,7 +171,7 @@ profiles:
             t:
               timestamp-field-type: ignored
 - name: SwitchStatusProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   mapping:
     statusMessageInfo:
       messageInfo:
@@ -325,7 +325,7 @@ profiles:
             t:
               timestamp-field-type: ignored
 - name: SwitchStatusProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   mapping:
     statusMessageInfo:
       messageInfo:
@@ -479,7 +479,7 @@ profiles:
             t:
               timestamp-field-type: ignored
 - name: SwitchStatusProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   mapping:
     statusMessageInfo:
       messageInfo:
@@ -633,7 +633,7 @@ profiles:
             t:
               timestamp-field-type: ignored              
 - name: SwitchStatusProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   mapping:
     statusMessageInfo:
       messageInfo:
@@ -787,7 +787,7 @@ profiles:
             t:
               timestamp-field-type: ignored              
 - name: SwitchStatusProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   mapping:
     statusMessageInfo:
       messageInfo:
@@ -941,7 +941,7 @@ profiles:
             t:
               timestamp-field-type: ignored
 - name: SwitchStatusProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   mapping:
     statusMessageInfo:
       messageInfo:
@@ -1095,7 +1095,7 @@ profiles:
             t:
               timestamp-field-type: ignored
 - name: SwitchStatusProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   mapping:
     statusMessageInfo:
       messageInfo:
@@ -1249,7 +1249,7 @@ profiles:
             t:
               timestamp-field-type: ignored
 - name: SwitchStatusProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   mapping:
     statusMessageInfo:
       messageInfo:
@@ -1403,7 +1403,7 @@ profiles:
             t:
               timestamp-field-type: ignored
 - name: SwitchStatusProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   mapping:
     statusMessageInfo:
       messageInfo:
@@ -1557,7 +1557,7 @@ profiles:
             t:
               timestamp-field-type: ignored
 - name: SwitchStatusProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   mapping:
     statusMessageInfo:
       messageInfo:
@@ -1711,7 +1711,7 @@ profiles:
             t:
               timestamp-field-type: ignored
 - name: SwitchStatusProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   mapping:
     statusMessageInfo:
       messageInfo:
@@ -1866,7 +1866,7 @@ profiles:
               timestamp-field-type: ignored
 
 - name: SwitchDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
@@ -1962,7 +1962,7 @@ profiles:
           ctlVal:
             bool-field-type: ignored
 - name: SwitchDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
@@ -2058,7 +2058,7 @@ profiles:
           ctlVal:
             bool-field-type: ignored
 - name: SwitchDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
@@ -2154,7 +2154,7 @@ profiles:
           ctlVal:
             bool-field-type: ignored
 - name: SwitchDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
@@ -2250,7 +2250,7 @@ profiles:
           ctlVal:
             bool-field-type: ignored
 - name: SwitchDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
@@ -2346,7 +2346,7 @@ profiles:
           ctlVal:
             bool-field-type: ignored
 - name: SwitchDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
@@ -2442,7 +2442,7 @@ profiles:
           ctlVal:
             bool-field-type: ignored
 - name: SwitchDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
@@ -2538,7 +2538,7 @@ profiles:
           ctlVal:
             bool-field-type: ignored
 - name: SwitchDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
@@ -2634,7 +2634,7 @@ profiles:
           ctlVal:
             bool-field-type: ignored
 - name: SwitchDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
@@ -2730,7 +2730,7 @@ profiles:
           ctlVal:
             bool-field-type: ignored
 - name: SwitchDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
@@ -2826,7 +2826,7 @@ profiles:
           ctlVal:
             bool-field-type: ignored
 - name: SwitchDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
@@ -2922,7 +2922,7 @@ profiles:
           ctlVal:
             bool-field-type: ignored
 - name: SwitchDiscreteControlProfile
-  poll_period_ms: 1000
+  poll_period_ms: 5000
   command-order:
   - first
   tolerance-ms: 5000
