@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y libpq-dev gcc
 COPY . /app
 
 # 5. Instalamos las librerías de Python
-RUN pip install --no-cache-dir fastapi uvicorn psycopg2-binary
+RUN pip install --no-cache-dir fastapi uvicorn psycopg2-binary dotenv
 
 # 6. Exponemos el puerto por donde escuchará la API
 EXPOSE 8000

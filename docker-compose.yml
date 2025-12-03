@@ -97,6 +97,8 @@ services:
     restart: always
     ports:
       - "8000:8000"      # Expone el puerto 8000 de la workstation
+    env_file:
+      - .env
     depends_on:
       - timescale        # Espera a que la DB inicie antes de iniciar la API
     networks:
