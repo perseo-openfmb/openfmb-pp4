@@ -1,0 +1,16 @@
+# Ignorar la carpeta de datos de la base de datos (¡CRÍTICO!)
+timescale_data/
+
+# Ignorar archivos de control de versiones
+.git
+.gitignore
+
+# Ignorar archivos temporales de Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env

@@ -12,6 +12,7 @@ from psycopg2.extras import RealDictCursor
 import time
 import dotenv
 import os
+from datetime import datetime
 
 dotenv.load_dotenv()  # Load environment variables from a .env file if needed
 
@@ -110,10 +111,23 @@ def get_last_state(device_uuid: str):
 
 
 @app.get("/devices/{device_uuid}/historical")
-def get_historical_data(device_uuid: str, limit: int = 100):
+def get_historical_data(device_uuid: str, limit: int = 100,
+                        start: datetime = None, end: datetime = None):
     """
-    Strategy 2: Returns historical measurements of a device within a specified time range.
-    Useful for analyzing trends over time.
+    Option 1:
+    Finds the latest historical data for a device.
+
+    Option 2:
+    Finds historical data between two dates.
+    Expected date format in URL: YYYY-MM-DDTHH:MM:SS (ISO 8601)
+
+    Option 3:
+    If no date range or date range is specified, returns all historical data for the device.
+
+    Example usage:
+        >>> /devices/{device_uuid}/historical?limit=50
+    >>> /devices/{device_uuid}/historical?start=2023-01-01T00:00:00&end=2023-01-31T23:59:59
+    >>> /devices/{device_uuid}/historical
     """
     conn = get_db_connection()
     if not conn:
@@ -121,7 +135,17 @@ def get_historical_data(device_uuid: str, limit: int = 100):
 
     try:
         with conn.cursor(cursor_factory=RealDictCursor) as cur:
-            if limit:
+            if start and end:
+                query = """
+                    SELECT *
+                    FROM data
+                    WHERE device_uuid = %s
+                    AND "timestamp" >= %s
+                    AND "timestamp" <= %s
+                    ORDER BY "timestamp" DESC
+                """
+                cur.execute(query, (device_uuid, start, end))
+            elif limit:
                 query = """
                     SELECT *
                     FROM data
