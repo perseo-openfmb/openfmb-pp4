@@ -1,174 +1,153 @@
 """
-Author: Kevin Martinez
-Date: 2025-12-03
-Description: FastAPI application to interact with TimescaleDB.
-This application includes endpoints to test the database connection
-and retrieve the latest state of a device.
+Autor: Kevin Martinez
+Refactorización: Jaime / ChatGPT
+Fecha: 2025-12-16
+Descripción:
+API refactorizada para generar documentación. Incluye endpoints para obtener datos históricos
+Incluye:
+- Corrección de la metadata de  OpenAPI
+- Modelos de respuesta utilizando Pydantic
+- Documentación de los endopints
 """
 
-from fastapi import FastAPI, HTTPException
-import psycopg2
-from psycopg2.extras import RealDictCursor
-import time
-import dotenv
 import os
+import dotenv
+from contextlib import asynccontextmanager
+from fastapi import FastAPI, HTTPException, Query, Depends
+from pydantic import BaseModel
+from typing import List, Optional, Dict, Any
 from datetime import datetime
+from uuid import UUID # UUID generico
+import asyncpg
+import json
 
-dotenv.load_dotenv()  # Load environment variables from a .env file if needed
+dotenv.load_dotenv()
 
-app = FastAPI()
+# -----------------------------------------------------------------------------
+# Database configuration
+# -----------------------------------------------------------------------------
 
-# IMPORTANT: Inside Docker, we use the service name defined in docker-compose
-# In your case, the service is called "timescale" (as you showed me before)
-DB_HOST = os.getenv("DB_HOST")
-DB_NAME = os.getenv("DB_NAME")
-DB_USER = os.getenv("DB_USER")
-DB_PASS = os.getenv("DB_PASS")
-DB_PORT = os.getenv("DB_PORT")
-
-def get_db_connection():
-    """
-    Function to establish a connection to the database.
-    Returns the connection object.
-    """
+db_pool = None
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    global db_pool
     try:
-        conn = psycopg2.connect(
-            host=DB_HOST, database=DB_NAME, user=DB_USER, password=DB_PASS, port=DB_PORT
+        print("Iniciando pool...")
+        db_pool = await asyncpg.create_pool(
+            user=os.getenv("DB_USER"),
+            password=os.getenv("DB_PASS"),
+            database=os.getenv("DB_NAME"),
+            host=os.getenv("DB_HOST"),
+            port=os.getenv("DB_PORT"),
+            min_size=1,
+            max_size=20,
         )
-        return conn
-    except Exception as e:
-        print(f"Error connecting to the database: {e}")
-        return None
+        yield
+    finally:
+        if db_pool:
+            await db_pool.close()
 
+app = FastAPI(title="OpenFMB Async API", version="1.2.1", lifespan=lifespan)
 
-# --- API ROUTES (ENDPOINTS) ---
+async def get_db():
+    if not db_pool:
+        raise HTTPException(status_code=503, detail="DB not initialized")
+    async with db_pool.acquire() as connection:
+        yield connection
 
+# -----------------------------------------------------------------------------
+# Pydantic models (contratos de la API)
+# -----------------------------------------------------------------------------
+
+class Measurement(BaseModel):
+    device_uuid: UUID # Acepta tu formato '00000001...'
+    timestamp: datetime
+    data: Dict[str, Any]
+
+class HistoricalResponse(BaseModel):
+    device_uuid: UUID
+    count: int
+    measurements: List[Measurement]
+
+# -----------------------------------------------------------------------------
+# API Routes
+# -----------------------------------------------------------------------------
 
 @app.get("/")
-def read_root():
-    """Test route to verify that the API is working."""
-    return {"message": "The TimescaleDB API is working!"}
-
+async def root():
+    return {"message": "OpenFMB Async API is running"}
 
 @app.get("/test-db")
-def test_db():
-    """
-    Route to test the connection to TimescaleDB.
-    Returns the database version.
-    """
-    conn = get_db_connection()
-    if conn is None:
-        raise HTTPException(status_code=500, detail="Could not connect to the database")
-
+async def test_db(conn: asyncpg.Connection = Depends(get_db)):
     try:
-        # Use 'with' to ensure the cursor is closed properly
-        with conn.cursor(cursor_factory=RealDictCursor) as cur:
-            # Execute a simple query
-            cur.execute("SELECT version();")
-            result = cur.fetchone()
-
-        conn.close()  # Close the connection when finished
-        return {"version_db": result}
-
+        version = await conn.fetchval("SELECT version();")
+        return {"database_version": version}
     except Exception as e:
-        conn.close()
-        raise HTTPException(status_code=500, detail=f"Error in query: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/devices/{device_uuid}/last-state", response_model=Dict[str, Measurement])
+async def get_last_state(
+    device_uuid: UUID, 
+    conn: asyncpg.Connection = Depends(get_db)
+):
+    row = await conn.fetchrow(
+        """
+        SELECT device_uuid, timestamp, to_jsonb(data) as data
+        FROM data
+        WHERE device_uuid = $1
+        ORDER BY timestamp DESC
+        LIMIT 1;
+        """,
+        str(device_uuid)
+    )
 
-@app.get("/devices/{device_uuid}/last-state")
-def get_last_state(device_uuid: str):
+    if not row:
+        raise HTTPException(status_code=404, detail="Device not found")
+
+    # Retornar el resultado como un diccionario
+    return {"latest_measurement": {
+        "device_uuid": row["device_uuid"],
+        "timestamp": row["timestamp"],
+        "data": json.loads(row["data"])
+    }}
+
+@app.get("/devices/{device_uuid}/historical", response_model=HistoricalResponse)
+async def get_historical_data(
+    device_uuid: UUID,
+    limit: int = Query(100, ge=1, le=5000),
+    start: Optional[datetime] = None,
+    end: Optional[datetime] = None,
+    conn: asyncpg.Connection = Depends(get_db)
+):
+    base_query = """
+        SELECT device_uuid, timestamp, to_jsonb(data) as data
+        FROM data
+        WHERE device_uuid = $1
     """
-    Strategy 1: Returns the most recent measurement of a device.
-    Useful to show the current real-time state.
-    """
-    conn = get_db_connection()
-    if not conn:
-        raise HTTPException(status_code=500, detail="Could not connect to the database")
+    args = [str(device_uuid)]
+    
+    if start and end:
+        base_query += " AND timestamp BETWEEN $2 AND $3"
+        args.extend([start, end])
+        base_query += " ORDER BY timestamp DESC LIMIT $4"
+        args.append(limit) 
+    else:
+        base_query += " ORDER BY timestamp DESC LIMIT $2"
+        args.append(limit)
 
-    try:
-        with conn.cursor(cursor_factory=RealDictCursor) as cur:
-            query = """
-                SELECT *
-                FROM data
-                WHERE device_uuid = %s
-                ORDER BY "timestamp" DESC
-                LIMIT 1;
-            """
-            cur.execute(query, (device_uuid,))
-            result = cur.fetchone()
+    rows = await conn.fetch(base_query, *args)
 
-        conn.close()
+    measurements = [
+        {
+            "device_uuid": row["device_uuid"],
+            "timestamp": row["timestamp"],
+            "data": json.loads(row["data"])
+        }
+        for row in rows
+    ]
 
-        if not result:
-            raise HTTPException(
-                status_code=404, detail="Device not found or no measurements available"
-            )
-
-        return {"latest_measurement": result}
-    except Exception as e:
-        conn.close()
-        raise HTTPException(status_code=500, detail=f"Error in query: {str(e)}")
-
-
-@app.get("/devices/{device_uuid}/historical")
-def get_historical_data(device_uuid: str, limit: int = 100,
-                        start: datetime = None, end: datetime = None):
-    """
-    Option 1:
-    Finds the latest historical data for a device.
-
-    Option 2:
-    Finds historical data between two dates.
-    Expected date format in URL: YYYY-MM-DDTHH:MM:SS (ISO 8601)
-
-    Option 3:
-    If no date range or date range is specified, returns all historical data for the device.
-
-    Example usage:
-        >>> /devices/{device_uuid}/historical?limit=50
-    >>> /devices/{device_uuid}/historical?start=2023-01-01T00:00:00&end=2023-01-31T23:59:59
-    >>> /devices/{device_uuid}/historical
-    """
-    conn = get_db_connection()
-    if not conn:
-        raise HTTPException(status_code=500, detail="Could not connect to the database")
-
-    try:
-        with conn.cursor(cursor_factory=RealDictCursor) as cur:
-            if start and end:
-                query = """
-                    SELECT *
-                    FROM data
-                    WHERE device_uuid = %s
-                    AND "timestamp" >= %s
-                    AND "timestamp" <= %s
-                    ORDER BY "timestamp" DESC
-                """
-                cur.execute(query, (device_uuid, start, end))
-            elif limit:
-                query = """
-                    SELECT *
-                    FROM data
-                    WHERE device_uuid = %s
-                    ORDER BY "timestamp" DESC
-                    LIMIT %s
-                """
-                cur.execute(query, (device_uuid, limit))
-            else:
-                query = """
-                    SELECT *
-                    FROM data
-                    WHERE device_uuid = %s
-                    ORDER BY "timestamp" DESC
-                    LIMIT ALL
-                """
-                cur.execute(query, (device_uuid,))
-
-            results = cur.fetchall()
-
-        conn.close()
-        return {"historical": results}
-
-    except Exception as e:
-        conn.close()
-        raise HTTPException(status_code=500, detail=f"Error in query: {str(e)}")
+    return {
+        "device_uuid": device_uuid,
+        "count": len(measurements),
+        "measurements": measurements,
+    }

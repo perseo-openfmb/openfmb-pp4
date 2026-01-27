@@ -1,5 +1,91 @@
 # Changelog
 
+## 1.15.1
+
+
+## 1.15.0
+
+##### Chores
+
+* **deps:**
+  *  bump js-yaml from 3.14.1 to 3.14.2 (#783) (27db8c2c)
+  *  bump form-data from 4.0.0 to 4.0.5 (#781) (d7a8550e)
+  *  bump brace-expansion from 1.1.11 to 1.1.12 (#782) (3bb1e0fb)
+  *  Update react-router-dom to 6.30.3 (#798) (648f0af6)
+  *  bump @modelcontextprotocol/sdk from 1.24.3 to 1.25.2 (#789) (76fe5444)
+  *  bump undici from 7.16.0 to 7.18.2 (#794) (b24186dc)
+  *  bump body-parser from 2.2.0 to 2.2.2 (#788) (5d90c82f)
+  *  bump qs from 6.14.0 to 6.14.1 (#786) (8a9e6002)
+*  Remove investigations (#787) (188f8623)
+
+##### Continuous Integration
+
+*  update workflows (#792) (98baf273)
+
+##### New Features
+
+*  plot exemplars candidates in timeseries panel at the Flame graph view (#748) (9c87a512)
+
+##### Bug Fixes
+
+* **assistant:**  pass origin to openAssistant (#797) (d3a13ab7)
+*  Handle missing location lines from profiles (#785) (9c7616c2)
+
+
+## 1.14.2
+
+##### Chores
+
+*  update llm plugin (#780) (9e097bd5)
+
+
+## 1.14.1
+
+##### Bug Fixes
+
+*  call /render for dot profiles only once Assistant is being opened (#778) (cbb2d764)
+* **DiffFlameGraph:**  prevent API queries with zero time ranges (#777) (665d9f9b)
+
+
+## 1.14.0
+
+##### Chores
+
+*  fix styling (#771) (14655e41)
+
+##### New Features
+
+* **DiffFlameGraph:**  Analyze Diff Flame Graph with Grafana Assistant (#752) (e18b2639)
+
+
+## 1.13.0
+
+##### Chores
+
+* **deps:**
+  *  update dependency @connectrpc/protoc-gen-connect-query to v2.2.0 (#764) (6241abc8)
+  *  update dependency @babel/core to v7.28.5 (#762) (eead60db)
+  *  update dependency @stylistic/eslint-plugin-ts to v2.13.0 (#765) (0c8acd3d)
+  *  update dependency @bufbuild/protoc-gen-es to v2.10.1 (#763) (a3326219)
+  *  update dependency dotenv to v16.6.1 (#766) (11df5159)
+  *  update dependency glob to v10.5.0 [security] (#751) (5cc428be)
+*  Upgrade Playwright to 1.57.0 (#760) (c094d592)
+*  Update Grafana version used locally to match CI (#753) (8acf4daf)
+*  remove unused deps (#742) (4066bdbc)
+*  Add renovate rules (#746) (a06fa858)
+*  update scenes (#733) (7d338e75)
+* **config:**  migrate config renovate.json (#749) (608da61c)
+
+##### New Features
+
+*  Support source code integration for languages without file paths (#747) (a81f7109)
+*  Embed Profiles Drilldown (#621) (b510bd19)
+
+##### Bug Fixes
+
+*  Do not force refresh ServiceName and ProfileMetric variables on time range change (#759) (4450a9ec)
+
+
 ## 1.12.0
 
 ##### Chores

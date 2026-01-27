@@ -1,4 +1,4 @@
-name: meter
+name: meter-siemens
 log-level: Warn
 adapter: 0.0.0.0
 remote-ip: "?"

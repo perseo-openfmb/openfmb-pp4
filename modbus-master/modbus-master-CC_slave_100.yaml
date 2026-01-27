@@ -1,10 +1,10 @@
-name: slave_100_CC
+name: meter-slave_100_CC
 log-level: Warn
 adapter: 0.0.0.0
 remote-ip: 192.168.0.102
 port: 502
 unit-identifier: 100
-response_timeout_ms: 5000
+response_timeout_ms: 10000
 always-write-multiple-registers: false
 auto_polling:
   max_register_gaps: 0
