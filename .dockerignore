@@ -1,16 +1,8 @@
-# Ignorar la carpeta de datos de la base de datos (¡CRÍTICO!)
-timescale_data/
+# La imagen de la API solo necesita el código de app/:
+# se excluye todo el contexto y se incluye únicamente lo necesario
+*
+!app/
 
-# Ignorar archivos de control de versiones
-.git
-.gitignore
-
-# Ignorar archivos temporales de Python
-__pycache__
-*.pyc
-*.pyo
-*.pyd
-.Python
-env/
-venv/
-.env
+# Cachés de Python (también dentro de app/)
+**/__pycache__/
+**/*.py[cod]

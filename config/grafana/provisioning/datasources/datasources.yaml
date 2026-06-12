@@ -1,0 +1,24 @@
+# Datasource de TimescaleDB. El uid debe mantenerse: los paneles de los
+# dashboards exportados lo referencian.
+apiVersion: 1
+
+datasources:
+  - name: grafana-postgresql-datasource
+    uid: ddyh6sq0moglce
+    type: grafana-postgresql-datasource
+    access: proxy
+    url: timescaledb:5432
+    user: postgres
+    isDefault: true
+    jsonData:
+      database: openfmb
+      sslmode: disable
+      timescaledb: true
+      postgresVersion: 1200
+      maxOpenConns: 100
+      maxIdleConns: 100
+      maxIdleConnsAuto: false
+      connMaxLifetime: 14400
+    secureJsonData:
+      # Tomada del .env del proyecto (variable inyectada al contenedor en docker-compose)
+      password: $__env{DB_PASS}

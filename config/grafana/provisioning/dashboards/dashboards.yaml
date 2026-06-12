@@ -1,0 +1,19 @@
+# Carga automática de los dashboards versionados en config/grafana/dashboards/.
+#
+# Flujo de trabajo para actualizar un dashboard:
+#   1. Editarlo y guardarlo normalmente en la interfaz de Grafana.
+#   2. Exportarlo al JSON versionado (Share > Export, o vía API) sobre el archivo
+#      correspondiente en config/grafana/dashboards/.
+#   3. Hacer commit del JSON.
+apiVersion: 1
+
+providers:
+  - name: dashboards-versionados
+    orgId: 1
+    type: file
+    # Permite seguir editando los dashboards desde la interfaz (los cambios se
+    # guardan en la base de Grafana; el JSON solo se actualiza al re-exportar)
+    allowUiUpdates: true
+    updateIntervalSeconds: 30
+    options:
+      path: /var/lib/grafana/dashboards

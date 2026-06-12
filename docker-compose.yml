@@ -1,19 +1,18 @@
-name: openfmb-pp4
+name: openfmb-pp4-integrated
 
 services:
   nats:
-    image: nats
+    image: nats:2.14
     container_name: nats
     restart: unless-stopped
     ports:
       - "4222:4222"
-    expose:
-      - 4222
     networks:
-      - openfmb
+      - openfmb_devv
+
   adapter:
     image: oesinc/openfmb.adapters:a30d1d0
-    container_name: adapter
+    container_name: adapter1
     restart: unless-stopped
     depends_on:
       nats:
@@ -21,12 +20,26 @@ services:
     volumes:
       - ./config:/cfg
       - ./modbus-master:/modbus-master
-      - ./modbus-outstation:/modbus-outstation
-    command: -c /cfg/adapter.yaml
+    command: -c /cfg/adapter_1.yaml
     networks:
-      - openfmb
+      - openfmb_devv
+
+  adapter2:
+    image: oesinc/openfmb.adapters:a30d1d0
+    container_name: adapter2
+    restart: unless-stopped
+    depends_on:
+      nats:
+        condition: service_started
+    volumes:
+      - ./config:/cfg
+      - ./modbus-master:/modbus-master
+    command: -c /cfg/adapter_2.yaml
+    networks:
+      - openfmb_devv
+
   hmi:
-    image: oesinc/openfmb.hmi:v2.1.0
+    image: openfmb-hmi:latest
     container_name: hmi
     restart: unless-stopped
     depends_on:
@@ -39,18 +52,18 @@ services:
       APP_DIR_NAME: /cfg
     ports:
       - "32771:32771"
-    expose:
-      - 32771
     networks:
-      - openfmb
+      - openfmb_devv
+
   timescale:
     image: timescale/timescaledb:latest-pg12-oss
-    restart: unless-stopped
     container_name: timescaledb
+    restart: unless-stopped
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_PASSWORD: password
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: ${DB_NAME}
     volumes:
       - ./timescale_data:/var/lib/postgresql/data
     healthcheck:
@@ -60,21 +73,32 @@ services:
       retries: 5
       start_period: 20s
     networks:
-      - openfmb
+      - openfmb_devv
+
   grafana:
     image: grafana/grafana:11.5.1
-    restart: unless-stopped
     container_name: grafana
+    restart: unless-stopped
     depends_on:
       timescale:
         condition: service_healthy
     ports:
       - "3000:3000"
+    environment:
+      - GF_SECURITY_ALLOW_EMBEDDING=true
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_NAME=Main Org.
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      - GF_AUTH_DISABLE_LOGIN_FORM=true
+      - DB_PASS=${DB_PASS}
     volumes:
       - ./grafana_data:/var/lib/grafana
-    user: "1000"
+      - ./config/grafana/dashboards:/var/lib/grafana/dashboards:ro
+      - ./config/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards:ro
+      - ./config/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources:ro
     networks:
-      - openfmb
+      - openfmb_devv
+
   pgadmin:
     image: dpage/pgadmin4
     container_name: pgadmin4
@@ -90,22 +114,24 @@ services:
     volumes:
       - pgadmin_data:/var/lib/pgadmin
     networks:
-      - openfmb
+      - openfmb_devv
+
   mi-api-python:
     build: .
     container_name: api_python
-    restart: always
+    restart: unless-stopped
     ports:
-      - "8000:8000"      # Expone el puerto 8000 de la workstation
+      - "8000:8000"
     env_file:
       - .env
     depends_on:
-      - timescale        # Espera a que la DB inicie antes de iniciar la API
+      timescale:
+        condition: service_healthy
     networks:
-      - openfmb          # Debe estar en la misma red para ver a la DB
+      - openfmb_devv
 
 networks:
-  openfmb:
+  openfmb_devv:
     driver: bridge
 
 volumes:

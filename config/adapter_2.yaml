@@ -1,0 +1,137 @@
+file:
+  id: openfmb-adapter-main2
+  edition: 2.0
+  version: 2.1.0.0
+  plugin: ""
+logging:
+  logger-name: application
+  console:
+    enabled: true
+  rotating-file:
+    enabled: false
+    path: adapter.log
+    max-size: 10485760 # 10 MB
+    max-files: 10 # keep last 10 files
+plugins:
+  capture:
+    enabled: false
+    file: capture.txt
+  replay:
+    enabled: false
+    file: capture.txt
+  dnp3-master:
+    enabled: false
+    thread-pool-size: 1
+    masters: []
+  dnp3-outstation:
+    enabled: false
+    thread-pool-size: 1
+    outstations: []
+  modbus-master:
+    enabled: true
+    thread-pool-size: 6
+    sessions:
+      ########################################################################
+      #################### MEDIDORES SCHNEIDER (BLANCOS) #####################
+      ########################################################################
+
+      # Medidor Microinversores
+      - path: modbus-master/modbus-meter.yaml
+        local-path: modbus-master/modbus-meter.yaml
+        session-name: SessionMeter2
+        overrides:
+          - key: profiles[0].mapping.meter.conductingEquipment.mRID.value
+            value: 00000001-0003-0020-0000-000000000001
+          - key: remote-ip
+            value: 192.168.0.10
+          - key: unit-identifier
+            value: 22
+          - key: port
+            value: 26
+
+      # Medidor Carga Programable
+      - path: modbus-master/modbus-meter.yaml
+        local-path: modbus-master/modbus-meter.yaml
+        session-name: SessionMeter4
+        overrides:
+          - key: profiles[0].mapping.meter.conductingEquipment.mRID.value
+            value: 00000001-0006-0020-0000-000000000001
+          - key: remote-ip
+            value: 192.168.0.10
+          - key: unit-identifier
+            value: 23
+          - key: port
+            value: 26
+
+      ########################################################################
+      ############################## PYRA ####################################
+      ########################################################################
+
+      - path: modbus-master/modbus-pyra.yaml
+        local-path: modbus-master/modbus-pyra.yaml
+        session-name: SessionPyra1
+        overrides:
+          - key: profiles[0].mapping.meter.conductingEquipment.mRID.value
+            value: 00000003-0001-0005-0000-000000000001
+          - key: remote-ip
+            value: 192.168.0.10
+          - key: unit-identifier
+            value: 12
+          - key: port
+            value: 26
+
+    #################################################################################################
+    ############## FIN DE LAS CONFIGURACIONES DE LOS DISPOSITIVOS MODBUS ############################
+    #################################################################################################
+
+  modbus-outstation:
+    enabled: false
+    thread-pool-size: 1
+    sessions: []
+  mqtt:
+    enabled: false
+    max-queued-messages: 100
+    server-address: 127.0.0.1
+    client-id: client1
+    connect-retry-delay-ms: 5000
+    security:
+      security-type: tls_mutual_auth
+      ca-trusted-cert-file: cert.pem
+      client-private-key-file: client_key.pem
+      client-cert-chain-file: client_cert.pem
+      username: ""
+      password: ""
+    publish:
+      - profile: MeterReadingProfile
+        topic-suffix: "*"
+    subscribe: []
+  nats:
+    enabled: true
+    max-queued-messages: 1000
+    connect-url: nats://nats:4222
+    connect-retry-seconds: 2
+    security:
+      security-type: none
+    publish:
+      - profile: MeterReadingProfile
+        subject: "*"
+      - profile: ResourceReadingProfile
+        subject: "*"
+      - profile: SwitchStatusProfile
+        subject: "*"
+    subscribe:
+      - profile: SwitchDiscreteControlProfile
+        subject: "*"
+      - profile: ResourceDiscreteControlProfile
+        subject: "*"
+  timescaledb:
+    enabled: true
+    database-url: postgresql://postgres:password@timescaledb:5432/openfmb
+    store-measurement: true
+    table-name: data
+    store-raw-message: true
+    raw-table-name: raw_data
+    raw-data-format: 0
+    max-queued-messages: 1000 # Buffer de mensajes antes de descartar
+    connect-retry-seconds: 2
+    data-store-interval-seconds: 1 # Agrupar escrituras cada 5s para reducir I/O overhead

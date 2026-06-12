@@ -22,8 +22,10 @@ def chack_connection(port: str, idx_list: list) -> dict:
     
     print(f"Connected to Modbus client on port {port}")
 
+    registers = [40096, 21]
+
     for slaveNum in idx_list:
-        response = client.read_holding_registers(40096, 2, slave=slaveNum)
+        response = client.read_holding_registers(21, 2, slave=slaveNum)
 
         if not response.isError():
             # Ideal response handling
@@ -45,15 +47,18 @@ def chack_connection(port: str, idx_list: list) -> dict:
     client.close()
     return result
 # %%
-if clientType == "tcp":
-    ids_to_check = range(10, 31)  # IDs from 1 to 10
-    port = 26
+while True:
+    if clientType == "tcp":
+        ids_to_check = [11]  # IDs from 1 to 10
+        port = 26
 
-    try:
-        status = chack_connection(port, ids_to_check)
-        print("Final Status:", status)
-    except ConnectionError as e:
-        print(e)
+        try:
+            status = chack_connection(port, ids_to_check)
+            print("Final Status:", status)
+        except ConnectionError as e:
+            print(e)
 
-    print("-----" * 10)
+        print("-----" * 10)
+
+        time.sleep(1)
 # %%

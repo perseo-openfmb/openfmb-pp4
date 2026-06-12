@@ -1,5 +1,7 @@
 from pymodbus.client import ModbusTcpClient
 from pymodbus.client import ModbusSerialClient
+from pymodbus.exceptions import ModbusIOException
+from pymodbus.pdu import ExceptionResponse
 import struct
 import time
 
@@ -7,27 +9,43 @@ clientType = "tcp"
 client = None
 
 if clientType == "tcp":
-    client = ModbusTcpClient(host="192.168.0.8", port=26)
+    client = ModbusTcpClient(host="192.168.0.10", port=26)
 elif clientType == "serial":
     client = ModbusSerialClient(
-        "COM3", baudrate=19200, bytesize=8, parity="N", stopbits=1, debug=True
+        "COM3", baudrate=19200, bytesize=8, parity="N", stopbits=1, debug=False
     )
 else:
     print("Client type not supported")
     exit()
-count = 0
+count_total = 0
+count_erros = 0
 # Modbus slave number
-slaves = [11, 12, 13, 14]
+# slaves = [11, 13, 14]
+# slaves = [22, 23, 24]
+# slaves = [12]
+# slaves = [246]
+slaves = [12]
+# 21,22,23
 while True:
     for slaveNum in slaves:
         # print("Trying Slave ID: ", slaveNum)
+        count_total += 1
         try:
             # Connect to the client
-            client.connect()
-            # print("Connected to Modbus client")
-            # time.sleep(2)
+            if not client.connect():
+                raise ConnectionError(f"Could not connect to Modbus client")
 
-            volRegisters = client.read_holding_registers(40096, 2, slave=slaveNum)
+            volRegisters = client.read_holding_registers(82, 2, slave=slaveNum)
+            # print(volRegisters.registers[0])
+            #esta linea ubica el primer parametro como puntero en el stack, el numero de registros es el numero de posiciiones que lee desde el indice
+            # para leer los registros 40096 y 40097, el puntero se ubica en 40094 y se lee dos registros mas (40095 y 40096) que son R-1
+            # reg 40094
+
+            # R = 40096 -40097 Apparent Power
+            # R= 40092 - 40093 AC power
+            #-----------------------------
+
+
             VoltageListF = struct.unpack(
                 ">f",
                 struct.pack(">HH", volRegisters.registers[0], volRegisters.registers[1]),
@@ -36,13 +54,7 @@ while True:
             # Read registers and convert to float
             # volRegisters = client.read_holding_registers(2999 + 28, 4, slave=slaveNum)
             # VoltageListF = struct.unpack(
-            #     ">f",
-            #     struct.pack(">HH", volRegisters.registers[0], volRegisters.registers[1]),
-            # )[0]
-
-            # currRegisters = client.read_holding_registers(3009 + 0, 4, slave=slaveNum)
-            # CurrentListF = struct.unpack(
-            #     ">f",
+            #h   ">f",
             #     struct.pack(">HH", currRegisters.registers[0], currRegisters.registers[1]),
             # )[0]
 
@@ -70,7 +82,7 @@ while True:
             client.close()
 
             # Print the results
-            print(f"[{count}] Voltage: ", VoltageListF)
+            print(f"[{count_total}] Voltage - Slave [{slaveNum}]: ", VoltageListF)
             # print("Current: ", CurrentListF)
             # print("Power: ", ActivePowerF)
             # print("Reactive Power: ", ReactivePowerF)
@@ -78,9 +90,20 @@ while True:
             # print("Power Factor: ", PFF)
             # print("Frequency: ", FrecF, "\n")
 
+            time.sleep(0.1)
+
+        except ModbusIOException:
+            count_erros += 1
+            print(f"[{count_total}] No response from Slave ID: {slaveNum} (Timeout).")
+        except ExceptionResponse as e:
+            count_erros += 1
+            print(f"[{count_total}] Slave ID: {slaveNum} responded with Modbus Exception ({e}).")
         except Exception as e:
-            print("HUBO UN ERROR: ", e)
-            client.close()
-    
-    time.sleep(0.1)  # Pause between slaves in seconds
-    count += 1
+            count_erros += 1
+            print(f"An error occurred: {e}")
+
+    # count_total += 1
+    time.sleep(1)
+
+    p = count_erros / count_total
+    print(f"Prom. Acc.:, {(1 - p):.2%}")

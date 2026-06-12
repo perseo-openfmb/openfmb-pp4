@@ -616,7 +616,7 @@ profiles:
                 double-field-type: mapped
                 source-type: holding_register
                 register-mapping: float32
-                scale: 1
+                scale: 1.0
                 lower_index: 2
                 upper_index: 1
             q:
@@ -632,7 +632,7 @@ profiles:
                 double-field-type: mapped
                 source-type: holding_register
                 register-mapping: float32
-                scale: 1
+                scale: 1.0
                 lower_index: 4
                 upper_index: 3
             q:
@@ -648,7 +648,7 @@ profiles:
                 double-field-type: mapped
                 source-type: holding_register
                 register-mapping: float32
-                scale: 1
+                scale: 1.0
                 lower_index: 6
                 upper_index: 5
             q:
@@ -664,9 +664,9 @@ profiles:
                 double-field-type: mapped
                 source-type: holding_register
                 register-mapping: float32
-                scale: 1
-                lower_index: 62
-                upper_index: 61
+                scale: 1.0
+                lower_index: 14
+                upper_index: 13
             q:
               quality-field-type: ignored
             t:
@@ -680,7 +680,7 @@ profiles:
                 double-field-type: mapped
                 source-type: holding_register
                 register-mapping: float32
-                scale: 1
+                scale: 1.0
                 lower_index: 16
                 upper_index: 15
             q:
@@ -695,7 +695,7 @@ profiles:
                 double-field-type: mapped
                 source-type: holding_register
                 register-mapping: float32
-                scale: 1
+                scale: 1.0
                 lower_index: 18
                 upper_index: 17
           q:
@@ -718,7 +718,7 @@ profiles:
                 double-field-type: mapped
                 source-type: holding_register
                 register-mapping: float32
-                scale: 1
+                scale: 1.0
                 lower_index: 20
                 upper_index: 19
             q:
@@ -734,7 +734,7 @@ profiles:
                 double-field-type: mapped
                 source-type: holding_register
                 register-mapping: float32
-                scale: 1
+                scale: 1.0
                 lower_index: 22
                 upper_index: 21
             q:
@@ -750,7 +750,7 @@ profiles:
                 double-field-type: mapped
                 source-type: holding_register
                 register-mapping: float32
-                scale: 1
+                scale: 1.0
                 lower_index: 24
                 upper_index: 23
             q:
@@ -766,7 +766,7 @@ profiles:
                 double-field-type: mapped
                 source-type: holding_register
                 register-mapping: float32
-                scale: 1
+                scale: 1.0
                 lower_index: 26
                 upper_index: 25
             q:
@@ -782,7 +782,7 @@ profiles:
                 double-field-type: mapped
                 source-type: holding_register
                 register-mapping: float32
-                scale: 1
+                scale: 1.0
                 lower_index: 28
                 upper_index: 27
             q:
@@ -802,9 +802,9 @@ profiles:
                 double-field-type: mapped
                 source-type: holding_register
                 register-mapping: float32
-                scale: 1
-                lower_index: 60
-                upper_index: 59
+                scale: 1.0
+                lower_index: 30
+                upper_index: 29
             q:
               quality-field-type: ignored
             t:
@@ -818,7 +818,7 @@ profiles:
                 double-field-type: mapped
                 source-type: holding_register
                 register-mapping: float32
-                scale: 1
+                scale: 1.0
                 lower_index: 32
                 upper_index: 31
             q:
@@ -834,7 +834,7 @@ profiles:
                 double-field-type: mapped
                 source-type: holding_register
                 register-mapping: float32
-                scale: 1
+                scale: 1.0
                 lower_index: 34
                 upper_index: 33
             q:
@@ -850,7 +850,7 @@ profiles:
                 double-field-type: mapped
                 source-type: holding_register
                 register-mapping: float32
-                scale: 1
+                scale: 1.0
                 lower_index: 36
                 upper_index: 35
             q:
@@ -866,9 +866,9 @@ profiles:
                 double-field-type: mapped
                 source-type: holding_register
                 register-mapping: float32
-                scale: 1
-                lower_index: 66
-                upper_index: 65
+                scale: 1.0
+                lower_index: 58
+                upper_index: 57
             q:
               quality-field-type: ignored
             t:
@@ -883,9 +883,9 @@ profiles:
                 double-field-type: mapped
                 source-type: holding_register
                 register-mapping: float32
-                scale: 1
-                lower_index: 68
-                upper_index: 67
+                scale: 1.0
+                lower_index: 62
+                upper_index: 61
             q:
               quality-field-type: ignored
             t:
@@ -899,7 +899,7 @@ profiles:
                 double-field-type: mapped
                 source-type: holding_register
                 register-mapping: float32
-                scale: 1
+                scale: 1.0
                 lower_index: 64
                 upper_index: 63
             q:
@@ -915,7 +915,7 @@ profiles:
                 double-field-type: mapped
                 source-type: holding_register
                 register-mapping: float32
-                scale: 1
+                scale: 1.0
                 lower_index: 70
                 upper_index: 69
             q:
@@ -932,7 +932,7 @@ profiles:
                 double-field-type: mapped
                 source-type: holding_register
                 register-mapping: float32
-                scale: 1
+                scale: 1.0
                 lower_index: 56
                 upper_index: 55
             q:
@@ -945,12 +945,7 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: mapped
-                source-type: holding_register
-                register-mapping: float32
-                scale: 1
-                lower_index: 64
-                upper_index: 63
+                double-field-type: ignored
             q:
               quality-field-type: ignored
             t:
@@ -964,7 +959,7 @@ profiles:
                 double-field-type: mapped
                 source-type: holding_register
                 register-mapping: float32
-                scale: 1
+                scale: 1.0
                 lower_index: 66
                 upper_index: 65
             q:
@@ -980,7 +975,7 @@ profiles:
                 double-field-type: mapped
                 source-type: holding_register
                 register-mapping: float32
-                scale: 1
+                scale: 1.0
                 lower_index: 68
                 upper_index: 67
             q:
@@ -993,12 +988,7 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: mapped
-                source-type: holding_register
-                register-mapping: float32
-                scale: 1
-                lower_index: 70
-                upper_index: 69
+                double-field-type: ignored
             q:
               quality-field-type: ignored
             t:

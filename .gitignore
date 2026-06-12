@@ -11,3 +11,9 @@
 
 # timescaleDB database files
 timescale_data/
+
+# grafana runtime state (dashboards are versioned in config/grafana/ via provisioning)
+grafana_data/
+
+# python env
+env/
