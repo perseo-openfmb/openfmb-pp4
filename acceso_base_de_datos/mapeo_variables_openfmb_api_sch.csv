@@ -1,0 +1,17 @@
+﻿Variable;Registros;item
+Corriente L1;R3000-R3001;
+Corriente L2;R3002-R3003;
+Corriente L3;R3004-R3005;
+Corriente media;R3010-R3011;A_phsB_mag
+Voltaje L1-N;R3028-R3029;
+Voltaje L2-N;R3030-R3031;
+Voltaje L3-N;R3032-R3033;
+Voltaje L-N medio;R3036-R3037;Phv_net_mag
+Pot Activa L1;R3054-R3055;
+Pot Activa L2;R3056-R3057;
+Pot Activa L3;R3058-R3059;
+Pot Activa total;R3060-R3061;Phv_phsC_mag
+Pot Reactiva ;R3068-R3069;PPV_phsAB_mag
+Pot Aparente;R3076-R3077;PPV_phsBC_mag
+Factor de pot;R3084-R3085;PPV_phsCA_mag
+Frecuencia;R3110-R3111;VA_net_mag

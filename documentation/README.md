@@ -108,48 +108,17 @@ funciona la integración con Grafana, agregar imágenes al toolbar, reproducir
 el entorno de desarrollo, o consultar versiones de software del proyecto.
 
 ================================================================================
-ARCHIVO 4 — Uso_de_OpenFMB_API
-================================================================================
-
-DESCRIPCIÓN:
-  Guía rápida para usar la librería Python 'openfmb-client' y acceder a la
-  base de datos TimescaleDB del centro de control desde un script externo,
-  a través de un túnel SSH. Es el punto de entrada para quien quiere leer
-  datos de los dispositivos sin interactuar con el HMI.
-
-PASOS CUBIERTOS (en orden):
-  1.  Instalación — pip install del repositorio GitHub perseo-openfmb/
-      openfmb-client y sus dependencias (requirements.txt).
-  2.  Túnel SSH — comando completo para hacer port-forwarding de los puertos
-      3000 (Grafana), 32771 (HMI) y 8000 (API) desde el servidor de control.
-  3.  Instanciar cliente — OpenFMBClient(base_url="http://localhost:8000/").
-  4.  Leer último dato — client.get_last_state(device_uuid="...") devuelve
-      un objeto con todas las variables del dispositivo.
-  5.  Seleccionar variables — acceso por clave, p.ej. medidor["a_phsb_mag"]
-      (corriente promedio) o medidor["ppv_phsbc_mag"] (potencia aparente total).
-  6.  Tabla de correspondencia — listado de los 8 medidores del sistema con
-      su nombre, UUID, dirección IP:puerto y número de esclavo Modbus.
-  7.  Mapeo de variables — tabla completa de registros → nombre de variable
-      para medidores Schneider y para medidores Siemens.
-  8.  Documentación adicional — enlace al README del repositorio en GitHub.
-
-IR A ESTE ARCHIVO SI:  quiere leer datos de los medidores desde un script
-Python externo, necesita conocer los UUIDs de los dispositivos, o necesita
-saber qué variable del objeto corresponde a qué medida eléctrica.
-
-================================================================================
 RESUMEN
 ================================================================================
 
   ¿Instalar la plataforma desde cero?          → Archivo 1 (Secc. 1 y 2)
   ¿Conectar un medidor o equipo nuevo?          → Archivo 2
-  ¿UUID / mRID de un equipo?                    → Archivo 1 (Secc. 12) o Archivo 4
-  ¿Leer datos desde Python sin el HMI?          → Archivo 4
+  ¿UUID / mRID de un equipo?                    → Archivo 1 (Secc. 12) 
   ¿Modificar el código del HMI?                 → Archivo 3
   ¿Integrar Grafana al HMI?                     → Archivo 3 (Secc. 19)
   ¿Agregar imágenes al designer del HMI?        → Archivo 3 (Secc. 18.2)
   ¿Escalar registros Modbus?                    → Archivo 1 (Secc. 3)
   ¿Configurar base de datos TimescaleDB?        → Archivo 1 (Secc. 9)
-  ¿Acceso remoto / túnel SSH?                   → Archivo 1 (Secc. 4) o Archivo 4
+  ¿Acceso remoto / túnel SSH?                   → Archivo 1 (Secc. 4)
   ¿Versiones de software del proyecto?          → Archivo 3 (Secc. 24)
 ================================================================================
