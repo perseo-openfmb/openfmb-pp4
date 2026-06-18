@@ -1,5 +1,12 @@
 name: openfmb-pp4-integrated
 
+x-logging: &default-logging
+  driver: "json-file"
+  options:
+    max-size: "10m"
+    max-file: "5"
+    tag: "{{.Name}}"
+
 services:
   nats:
     image: nats:2.14
@@ -12,7 +19,7 @@ services:
 
   adapter:
     image: oesinc/openfmb.adapters:a30d1d0
-    container_name: adapter1
+    container_name: adapter
     restart: unless-stopped
     depends_on:
       nats:
@@ -20,23 +27,10 @@ services:
     volumes:
       - ./config:/cfg
       - ./modbus-master:/modbus-master
-    command: -c /cfg/adapter_1.yaml
+    command: -c /cfg/adapter.yaml
     networks:
       - openfmb_devv
-
-  adapter2:
-    image: oesinc/openfmb.adapters:a30d1d0
-    container_name: adapter2
-    restart: unless-stopped
-    depends_on:
-      nats:
-        condition: service_started
-    volumes:
-      - ./config:/cfg
-      - ./modbus-master:/modbus-master
-    command: -c /cfg/adapter_2.yaml
-    networks:
-      - openfmb_devv
+    logging: *default-logging
 
   hmi:
     image: openfmb-hmi:latest
@@ -54,6 +48,7 @@ services:
       - "32771:32771"
     networks:
       - openfmb_devv
+    logging: *default-logging
 
   timescale:
     image: timescale/timescaledb:latest-pg12-oss

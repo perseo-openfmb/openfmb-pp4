@@ -16,4 +16,5 @@ timescale_data/
 grafana_data/
 
 # python env
-env/
+.venv/
+
