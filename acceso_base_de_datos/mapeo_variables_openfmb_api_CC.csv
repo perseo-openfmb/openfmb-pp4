@@ -1,7 +1,0 @@
-﻿Variable;Registro;item
-Inv. Quattro - Baterías (Voltaje);R840;VAr_net_mag
-Inv. Quattro - Baterías (Corriente);R841;VAr_neut_mag
-Inv. Quattro - Baterías (Potencia);R842;VAr_phsA_mag
-Inv. Quattro - Baterías (Estado de Carga);R843;VAr_phsB_mag
-Inv. Quattro - Baterías (Estado Batería);R844;VAr_phsC_mag
-Inv. Quattro - Lim. Pot. Activa ;R2700;VA_phsC_mag
