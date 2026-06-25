@@ -87,7 +87,7 @@ services:
       - GF_AUTH_DISABLE_LOGIN_FORM=true
       - DB_PASS=${DB_PASS}
     volumes:
-      - ./grafana_data:/var/lib/grafana
+      - grafana_data:/var/lib/grafana
       - ./config/grafana/dashboards:/var/lib/grafana/dashboards:ro
       - ./config/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards:ro
       - ./config/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources:ro
@@ -131,3 +131,4 @@ networks:
 
 volumes:
   pgadmin_data:
+  grafana_data:
