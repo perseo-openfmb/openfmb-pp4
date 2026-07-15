@@ -61,6 +61,7 @@ services:
       POSTGRES_DB: ${DB_NAME}
     volumes:
       - ./timescale_data:/var/lib/postgresql/data
+    command: ["postgres", "-c", "max_locks_per_transaction=256", "-c", "shared_buffers=1GB"]
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
@@ -69,6 +70,46 @@ services:
       start_period: 20s
     networks:
       - openfmb_devv
+
+  sql-proxy:
+    build:
+      context: ./scripts_python/sql-proxy
+    container_name: sql-proxy
+    restart: unless-stopped
+    depends_on:
+      timescale:
+        condition: service_healthy
+    ports:
+      - "5433:5433"
+    networks:
+      - openfmb_devv
+    logging: *default-logging
+
+  db-backup:
+    image: postgres:12-alpine
+    container_name: db_backup
+    restart: unless-stopped
+    # Write dumps as the host user (uid 1000) so ./backups stays readable and
+    # syncable, instead of root-owned like the timescale_data dir.
+    user: "1000:1000"
+    depends_on:
+      timescale:
+        condition: service_healthy
+    environment:
+      PGHOST: timescale
+      PGPORT: "5432"
+      PGUSER: postgres
+      PGPASSWORD: ${DB_PASS}
+      PGDATABASE: ${DB_NAME}
+      BACKUP_INTERVAL_SECONDS: "86400" # un respaldo cada 24 h
+      BACKUP_KEEP: "7"                 # conservar los 7 dumps más recientes
+    volumes:
+      - ./backups:/backups
+      - ./scripts/db_backup_loop.sh:/usr/local/bin/db_backup_loop.sh:ro
+    entrypoint: ["/bin/sh", "/usr/local/bin/db_backup_loop.sh"]
+    networks:
+      - openfmb_devv
+    logging: *default-logging
 
   grafana:
     image: grafana/grafana:11.5.1
