@@ -73,7 +73,7 @@ services:
 
   sql-proxy:
     build:
-      context: ./scripts_python/sql-proxy
+      context: ./app/sql-proxy
     container_name: sql-proxy
     restart: unless-stopped
     depends_on:
@@ -153,7 +153,7 @@ services:
       - openfmb_devv
 
   mi-api-python:
-    build: .
+    build: ./app/openfmb-api
     container_name: api_python
     restart: unless-stopped
     ports:
@@ -165,6 +165,16 @@ services:
         condition: service_healthy
     networks:
       - openfmb_devv
+
+  search-engine:
+    build: ./app/search-engine
+    container_name: search-engine
+    restart: unless-stopped
+    ports:
+      - "5500:5500"
+    networks:
+      - openfmb_devv
+    logging: *default-logging
 
 networks:
   openfmb_devv:

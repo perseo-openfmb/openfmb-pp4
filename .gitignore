@@ -18,3 +18,12 @@ grafana_data/
 # python env
 .venv/
 
+# cache files
+__pycache__/
+
+# database backups: binary dumps (can be large). The folder is kept via
+# backups/.gitkeep; carry the dumps across machines with cloud/USB/git-lfs,
+# not plain git.
+backups/*.dump
+backups/*.partial
+
