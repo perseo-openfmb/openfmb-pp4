@@ -1,0 +1,6 @@
+Variable;Registros;item
+Irradiancia;R1-R2;A_net_mag
+Temperatura;R55-R56;A_neut_mag
+Humedad;R57-R58;A_phsA_mag
+Ángulo X;R79-R80;A_phsB_mag
+Ángulo Y;R81-R82;A_phsC_mag

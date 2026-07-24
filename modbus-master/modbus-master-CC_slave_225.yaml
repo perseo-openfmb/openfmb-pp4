@@ -6,7 +6,7 @@ remote-ip: 172.26.0.1
 # unit-identifier: 225
 port: 5070
 unit-identifier: 1
-response_timeout_ms: 5000
+response_timeout_ms: 2000
 always-write-multiple-registers: false
 auto_polling:
   max_register_gaps: 0

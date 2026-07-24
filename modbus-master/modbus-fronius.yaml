@@ -1,11 +1,11 @@
 #NO OLVIDAR CAMBIAR #--- escalado
-name: fronius
+name: "?"
 log-level: Warn
 adapter: 0.0.0.0
 remote-ip: "?"
 port: "?"
 unit-identifier: "?"
-response_timeout_ms: 5000
+response_timeout_ms: 2000
 always-write-multiple-registers: false
 auto_polling:
   max_register_gaps: 0

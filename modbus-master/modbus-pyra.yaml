@@ -1,11 +1,11 @@
 #validar +-1 registro en el mapeo
-name: piranometro
+name: "?"
 log-level: Warn
 adapter: 0.0.0.0
 remote-ip: "?"
 port: "?"
 unit-identifier: "?"
-response_timeout_ms: 5000
+response_timeout_ms: 2500
 always-write-multiple-registers: false
 auto_polling:
   max_register_gaps: 0
@@ -614,7 +614,7 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: mapped
+                double-field-type: mapped     # Irradiance
                 source-type: holding_register
                 register-mapping: float32
                 scale: 1
@@ -630,7 +630,7 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: mapped
+                double-field-type: mapped     # Temp.
                 source-type: holding_register
                 register-mapping: float32
                 scale: 1
@@ -646,7 +646,7 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: mapped
+                double-field-type: mapped     # Humidity
                 source-type: holding_register
                 register-mapping: float32
                 scale: 1
@@ -662,7 +662,7 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: mapped
+                double-field-type: mapped       # Ang X
                 source-type: holding_register
                 register-mapping: float32
                 scale: 1
@@ -678,7 +678,7 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: mapped
+                double-field-type: mapped     # Ang Y
                 source-type: holding_register
                 register-mapping: float32
                 scale: 1

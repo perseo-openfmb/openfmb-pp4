@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenFMB — Documentación</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0f'/%3E%3Cpath d='M20 14h24a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H20a4 4 0 0 1-4-4V18a4 4 0 0 1 4-4z' fill='none' stroke='%2300d4ff' stroke-width='2.5'/%3E%3Cpath d='M26 26l4 6-4 6' fill='none' stroke='%2300d4ff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='34' y1='38' x2='40' y2='38' stroke='%2300d4ff' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            min-height: 100vh;
+            font-size: 1.45rem;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-bottom: 2px solid #0f3460;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.4rem;
+            color: #00d4ff;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            color: #8892b0;
+            font-size: 1.1rem;
+        }
+
+        .search-container {
+            max-width: 1100px;
+            margin: 1rem auto 2rem;
+            padding: 0 1rem;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+            background: #1a1a2e;
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid #2a2a4a;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .search-box input {
+            flex: 1 1 auto;
+            min-width: 300px;
+            padding: 1.2rem 1.8rem;
+            font-size: 1.6rem;
+            background: #0d0d1a;
+            border: 1px solid #3a3a5a;
+            border-radius: 8px;
+            color: #fff;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: #00d4ff;
+        }
+
+        .search-box input::placeholder {
+            color: #5a5a7a;
+        }
+
+        .search-box .search-btn {
+            flex: 0 0 auto;
+            padding: 1.2rem 1.5rem;
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, #0f3460, #1a5276);
+            border: none;
+            border-radius: 8px;
+            color: #00d4ff;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .search-box .search-btn:hover {
+            background: linear-gradient(135deg, #1a5276, #21618c);
+            transform: translateY(-2px);
+        }
+
+.group-filters {
+            max-width: 1100px;
+            margin: 2rem auto 1.5rem;
+            padding: 0 1rem;
+        }
+
+        .filters-row {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .filter-column {
+            background: #1a1a2e;
+            border: 1px solid #2a2a4a;
+            border-radius: 10px;
+            padding: 0.6rem;
+            flex: 1 1 0;
+            min-width: 0;
+            overflow: hidden;
+        }
+
+        .filter-column-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.3rem;
+            color: #00d4ff;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid #2a2a4a;
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .filter-column-header:hover {
+            color: #00ffff;
+        }
+
+        .filter-column-header .icon {
+            font-size: 1.2rem;
+        }
+
+        .filter-column-header .count {
+            color: #8892b0;
+            font-weight: 400;
+            background: #0d0d1a;
+            padding: 0.15rem 0.5rem;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        .filter-column-header .expand-icon {
+            color: #5a5a7a;
+            font-size: 0.9rem;
+            transition: transform 0.2s;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+
+        .filter-column.open .filter-column-header .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .filter-column-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .filter-column.open .filter-column-content {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .filter-column label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.25rem 0.4rem;
+            cursor: pointer;
+            font-size: 1.1rem;
+            color: #c0c0c0;
+            gap: 0.4rem;
+            border-radius: 4px;
+            position: relative;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .filter-column label input[type="checkbox"] {
+            accent-color: #00d4ff;
+            flex-shrink: 0;
+            width: 18px;
+            height: 18px;
+        }
+
+        .filter-column .doc-name {
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .filter-column label::after {
+            content: attr(title);
+            position: absolute;
+            left: 0;
+            bottom: 100%;
+            margin-bottom: 4px;
+            padding: 0.4rem 0.6rem;
+            background: #0d0d1a;
+            border: 1px solid #2a2a4a;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: #8892b0;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.15s, visibility 0.15s;
+            z-index: 10;
+            max-width: 400px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .filter-column label:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .search-btn {
+            padding: 1.2rem 2rem;
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, #0f3460, #1a5276);
+            border: none;
+            border-radius: 8px;
+            color: #00d4ff;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .search-btn:hover {
+            background: linear-gradient(135deg, #1a5276, #21618c);
+            transform: translateY(-2px);
+        }
+
+        .stats {
+            text-align: center;
+            padding: 1rem;
+            color: #8892b0;
+            font-size: 1.1rem;
+        }
+
+        .results-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1rem 2rem;
+        }
+
+        .result-item {
+            background: #1a1a2e;
+            border: 1px solid #2a2a4a;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+
+        .result-item:hover {
+            border-color: #0f3460;
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.1);
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #2a2a4a;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .result-doc {
+            color: #00d4ff;
+            font-weight: 600;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .result-location {
+            color: #8892b0;
+            font-size: 1.1rem;
+            background: #0d0d1a;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .open-file {
+            color: #00d4ff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.3rem 0.8rem;
+            border: 1px solid #0f3460;
+            border-radius: 20px;
+            transition: all 0.2s;
+        }
+
+        .open-file:hover {
+            background: #0f3460;
+            color: #fff;
+        }
+
+        .result-snippet {
+            background: #0d0d1a;
+            padding: 1rem;
+            border-radius: 6px;
+            font-size: 1.3rem;
+            line-height: 1.6;
+            color: #c0c0c0;
+            border-left: 3px solid #0f3460;
+            margin-bottom: 0.5rem;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .result-snippet:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            background: rgba(0, 212, 255, 0.3);
+            color: #00d4ff;
+            padding: 0.1rem 0.3rem;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .result-section {
+            color: #8892b0;
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 0.8rem;
+            padding-left: 0.5rem;
+            border-left: 2px solid #3a3a5a;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: #5a5a7a;
+        }
+
+        .no-results h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #8892b0;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #00d4ff;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-item {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .csv-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .label-match-note {
+            font-size: 1.05rem;
+            color: #00d4ff;
+            margin-bottom: 0.3rem;
+            font-style: italic;
+        }
+
+        .csv-table th {
+            background: #0f3460;
+            color: #00d4ff;
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid #2a2a4a;
+            white-space: nowrap;
+        }
+
+        .csv-table td {
+            padding: 0.5rem 0.8rem;
+            border: 1px solid #2a2a4a;
+            color: #c0c0c0;
+            background: #0d0d1a;
+        }
+
+        .csv-table tr:hover td {
+            background: #1a1a2e;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>OpenFMB Docs Search</h1>
+        <p>Busca en la documentación, configuración y esquemas de la plataforma OpenFMB</p>
+    </div>
+
+    <div class="group-filters" id="groupFilters">
+        <div class="filters-row" id="filtersRow"></div>
+    </div>
+
+    <div class="search-container">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Buscar en documentación y configuración..." autocomplete="off">
+            <button class="search-btn" id="searchBtn">Buscar</button>
+        </div>
+    </div>
+
+    <div class="stats" id="stats"></div>
+
+    <div class="results-container" id="results"></div>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const groupFilters = document.getElementById('groupFilters');
+        const resultsDiv = document.getElementById('results');
+        const statsDiv = document.getElementById('stats');
+
+        const HINTS = [
+            'configuracion adapter yaml',
+            'medidor schneider modbus',
+            'timescaledb esquema readings',
+            'grafana dashboard variable',
+            'nats suscriptor publicador',
+            'mapeo registros inversor fronius',
+            'color control set-point mRID',
+            'backup postgres restore',
+            'relay potencia coils switch',
+            'sql-proxy puerto 5433',
+        ];
+
+        function setRandomHint() {
+            const hint = HINTS[Math.floor(Math.random() * HINTS.length)];
+            searchInput.placeholder = hint;
+        }
+
+        setRandomHint();
+
+        searchInput.addEventListener('focus', () => {
+            if (HINTS.includes(searchInput.placeholder)) {
+                searchInput.placeholder = 'Escribe tu búsqueda...';
+            }
+        });
+
+        searchInput.addEventListener('blur', () => {
+            if (!searchInput.value.trim()) {
+                setRandomHint();
+            }
+        });
+
+        let debounceTimer;
+
+        const FILE_LABELS = {
+            'Documentacion_Plataforma_OpenFMB.pdf': 'Documentación detallada OpenFMB (ES)',
+            'Documentation_Grafana_Api_OpenFMB.pdf': 'Desarrollos adicionales en HMI de OpenFMB (EN)',
+            'Integrating_MG_assets_to_openfmb.pdf': 'Integración rápida de dispositivos (EN)',
+            'Uso de OpenFMB API.pdf': 'Acceso a BD con OpenFMB API (ES)',
+            'identificadores_microrred.csv': 'Identificadores (mRID) de dispositivos de la microrred',
+            'mapeo_variables_openfmb_api_CC.csv': 'Mapeo de variables - Color Control GX',
+            'mapeo_variables_openfmb_api_Fron.csv': 'Mapeo de variables - Inversor Fronius',
+            'mapeo_variables_openfmb_api_sch.csv': 'Mapeo de variables - Medidor Schneider',
+            'mapeo_variables_openfmb_api_sie.csv': 'Mapeo de variables - Medidor Siemens',
+            'mapeo_variables_openfmb_api_pyra.csv': 'Mapeo de variables - Piranómetro',
+        };
+
+        function getDocLabel(doc) {
+            return FILE_LABELS[doc.display_path] || doc.display_path.split('/').pop();
+        }
+
+        // 2 grupos: Documentación PDF + Base de Datos CSV
+        const FILTER_GROUPS = [
+            {
+                id: 'documentacion',
+                label: 'Documentación OpenFMB',
+                match: (doc) => doc.ext === '.pdf',
+            },
+            {
+                id: 'base_de_datos',
+                label: 'Acceso a base de datos',
+                match: (doc) => doc.ext === '.csv',
+            },
+        ];
+
+        function buildFilterColumns(data) {
+            const row = document.getElementById('filtersRow');
+            if (!row) return;
+
+            // Agrupar docs
+            const grouped = FILTER_GROUPS.map(g => ({ ...g, docs: [] }));
+            data.docs.forEach(doc => {
+                for (const g of grouped) {
+                    if (g.match(doc)) {
+                        g.docs.push(doc);
+                        break;
+                    }
+                }
+            });
+
+            grouped.forEach(group => {
+                if (group.docs.length === 0) return;
+
+                const col = document.createElement('div');
+                col.className = 'filter-column';
+                col.dataset.groupId = group.id;
+
+                // Header
+                const header = document.createElement('div');
+                header.className = 'filter-column-header';
+                header.innerHTML = `
+                    ${group.label}
+                    <span class="count">${group.docs.length}</span>
+                    <span class="expand-icon">▸</span>
+                `;
+
+                // Content
+                const content = document.createElement('div');
+                content.className = 'filter-column-content';
+
+                // "Todos" checkbox for this group
+                const selectAllLabel = document.createElement('label');
+                selectAllLabel.className = 'select-all-row';
+                const selectAllCb = document.createElement('input');
+                selectAllCb.type = 'checkbox';
+                selectAllCb.checked = true;
+                selectAllCb.className = 'group-select-all';
+                selectAllLabel.appendChild(document.createTextNode('Todos '));
+                selectAllLabel.appendChild(selectAllCb);
+                content.appendChild(selectAllLabel);
+
+                // Individual checkboxes
+                group.docs.forEach(doc => {
+                    const label = document.createElement('label');
+                    const text = document.createElement('span');
+                    text.className = 'doc-name';
+                    text.textContent = getDocLabel(doc);
+                    label.title = doc.display_path;
+                    const cb = document.createElement('input');
+                    cb.type = 'checkbox';
+                    cb.value = doc.key;
+                    cb.checked = true;
+                    cb.className = 'doc-cb';
+                    label.appendChild(text);
+                    label.appendChild(cb);
+                    content.appendChild(label);
+                });
+
+                // Toggle header
+                header.addEventListener('click', (e) => {
+                    if (e.target.type === 'checkbox') return;
+                    col.classList.toggle('open');
+                });
+
+                // Group "Todos" logic
+                const cbs = content.querySelectorAll('.doc-cb');
+                selectAllCb.addEventListener('change', () => {
+                    cbs.forEach(cb => cb.checked = selectAllCb.checked);
+                    performSearch();
+                });
+                cbs.forEach(cb => cb.addEventListener('change', () => {
+                    selectAllCb.checked = [...cbs].every(c => c.checked);
+                    performSearch();
+                }));
+
+                col.appendChild(header);
+                col.appendChild(content);
+                row.appendChild(col);
+            });
+        }
+
+        function buildFilters(data) {
+            buildFilterColumns(data);
+        }
+
+        fetch('/api/docs')
+            .then(r => r.json())
+            .then(data => buildFilters(data));
+
+        searchInput.addEventListener('input', () => {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(performSearch, 300);
+        });
+
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') performSearch();
+        });
+
+        document.getElementById('searchBtn').addEventListener('click', performSearch);
+
+        function getSelectedDocs() {
+            const allCbs = document.querySelectorAll('.doc-cb');
+            const checkedCbs = document.querySelectorAll('.doc-cb:checked');
+            if (allCbs.length > 0 && checkedCbs.length === allCbs.length) return '';
+            return [...checkedCbs].map(cb => cb.value).join(',');
+        }
+
+        function performSearch() {
+            const query = searchInput.value.trim();
+            if (!query) {
+                resultsDiv.innerHTML = '';
+                statsDiv.textContent = '';
+                return;
+            }
+
+            const allCbs = document.querySelectorAll('.doc-cb');
+            const checkedCbs = document.querySelectorAll('.doc-cb:checked');
+            if (allCbs.length > 0 && checkedCbs.length === 0) {
+                resultsDiv.innerHTML = `
+                    <div class="no-results">
+                        <h3>Ningún archivo seleccionado</h3>
+                        <p>Marca al menos un archivo en el filtro para buscar</p>
+                    </div>`;
+                statsDiv.textContent = '';
+                return;
+            }
+
+            resultsDiv.innerHTML = '<div class="loading">Buscando...</div>';
+
+            const docs = getSelectedDocs();
+            const params = new URLSearchParams({ q: query, doc: docs });
+
+            fetch(`/api/search?${params}`)
+                .then(r => r.json())
+                .then(data => {
+                    renderResults(data);
+                });
+        }
+
+        function renderResults(data) {
+            if (data.results.length === 0) {
+                resultsDiv.innerHTML = `
+                    <div class="no-results">
+                        <h3>Sin resultados</h3>
+                        <p>No se encontraron coincidencias para "${data.query}"</p>
+                    </div>`;
+                statsDiv.textContent = '';
+                return;
+            }
+
+            statsDiv.textContent = `${data.total} resultado${data.total !== 1 ? 's' : ''} encontrado${data.total !== 1 ? 's' : ''}`;
+
+            let html = '';
+            data.results.forEach(result => {
+                const isPdf = result.ext === '.pdf';
+                const location = isPdf
+                    ? `Página ${result.page} de ${result.total_pages}`
+                    : (result.show_all ? `Archivo completo` : `Línea ${result.matches[0].line}`);
+                const fileLink = isPdf
+                    ? `<a href="/pdf/${result.display_path}#page=${result.page}" target="_blank" class="open-file">Ábrir PDF</a>`
+                    : (result.show_all
+                        ? `<a href="/view/${result.display_path}?q=${encodeURIComponent(data.query)}" target="_blank" class="open-file">Ver archivo</a>`
+                        : `<a href="/view/${result.display_path}?line=${result.matches[0].line}&q=${encodeURIComponent(data.query)}" target="_blank" class="open-file">Ver archivo</a>`);
+                const sectionHtml = result.section
+                    ? `<div class="result-section">${result.section}</div>`
+                    : '';
+                let contentHtml = '';
+                if (result.csv_headers && result.csv_rows && result.csv_rows.length > 0) {
+                    let tableHtml = '<table class="csv-table"><thead><tr>';
+                    result.csv_headers.forEach(h => {
+                        tableHtml += `<th>${highlightText(h, data.query)}</th>`;
+                    });
+                    tableHtml += '</tr></thead><tbody>';
+                    result.csv_rows.forEach(row => {
+                        tableHtml += '<tr>';
+                        row.forEach(cell => {
+                            tableHtml += `<td>${highlightText(cell, data.query)}</td>`;
+                        });
+                        tableHtml += '</tr>';
+                    });
+                    tableHtml += '</tbody></table>';
+                    if (result.show_all) {
+                        tableHtml = `<div class="label-match-note">Archivo completo (coincidencia con etiqueta)</div>` + tableHtml;
+                    }
+                    contentHtml = tableHtml;
+                } else {
+                    result.matches.forEach(match => {
+                        contentHtml += `<div class="result-snippet">${highlightText(match.text, data.query)}</div>`;
+                    });
+                }
+                html += `
+                    <div class="result-item">
+                        <div class="result-header">
+                            <div class="result-doc">${result.icon} ${FILE_LABELS[result.display_path] || result.display_path}</div>
+                            <div class="result-location">${location} ${fileLink}</div>
+                        </div>
+                        ${sectionHtml}
+                        ${contentHtml}
+                    </div>`;
+            });
+
+            resultsDiv.innerHTML = html;
+        }
+
+        // Convierte cada vocal en una clase [aáàâä] para que resaltar funcione
+        // aunque el texto tenga tildes distintas a las que escribió el usuario.
+        function accentInsensitivePattern(term) {
+            const map = { a: '[aáàâä]', e: '[eéèêë]', i: '[iíìîï]', o: '[oóòôö]', u: '[uúùûü]', n: '[nñ]' };
+            return term.split('').map(ch => map[ch.toLowerCase()] || ch.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('');
+        }
+
+        // El snippet es contenido crudo de archivos del proyecto (incluye .sql,
+        // que casi seguro tiene < y >). Sin escapar esto antes de meterlo en
+        // innerHTML, cualquier < / > / & rompe el render o, en el peor caso,
+        // se interpreta como HTML/JS real.
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function parseQuery(query) {
+            const terms = [];
+            const quoteRegex = /'([^']+)'/g;
+            let match;
+            while ((match = quoteRegex.exec(query)) !== null) {
+                terms.push(match[1]);
+            }
+            const remaining = query.replace(/'[^']*'/g, '');
+            remaining.split(/\s+/).filter(Boolean).forEach(w => terms.push(w));
+            return terms;
+        }
+
+        function highlightText(text, query) {
+            const escaped = escapeHtml(text);
+            const terms = parseQuery(query);
+            if (terms.length === 0) return escaped;
+            const patterns = terms.map(t => accentInsensitivePattern(t));
+            const regex = new RegExp(`(${patterns.join('|')})`, 'gi');
+            return escaped.replace(regex, '<span class="highlight">$1</span>');
+        }
+    </script>
+</body>
+</html>

@@ -1,10 +1,10 @@
-name: meter-schneider
+name: "?"
 log-level: Warn
 adapter: 0.0.0.0
 remote-ip: "?"
 port: "?"
 unit-identifier: "?"
-response_timeout_ms: 5000
+response_timeout_ms: 1500
 always-write-multiple-registers: false
 auto_polling:
   max_register_gaps: 0
@@ -613,7 +613,12 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: ignored
+                double-field-type: mapped
+                source-type: holding_register
+                register-mapping: float32
+                scale: 1.0
+                lower_index: 3000 #R3001
+                upper_index: 2999 #R3000
             q:
               quality-field-type: ignored
             t:
@@ -624,7 +629,12 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: ignored
+                double-field-type: mapped
+                source-type: holding_register
+                register-mapping: float32
+                scale: 1.0
+                lower_index: 3002 #R3003
+                upper_index: 3001 #R3002
             q:
               quality-field-type: ignored
             t:
@@ -635,7 +645,12 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: ignored
+                double-field-type: mapped
+                source-type: holding_register
+                register-mapping: float32
+                scale: 1.0
+                lower_index: 3004 #R3005
+                upper_index: 3003 #R3004
             q:
               quality-field-type: ignored
             t:
@@ -649,9 +664,9 @@ profiles:
                 double-field-type: mapped
                 source-type: holding_register
                 register-mapping: float32
-                scale: 0.1
-                lower_index: 3010
-                upper_index: 3009
+                scale: 1.0
+                lower_index: 3010 #R3011
+                upper_index: 3009 #R3010
             q:
               quality-field-type: ignored
             t:
@@ -712,7 +727,12 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: ignored
+                double-field-type: mapped
+                source-type: holding_register
+                register-mapping: float32
+                scale: 1.0
+                lower_index: 3028 #3029
+                upper_index: 3027 #3028
             q:
               quality-field-type: ignored
             t:
@@ -723,7 +743,12 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: ignored
+                double-field-type: mapped
+                source-type: holding_register
+                register-mapping: float32
+                scale: 1.0
+                lower_index: 3030 #3031
+                upper_index: 3029 #3030
             q:
               quality-field-type: ignored
             t:
@@ -734,7 +759,12 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: ignored
+                double-field-type: mapped
+                source-type: holding_register
+                register-mapping: float32
+                scale: 1.0
+                lower_index: 3032 #3033
+                upper_index: 3031 #3032
             q:
               quality-field-type: ignored
             t:
@@ -753,8 +783,8 @@ profiles:
                 source-type: holding_register
                 register-mapping: float32
                 scale: 1.0
-                lower_index: 3036
-                upper_index: 3035
+                lower_index: 3036 #3037
+                upper_index: 3035 #3036
             q:
               quality-field-type: ignored
             t:
@@ -765,7 +795,12 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: ignored
+                double-field-type: mapped
+                source-type: holding_register
+                register-mapping: float32
+                scale: 1.0
+                lower_index: 3054 #3055
+                upper_index: 3053 #3054
             q:
               quality-field-type: ignored
             t:
@@ -776,7 +811,12 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: ignored
+                double-field-type: mapped
+                source-type: holding_register
+                register-mapping: float32
+                scale: 1.0
+                lower_index: 3056 #3057
+                upper_index: 3055 #3056
             q:
               quality-field-type: ignored
             t:
@@ -787,7 +827,12 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: ignored
+                double-field-type: mapped
+                source-type: holding_register
+                register-mapping: float32
+                scale: 1.0
+                lower_index: 3058 #3059
+                upper_index: 3057 #3058
             q:
               quality-field-type: ignored
             t:
@@ -802,8 +847,8 @@ profiles:
                 source-type: holding_register
                 register-mapping: float32
                 scale: 1.0
-                lower_index: 3060
-                upper_index: 3059
+                lower_index: 3060 #3061
+                upper_index: 3059 #3060
             q:
               quality-field-type: ignored
             t:
@@ -847,12 +892,12 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: ignored
+                double-field-type: mapped
                 source-type: holding_register
                 register-mapping: float32
                 scale: 1.0
                 lower_index: 3084
-                upper_index: 3083
+                upper_index: 3083 
             q:
               quality-field-type: ignored
             t:

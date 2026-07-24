@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ display_path }} — OpenFMB</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0f'/%3E%3Cpath d='M20 14h24a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H20a4 4 0 0 1-4-4V18a4 4 0 0 1 4-4z' fill='none' stroke='%2300d4ff' stroke-width='2.5'/%3E%3Cpath d='M26 26l4 6-4 6' fill='none' stroke='%2300d4ff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='34' y1='38' x2='40' y2='38' stroke='%2300d4ff' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+
+        .topbar {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-bottom: 2px solid #0f3460;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .topbar .file-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .topbar h1 {
+            font-size: 1rem;
+            color: #00d4ff;
+            font-weight: 600;
+        }
+
+        .topbar .meta {
+            color: #8892b0;
+            font-size: 0.8rem;
+        }
+
+        .topbar .back-btn {
+            color: #00d4ff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 0.4rem 1rem;
+            border: 1px solid #0f3460;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .topbar .back-btn:hover {
+            background: #0f3460;
+            color: #fff;
+        }
+
+        .context-bar {
+            background: #12122a;
+            padding: 0.5rem 1.5rem;
+            font-size: 0.8rem;
+            color: #8892b0;
+            border-bottom: 1px solid #1a1a3a;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .context-bar strong {
+            color: #00d4ff;
+        }
+
+        .file-content {
+            max-width: 1000px;
+            margin: 1.5rem auto;
+            padding: 0 1rem;
+        }
+
+        .code-block {
+            background: #0d0d1a;
+            border: 1px solid #2a2a4a;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .code-line {
+            display: flex;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .code-line:hover {
+            background: rgba(0, 212, 255, 0.03);
+        }
+
+        .line-num {
+            min-width: 50px;
+            padding: 0 1rem;
+            text-align: right;
+            color: #4a4a6a;
+            user-select: none;
+            border-right: 1px solid #1a1a3a;
+        }
+
+        .line-text {
+            padding: 0 1rem;
+            white-space: pre-wrap;
+            word-break: break-word;
+            flex: 1;
+        }
+
+        .highlight-line {
+            background: rgba(0, 212, 255, 0.1) !important;
+            border-left: 3px solid #00d4ff;
+        }
+
+        .highlight-line .line-num {
+            color: #00d4ff;
+            font-weight: 600;
+        }
+
+        .highlight-match {
+            background: rgba(0, 212, 255, 0.3);
+            color: #00d4ff;
+            padding: 0.1rem 0.2rem;
+            border-radius: 2px;
+            font-weight: 600;
+        }
+
+        .truncated-top, .truncated-bottom {
+            padding: 0.8rem 1.5rem;
+            color: #5a5a7a;
+            font-size: 0.8rem;
+            text-align: center;
+            background: #0a0a15;
+            border-left: 3px solid #2a2a4a;
+        }
+
+        .scroll-hint {
+            text-align: center;
+            padding: 2rem;
+            color: #5a5a7a;
+            font-size: 0.8rem;
+        }
+
+        .csv-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        .csv-table th {
+            background: #0f3460;
+            color: #00d4ff;
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid #2a2a4a;
+            white-space: nowrap;
+            position: sticky;
+            top: 0;
+        }
+
+        .csv-table td {
+            padding: 0.5rem 0.8rem;
+            border: 1px solid #2a2a4a;
+            color: #c0c0c0;
+            background: #0d0d1a;
+        }
+
+        .csv-table tr:hover td {
+            background: #1a1a2e;
+        }
+
+        .csv-table tr.highlight-line td {
+            background: rgba(0, 212, 255, 0.1) !important;
+            border-left: 3px solid #00d4ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <div class="file-info">
+            <h1>{{ display_path }}</h1>
+            <span class="meta">{{ total_lines }} líneas</span>
+        </div>
+        <a href="javascript:history.back()" class="back-btn">Volver a resultados</a>
+    </div>
+
+    <div class="context-bar">
+        Mostrando líneas <strong>{{ start_line }}</strong> a <strong>{{ start_line + content|length - 1 }}</strong>
+        de <strong>{{ total_lines }}</strong> — Resaltado en línea <strong>{{ highlight_line }}</strong>
+        {% if query %} — Búsqueda: <strong>"{{ query }}"</strong>{% endif %}
+    </div>
+
+    <div class="file-content">
+        {% if csv_data %}
+        <div class="code-block">
+            <table class="csv-table">
+                <thead>
+                    <tr>
+                        {% for h in csv_data.headers %}
+                        <th>{% if query %}{{ h | highlight(query) | safe }}{% else %}{{ h | e }}{% endif %}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in csv_data.rows %}
+                    <tr>
+                        {% for cell in row %}
+                        <td>{% if query %}{{ cell | highlight(query) | safe }}{% else %}{{ cell | e }}{% endif %}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        {% if hidden_above > 0 %}
+        <div class="truncated-top">
+            ↑ Ocultando {{ hidden_above }} líneas anteriores
+        </div>
+        {% endif %}
+
+        <div class="code-block">
+            {% for line in content %}
+            <div class="code-line {% if start_line + loop.index0 == highlight_line %}highlight-line{% endif %}">
+                <span class="line-num">{{ start_line + loop.index0 }}</span>
+                <span class="line-text">{% if query %}{{ line | highlight(query) | safe }}{% else %}{{ line | e }}{% endif %}</span>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if hidden_below > 0 %}
+        <div class="truncated-bottom">
+            ↓ Ocultando {{ hidden_below }} líneas restantes
+        </div>
+        {% endif %}
+        {% endif %}
+    </div>
+
+    <div class="scroll-hint">
+        {% if query %}Coincidencia de "<strong>{{ query }}</strong>" resaltada en amarillo{% endif %}
+    </div>
+
+    <script>
+        // Auto-scroll al highlight
+        const highlighted = document.querySelector('.highlight-line');
+        if (highlighted) {
+            highlighted.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>
