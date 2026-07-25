@@ -1,10 +1,25 @@
-# Carga automática de los dashboards versionados en config/grafana/dashboards/.
+# Carga automatica de los dashboards versionados en config/grafana/dashboards/.
 #
-# Flujo de trabajo para actualizar un dashboard:
+# IMPORTANTE: el provisioning por archivo es de UNA SOLA VIA.
+#   disco  -> Grafana : automatico, cada updateIntervalSeconds.
+#   Grafana -> disco  : NO existe. Lo que guardas en la interfaz vive solo en
+#                       grafana.db (volumen `grafana_data`), no en el repo.
+#
+# Por eso un `git push` no se lleva lo que editaste en la interfaz, y por eso
+# se perdieron estilos al cambiar el bind-mount ./grafana_data por un volumen
+# con nombre: el grafana.db viejo quedo huerfano.
+#
+# Flujo correcto para actualizar un dashboard:
 #   1. Editarlo y guardarlo normalmente en la interfaz de Grafana.
-#   2. Exportarlo al JSON versionado (Share > Export, o vía API) sobre el archivo
-#      correspondiente en config/grafana/dashboards/.
-#   3. Hacer commit del JSON.
+#   2. Volcarlo al repositorio:
+#        python3 scripts/grafana_export_dashboards.py
+#   3. Revisar el diff y hacer commit de config/grafana/dashboards/.
+#
+# Y al reves: si editas un JSON a mano, el provisioner lo recarga a los ~30 s y
+# pisa lo que hubiera en la interfaz. Exporta antes de tocar archivos a mano.
+#
+# En CI o antes de un push se puede verificar que no quedo nada sin exportar:
+#   python3 scripts/grafana_export_dashboards.py --check   # salida != 0 si hay pendientes
 apiVersion: 1
 
 providers:
@@ -12,8 +27,15 @@ providers:
     orgId: 1
     type: file
     # Permite seguir editando los dashboards desde la interfaz (los cambios se
-    # guardan en la base de Grafana; el JSON solo se actualiza al re-exportar)
+    # guardan en la base de Grafana; el JSON solo se actualiza al re-exportar).
     allowUiUpdates: true
+    # Un dashboard borrado del repo tambien desaparece de Grafana, para que el
+    # repositorio siga siendo la fuente de verdad.
+    disableDeletion: false
     updateIntervalSeconds: 30
     options:
       path: /var/lib/grafana/dashboards
+      # Los JSON estan en un unico directorio plano, asi que todos los
+      # dashboards viven en la carpeta por defecto. Ponerlo en true solo tiene
+      # sentido si se agrupan en subcarpetas dentro de dashboards/.
+      foldersFromFilesStructure: false

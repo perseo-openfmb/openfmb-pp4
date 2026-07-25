@@ -124,7 +124,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "select \"timestamp\", a_net_mag as \"Irradianza\"\nfrom data\nwhere device_uuid = '00000003-0001-0005-0000-000000000001' AND $__timeFilter(\"timestamp\")\nORDER BY \"timestamp\" ASC;",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(a_net_mag) AS \"Irradianza\"\nFROM public.data\nWHERE device_uuid = '00000003-0001-0005-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
           "refId": "A",
           "sql": {
             "columns": [
@@ -146,7 +146,8 @@
         }
       ],
       "title": "Irradianza",
-      "type": "timeseries"
+      "type": "timeseries",
+      "interval": "5s"
     },
     {
       "datasource": {
@@ -260,7 +261,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "select \"timestamp\", a_neut_mag as \"Temperatura\"\r\nfrom data\r\nwhere device_uuid = '00000003-0001-0005-0000-000000000001' AND $__timeFilter(\"timestamp\")\r\nORDER BY \"timestamp\" ASC;",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(a_neut_mag) AS \"Temperatura\"\nFROM public.data\nWHERE device_uuid = '00000003-0001-0005-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
           "refId": "A",
           "sql": {
             "columns": [
@@ -282,7 +283,8 @@
         }
       ],
       "title": "Temperatura",
-      "type": "timeseries"
+      "type": "timeseries",
+      "interval": "5s"
     },
     {
       "datasource": {
@@ -396,7 +398,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "select \"timestamp\", a_phsc_mag as \"Angulo Y\"\r\nfrom data\r\nwhere device_uuid = '00000003-0001-0005-0000-000000000001' AND $__timeFilter(\"timestamp\")\r\nORDER BY \"timestamp\" ASC;",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(a_phsc_mag) AS \"Angulo Y\"\nFROM public.data\nWHERE device_uuid = '00000003-0001-0005-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
           "refId": "A",
           "sql": {
             "columns": [
@@ -418,7 +420,8 @@
         }
       ],
       "title": "Angulo Y",
-      "type": "timeseries"
+      "type": "timeseries",
+      "interval": "5s"
     },
     {
       "collapsed": false,
@@ -504,7 +507,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "select \"timestamp\", a_neut_mag\r\nfrom data\r\nwhere device_uuid = '00000003-0001-0005-0000-000000000001' AND $__timeFilter(\"timestamp\")\r\nORDER BY \"timestamp\" ASC;",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(a_neut_mag) AS \"a_neut_mag\"\nFROM public.data\nWHERE device_uuid = '00000003-0001-0005-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
           "refId": "A",
           "sql": {
             "columns": [
@@ -526,7 +529,8 @@
         }
       ],
       "title": "Temperatura",
-      "type": "stat"
+      "type": "stat",
+      "interval": "5s"
     },
     {
       "datasource": {
@@ -640,7 +644,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "select \"timestamp\", a_phsb_mag as \"Angulo X\"\r\nfrom data\r\nwhere device_uuid = '00000003-0001-0005-0000-000000000001' AND $__timeFilter(\"timestamp\")\r\nORDER BY \"timestamp\" ASC;",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(a_phsb_mag) AS \"Angulo X\"\nFROM public.data\nWHERE device_uuid = '00000003-0001-0005-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
           "refId": "A",
           "sql": {
             "columns": [
@@ -662,7 +666,8 @@
         }
       ],
       "title": "Angulo X",
-      "type": "timeseries"
+      "type": "timeseries",
+      "interval": "5s"
     },
     {
       "datasource": {
@@ -755,7 +760,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "select \"timestamp\", var_phsa_mag as \"Active\"\nfrom data\nwhere device_uuid = '00000006-0100-0015-0000-000000000002' AND $__timeFilter(\"timestamp\")\nORDER BY \"timestamp\" ASC;",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(var_phsa_mag) AS \"Active\"\nFROM public.data\nWHERE device_uuid = '00000006-0100-0015-0000-000000000002'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
           "refId": "A",
           "sql": {
             "columns": [
@@ -777,7 +782,8 @@
         }
       ],
       "title": "POWER",
-      "type": "timeseries"
+      "type": "timeseries",
+      "interval": "5s"
     },
     {
       "datasource": {
@@ -849,7 +855,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "select \"timestamp\", var_phsc_mag as \"Battery State\"\r\nfrom data\r\nwhere device_uuid = '00000006-0100-0015-0000-000000000002' AND $__timeFilter(\"timestamp\")\r\nORDER BY \"timestamp\" ASC;",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(var_phsc_mag) AS \"Battery State\"\nFROM public.data\nWHERE device_uuid = '00000006-0100-0015-0000-000000000002'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
           "refId": "A",
           "sql": {
             "columns": [
@@ -871,7 +877,8 @@
         }
       ],
       "title": "",
-      "type": "stat"
+      "type": "stat",
+      "interval": "5s"
     },
     {
       "datasource": {
@@ -986,7 +993,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "select \"timestamp\", var_net_mag as \"Voltage\"\r\nfrom public.data\r\nwhere device_uuid = '00000006-0100-0015-0000-000000000002' AND $__timeFilter(\"timestamp\")\r\nORDER BY \"timestamp\" ASC;",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(var_net_mag) AS \"Voltage\"\nFROM public.data\nWHERE device_uuid = '00000006-0100-0015-0000-000000000002'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
           "refId": "A",
           "sql": {
             "columns": [
@@ -1008,7 +1015,8 @@
         }
       ],
       "title": "VOLTAGE",
-      "type": "timeseries"
+      "type": "timeseries",
+      "interval": "5s"
     },
     {
       "datasource": {
@@ -1079,7 +1087,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "select \"timestamp\", var_phsb_mag\r\nfrom data\r\nwhere device_uuid = '00000006-0100-0015-0000-000000000002' AND $__timeFilter(\"timestamp\")\r\nORDER BY \"timestamp\" ASC;",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(var_phsb_mag) AS \"var_phsb_mag\"\nFROM public.data\nWHERE device_uuid = '00000006-0100-0015-0000-000000000002'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
           "refId": "A",
           "sql": {
             "columns": [
@@ -1101,7 +1109,8 @@
         }
       ],
       "title": "Porcentaje de carga",
-      "type": "gauge"
+      "type": "gauge",
+      "interval": "5s"
     },
     {
       "collapsed": true,
@@ -1203,7 +1212,7 @@
               "editorMode": "code",
               "format": "table",
               "rawQuery": true,
-              "rawSql": "select \"timestamp\", phv_phsc_mag as \"Active\", ppv_phsab_mag as \"Reactive\", ppv_phsbc_mag as \"Aparent\"\nfrom data\nwhere device_uuid = '00000001-0006-0020-0000-000000000001' AND $__timeFilter(\"timestamp\")\nORDER BY \"timestamp\" ASC;",
+              "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(phv_phsc_mag) AS \"Active\",\n  avg(ppv_phsab_mag) AS \"Reactive\",\n  avg(ppv_phsbc_mag) AS \"Aparent\"\nFROM public.data\nWHERE device_uuid = '00000001-0006-0020-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
               "refId": "A",
               "sql": {
                 "columns": [
@@ -1225,7 +1234,8 @@
             }
           ],
           "title": "POWER",
-          "type": "timeseries"
+          "type": "timeseries",
+          "interval": "5s"
         },
         {
           "datasource": {
@@ -1464,7 +1474,7 @@
               "editorMode": "code",
               "format": "table",
               "rawQuery": true,
-              "rawSql": "select \"timestamp\", a_net_mag as \"Current L1\", a_neut_mag as \"Current L2\", a_phsa_mag as \"Current L3\", \"a_phsb_mag\" as \"Current Avg.\"\r\nfrom data\r\nwhere device_uuid = '00000001-0006-0020-0000-000000000001' AND $__timeFilter(\"timestamp\")\r\nORDER BY \"timestamp\" ASC;",
+              "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(a_net_mag) AS \"Current L1\",\n  avg(a_neut_mag) AS \"Current L2\",\n  avg(a_phsa_mag) AS \"Current L3\",\n  avg(a_phsb_mag) AS \"Current Avg.\"\nFROM public.data\nWHERE device_uuid = '00000001-0006-0020-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
               "refId": "A",
               "sql": {
                 "columns": [
@@ -1486,7 +1496,8 @@
             }
           ],
           "title": "CURRENT",
-          "type": "timeseries"
+          "type": "timeseries",
+          "interval": "5s"
         },
         {
           "datasource": {
@@ -1547,7 +1558,7 @@
               "editorMode": "code",
               "format": "table",
               "rawQuery": true,
-              "rawSql": "select \"timestamp\", va_net_mag\r\nfrom data\r\nwhere device_uuid = '00000001-0006-0020-0000-000000000001' AND $__timeFilter(\"timestamp\")\r\nORDER BY \"timestamp\" ASC;",
+              "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(va_net_mag) AS \"va_net_mag\"\nFROM public.data\nWHERE device_uuid = '00000001-0006-0020-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
               "refId": "A",
               "sql": {
                 "columns": [
@@ -1569,7 +1580,8 @@
             }
           ],
           "title": "FREQUENCY",
-          "type": "stat"
+          "type": "stat",
+          "interval": "5s"
         },
         {
           "datasource": {
@@ -1743,7 +1755,7 @@
               "editorMode": "code",
               "format": "table",
               "rawQuery": true,
-              "rawSql": "select \"timestamp\", pf_phsa_mag as \"Voltage L1N\", pf_phsb_mag as \"Voltage L2N\", pf_phsc_mag as \"Voltage L3N\", phv_net_mag as \"Voltage L-N Avg.\"\r\nfrom public.data\r\nwhere device_uuid = '00000001-0006-0020-0000-000000000001' AND $__timeFilter(\"timestamp\")\r\nORDER BY \"timestamp\" ASC;",
+              "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(pf_phsa_mag) AS \"Voltage L1N\",\n  avg(pf_phsb_mag) AS \"Voltage L2N\",\n  avg(pf_phsc_mag) AS \"Voltage L3N\",\n  avg(phv_net_mag) AS \"Voltage L-N Avg.\"\nFROM public.data\nWHERE device_uuid = '00000001-0006-0020-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
               "refId": "A",
               "sql": {
                 "columns": [
@@ -1765,7 +1777,8 @@
             }
           ],
           "title": "VOLTAGE",
-          "type": "timeseries"
+          "type": "timeseries",
+          "interval": "5s"
         }
       ],
       "title": "Meter - PEL",
@@ -1871,7 +1884,7 @@
               "editorMode": "code",
               "format": "table",
               "rawQuery": true,
-              "rawSql": "select \"timestamp\", phv_phsc_mag as \"Active\", ppv_phsab_mag as \"Reactive\", ppv_phsbc_mag as \"Aparent\"\nfrom data\nwhere device_uuid = '00000001-0005-0020-0000-000000000001' AND $__timeFilter(\"timestamp\")\nORDER BY \"timestamp\" ASC;",
+              "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(phv_phsc_mag) AS \"Active\",\n  avg(ppv_phsab_mag) AS \"Reactive\",\n  avg(ppv_phsbc_mag) AS \"Aparent\"\nFROM public.data\nWHERE device_uuid = '00000001-0005-0020-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
               "refId": "A",
               "sql": {
                 "columns": [
@@ -1893,7 +1906,8 @@
             }
           ],
           "title": "POWER",
-          "type": "timeseries"
+          "type": "timeseries",
+          "interval": "5s"
         },
         {
           "datasource": {
@@ -1954,7 +1968,7 @@
               "editorMode": "code",
               "format": "table",
               "rawQuery": true,
-              "rawSql": "select \"timestamp\", va_net_mag\r\nfrom data\r\nwhere device_uuid = '00000001-0005-0020-0000-000000000001' AND $__timeFilter(\"timestamp\")\r\nORDER BY \"timestamp\" ASC;",
+              "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(va_net_mag) AS \"va_net_mag\"\nFROM public.data\nWHERE device_uuid = '00000001-0005-0020-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
               "refId": "A",
               "sql": {
                 "columns": [
@@ -1976,7 +1990,8 @@
             }
           ],
           "title": "FREQUENCY",
-          "type": "stat"
+          "type": "stat",
+          "interval": "5s"
         },
         {
           "datasource": {
@@ -2134,7 +2149,7 @@
               "editorMode": "code",
               "format": "table",
               "rawQuery": true,
-              "rawSql": "select \"timestamp\", a_net_mag as \"Current L1\", a_neut_mag as \"Current L2\", a_phsa_mag as \"Current L3\", \"a_phsb_mag\" as \"Current Avg.\"\r\nfrom data\r\nwhere device_uuid = '00000001-0005-0020-0000-000000000001' AND $__timeFilter(\"timestamp\")\r\nORDER BY \"timestamp\" ASC;",
+              "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(a_net_mag) AS \"Current L1\",\n  avg(a_neut_mag) AS \"Current L2\",\n  avg(a_phsa_mag) AS \"Current L3\",\n  avg(a_phsb_mag) AS \"Current Avg.\"\nFROM public.data\nWHERE device_uuid = '00000001-0005-0020-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
               "refId": "A",
               "sql": {
                 "columns": [
@@ -2156,7 +2171,8 @@
             }
           ],
           "title": "CURRENT",
-          "type": "timeseries"
+          "type": "timeseries",
+          "interval": "5s"
         },
         {
           "datasource": {
@@ -2411,7 +2427,7 @@
               "editorMode": "code",
               "format": "table",
               "rawQuery": true,
-              "rawSql": "select \"timestamp\", pf_phsa_mag as \"Voltage L1N\", pf_phsb_mag as \"Voltage L2N\", pf_phsc_mag as \"Voltage L3N\", phv_net_mag as \"Voltage L-N Avg.\"\r\nfrom public.data\r\nwhere device_uuid = '00000001-0005-0020-0000-000000000001' AND $__timeFilter(\"timestamp\")\r\nORDER BY \"timestamp\" ASC;",
+              "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(pf_phsa_mag) AS \"Voltage L1N\",\n  avg(pf_phsb_mag) AS \"Voltage L2N\",\n  avg(pf_phsc_mag) AS \"Voltage L3N\",\n  avg(phv_net_mag) AS \"Voltage L-N Avg.\"\nFROM public.data\nWHERE device_uuid = '00000001-0005-0020-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
               "refId": "A",
               "sql": {
                 "columns": [
@@ -2433,7 +2449,8 @@
             }
           ],
           "title": "VOLTAGE",
-          "type": "timeseries"
+          "type": "timeseries",
+          "interval": "5s"
         }
       ],
       "title": "Meter - Fronius",
@@ -2539,7 +2556,7 @@
               "editorMode": "code",
               "format": "table",
               "rawQuery": true,
-              "rawSql": "select \"timestamp\", phv_phsc_mag as \"Active\", ppv_phsab_mag as \"Reactive\", ppv_phsbc_mag as \"Aparent\"\nfrom data\nwhere device_uuid = '00000001-0003-0020-0000-000000000001' AND $__timeFilter(\"timestamp\")\nORDER BY \"timestamp\" ASC;",
+              "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(phv_phsc_mag) AS \"Active\",\n  avg(ppv_phsab_mag) AS \"Reactive\",\n  avg(ppv_phsbc_mag) AS \"Aparent\"\nFROM public.data\nWHERE device_uuid = '00000001-0003-0020-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
               "refId": "A",
               "sql": {
                 "columns": [
@@ -2561,7 +2578,8 @@
             }
           ],
           "title": "POWER",
-          "type": "timeseries"
+          "type": "timeseries",
+          "interval": "5s"
         },
         {
           "datasource": {
@@ -2800,7 +2818,7 @@
               "editorMode": "code",
               "format": "table",
               "rawQuery": true,
-              "rawSql": "select \"timestamp\", a_net_mag as \"Current L1\", a_neut_mag as \"Current L2\", a_phsa_mag as \"Current L3\", \"a_phsb_mag\" as \"Current Avg.\"\r\nfrom data\r\nwhere device_uuid = '00000001-0003-0020-0000-000000000001' AND $__timeFilter(\"timestamp\")\r\nORDER BY \"timestamp\" ASC;",
+              "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(a_net_mag) AS \"Current L1\",\n  avg(a_neut_mag) AS \"Current L2\",\n  avg(a_phsa_mag) AS \"Current L3\",\n  avg(a_phsb_mag) AS \"Current Avg.\"\nFROM public.data\nWHERE device_uuid = '00000001-0003-0020-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
               "refId": "A",
               "sql": {
                 "columns": [
@@ -2822,7 +2840,8 @@
             }
           ],
           "title": "CURRENT",
-          "type": "timeseries"
+          "type": "timeseries",
+          "interval": "5s"
         },
         {
           "datasource": {
@@ -2883,7 +2902,7 @@
               "editorMode": "code",
               "format": "table",
               "rawQuery": true,
-              "rawSql": "select \"timestamp\", va_net_mag\r\nfrom data\r\nwhere device_uuid = '00000001-0003-0020-0000-000000000001' AND $__timeFilter(\"timestamp\")\r\nORDER BY \"timestamp\" ASC;",
+              "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(va_net_mag) AS \"va_net_mag\"\nFROM public.data\nWHERE device_uuid = '00000001-0003-0020-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
               "refId": "A",
               "sql": {
                 "columns": [
@@ -2905,7 +2924,8 @@
             }
           ],
           "title": "FREQUENCY",
-          "type": "stat"
+          "type": "stat",
+          "interval": "5s"
         },
         {
           "datasource": {
@@ -3079,7 +3099,7 @@
               "editorMode": "code",
               "format": "table",
               "rawQuery": true,
-              "rawSql": "select \"timestamp\", pf_phsa_mag as \"Voltage L1N\", pf_phsb_mag as \"Voltage L2N\", pf_phsc_mag as \"Voltage L3N\", phv_net_mag as \"Voltage L-N Avg.\"\r\nfrom public.data\r\nwhere device_uuid = '00000001-0003-0020-0000-000000000001' AND $__timeFilter(\"timestamp\")\r\nORDER BY \"timestamp\" ASC;",
+              "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(pf_phsa_mag) AS \"Voltage L1N\",\n  avg(pf_phsb_mag) AS \"Voltage L2N\",\n  avg(pf_phsc_mag) AS \"Voltage L3N\",\n  avg(phv_net_mag) AS \"Voltage L-N Avg.\"\nFROM public.data\nWHERE device_uuid = '00000001-0003-0020-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
               "refId": "A",
               "sql": {
                 "columns": [
@@ -3101,7 +3121,8 @@
             }
           ],
           "title": "VOLTAGE",
-          "type": "timeseries"
+          "type": "timeseries",
+          "interval": "5s"
         }
       ],
       "title": "Meter - Microinversores",
@@ -3207,7 +3228,7 @@
               "editorMode": "code",
               "format": "table",
               "rawQuery": true,
-              "rawSql": "select \"timestamp\", phv_phsc_mag as \"Active\", ppv_phsab_mag as \"Reactive\", ppv_phsbc_mag as \"Aparent\"\nfrom data\nwhere device_uuid = '00000001-0001-0020-0000-000000000001' AND $__timeFilter(\"timestamp\")\nORDER BY \"timestamp\" ASC;",
+              "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(phv_phsc_mag) AS \"Active\",\n  avg(ppv_phsab_mag) AS \"Reactive\",\n  avg(ppv_phsbc_mag) AS \"Aparent\"\nFROM public.data\nWHERE device_uuid = '00000001-0001-0020-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
               "refId": "A",
               "sql": {
                 "columns": [
@@ -3229,7 +3250,8 @@
             }
           ],
           "title": "POWER",
-          "type": "timeseries"
+          "type": "timeseries",
+          "interval": "5s"
         },
         {
           "datasource": {
@@ -3468,7 +3490,7 @@
               "editorMode": "code",
               "format": "table",
               "rawQuery": true,
-              "rawSql": "select \"timestamp\", a_net_mag as \"Current L1\", a_neut_mag as \"Current L2\", a_phsa_mag as \"Current L3\", \"a_phsb_mag\" as \"Current Avg.\"\r\nfrom data\r\nwhere device_uuid = '00000001-0001-0020-0000-000000000001' AND $__timeFilter(\"timestamp\")\r\nORDER BY \"timestamp\" ASC;",
+              "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(a_net_mag) AS \"Current L1\",\n  avg(a_neut_mag) AS \"Current L2\",\n  avg(a_phsa_mag) AS \"Current L3\",\n  avg(a_phsb_mag) AS \"Current Avg.\"\nFROM public.data\nWHERE device_uuid = '00000001-0001-0020-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
               "refId": "A",
               "sql": {
                 "columns": [
@@ -3490,7 +3512,8 @@
             }
           ],
           "title": "CURRENT",
-          "type": "timeseries"
+          "type": "timeseries",
+          "interval": "5s"
         },
         {
           "datasource": {
@@ -3554,7 +3577,7 @@
               "editorMode": "code",
               "format": "table",
               "rawQuery": true,
-              "rawSql": "select \"timestamp\", va_net_mag\r\nfrom data \r\nwhere device_uuid = '00000001-0001-0020-0000-000000000001' AND $__timeFilter(\"timestamp\")\r\nORDER BY \"timestamp\" ASC;",
+              "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(va_net_mag) AS \"va_net_mag\"\nFROM public.data\nWHERE device_uuid = '00000001-0001-0020-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
               "refId": "A",
               "sql": {
                 "columns": [
@@ -3576,7 +3599,8 @@
             }
           ],
           "title": "FREQUENCY",
-          "type": "stat"
+          "type": "stat",
+          "interval": "5s"
         },
         {
           "datasource": {
@@ -3750,7 +3774,7 @@
               "editorMode": "code",
               "format": "table",
               "rawQuery": true,
-              "rawSql": "select \"timestamp\", pf_phsa_mag as \"Voltage L1N\", pf_phsb_mag as \"Voltage L2N\", pf_phsc_mag as \"Voltage L3N\", phv_net_mag as \"Voltage L-N Avg.\"\r\nfrom public.data\r\nwhere device_uuid = '00000001-0001-0020-0000-000000000001' AND $__timeFilter(\"timestamp\")\r\nORDER BY \"timestamp\" ASC;",
+              "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(pf_phsa_mag) AS \"Voltage L1N\",\n  avg(pf_phsb_mag) AS \"Voltage L2N\",\n  avg(pf_phsc_mag) AS \"Voltage L3N\",\n  avg(phv_net_mag) AS \"Voltage L-N Avg.\"\nFROM public.data\nWHERE device_uuid = '00000001-0001-0020-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
               "refId": "A",
               "sql": {
                 "columns": [
@@ -3772,7 +3796,8 @@
             }
           ],
           "title": "VOLTAGE",
-          "type": "timeseries"
+          "type": "timeseries",
+          "interval": "5s"
         }
       ],
       "title": "Meter - Iluminación",
@@ -3878,7 +3903,7 @@
               "editorMode": "code",
               "format": "table",
               "rawQuery": true,
-              "rawSql": "select \"timestamp\", phv_phsc_mag as \"Active\", ppv_phsab_mag as \"Reactive\", ppv_phsbc_mag as \"Aparent\"\nfrom data\nwhere device_uuid = '00000001-0002-0020-0000-000000000001' AND $__timeFilter(\"timestamp\")\nORDER BY \"timestamp\" ASC;",
+              "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(phv_phsc_mag) AS \"Active\",\n  avg(ppv_phsab_mag) AS \"Reactive\",\n  avg(ppv_phsbc_mag) AS \"Aparent\"\nFROM public.data\nWHERE device_uuid = '00000001-0002-0020-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
               "refId": "A",
               "sql": {
                 "columns": [
@@ -3900,7 +3925,8 @@
             }
           ],
           "title": "POWER",
-          "type": "timeseries"
+          "type": "timeseries",
+          "interval": "5s"
         },
         {
           "datasource": {
@@ -4139,7 +4165,7 @@
               "editorMode": "code",
               "format": "table",
               "rawQuery": true,
-              "rawSql": "select \"timestamp\", a_net_mag as \"Current L1\", a_neut_mag as \"Current L2\", a_phsa_mag as \"Current L3\", \"a_phsb_mag\" as \"Current Avg.\"\r\nfrom data\r\nwhere device_uuid = '00000001-0002-0020-0000-000000000001' AND $__timeFilter(\"timestamp\")\r\nORDER BY \"timestamp\" ASC;",
+              "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(a_net_mag) AS \"Current L1\",\n  avg(a_neut_mag) AS \"Current L2\",\n  avg(a_phsa_mag) AS \"Current L3\",\n  avg(a_phsb_mag) AS \"Current Avg.\"\nFROM public.data\nWHERE device_uuid = '00000001-0002-0020-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
               "refId": "A",
               "sql": {
                 "columns": [
@@ -4161,7 +4187,8 @@
             }
           ],
           "title": "CURRENT",
-          "type": "timeseries"
+          "type": "timeseries",
+          "interval": "5s"
         },
         {
           "datasource": {
@@ -4222,7 +4249,7 @@
               "editorMode": "code",
               "format": "table",
               "rawQuery": true,
-              "rawSql": "select \"timestamp\", va_net_mag\r\nfrom data\r\nwhere device_uuid = '00000001-0002-0020-0000-000000000001' AND $__timeFilter(\"timestamp\")\r\nORDER BY \"timestamp\" ASC;",
+              "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(va_net_mag) AS \"va_net_mag\"\nFROM public.data\nWHERE device_uuid = '00000001-0002-0020-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
               "refId": "A",
               "sql": {
                 "columns": [
@@ -4244,7 +4271,8 @@
             }
           ],
           "title": "FREQUENCY",
-          "type": "stat"
+          "type": "stat",
+          "interval": "5s"
         },
         {
           "datasource": {
@@ -4418,7 +4446,7 @@
               "editorMode": "code",
               "format": "table",
               "rawQuery": true,
-              "rawSql": "select \"timestamp\", pf_phsa_mag as \"Voltage L1N\", pf_phsb_mag as \"Voltage L2N\", pf_phsc_mag as \"Voltage L3N\", phv_net_mag as \"Voltage L-N Avg.\"\r\nfrom public.data\r\nwhere device_uuid = '00000001-0002-0020-0000-000000000001' AND $__timeFilter(\"timestamp\")\r\nORDER BY \"timestamp\" ASC;",
+              "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(pf_phsa_mag) AS \"Voltage L1N\",\n  avg(pf_phsb_mag) AS \"Voltage L2N\",\n  avg(pf_phsc_mag) AS \"Voltage L3N\",\n  avg(phv_net_mag) AS \"Voltage L-N Avg.\"\nFROM public.data\nWHERE device_uuid = '00000001-0002-0020-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
               "refId": "A",
               "sql": {
                 "columns": [
@@ -4440,7 +4468,8 @@
             }
           ],
           "title": "VOLTAGE",
-          "type": "timeseries"
+          "type": "timeseries",
+          "interval": "5s"
         }
       ],
       "title": "Meter - Operador de Red",
@@ -4546,7 +4575,7 @@
               "editorMode": "code",
               "format": "table",
               "rawQuery": true,
-              "rawSql": "select \"timestamp\", phv_phsc_mag as \"Active\", ppv_phsab_mag as \"Reactive\", ppv_phsbc_mag as \"Aparent\"\nfrom data\nwhere device_uuid = '00000001-0004-0020-0000-000000000001' AND $__timeFilter(\"timestamp\")\nORDER BY \"timestamp\" ASC;",
+              "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(phv_phsc_mag) AS \"Active\",\n  avg(ppv_phsab_mag) AS \"Reactive\",\n  avg(ppv_phsbc_mag) AS \"Aparent\"\nFROM public.data\nWHERE device_uuid = '00000001-0004-0020-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
               "refId": "A",
               "sql": {
                 "columns": [
@@ -4568,7 +4597,8 @@
             }
           ],
           "title": "POWER",
-          "type": "timeseries"
+          "type": "timeseries",
+          "interval": "5s"
         },
         {
           "datasource": {
@@ -4807,7 +4837,7 @@
               "editorMode": "code",
               "format": "table",
               "rawQuery": true,
-              "rawSql": "select \"timestamp\", a_net_mag as \"Current L1\", a_neut_mag as \"Current L2\", a_phsa_mag as \"Current L3\", \"a_phsb_mag\" as \"Current Avg.\"\r\nfrom data\r\nwhere device_uuid = '00000001-0004-0020-0000-000000000001' AND $__timeFilter(\"timestamp\")\r\nORDER BY \"timestamp\" ASC;",
+              "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(a_net_mag) AS \"Current L1\",\n  avg(a_neut_mag) AS \"Current L2\",\n  avg(a_phsa_mag) AS \"Current L3\",\n  avg(a_phsb_mag) AS \"Current Avg.\"\nFROM public.data\nWHERE device_uuid = '00000001-0004-0020-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
               "refId": "A",
               "sql": {
                 "columns": [
@@ -4829,7 +4859,8 @@
             }
           ],
           "title": "CURRENT",
-          "type": "timeseries"
+          "type": "timeseries",
+          "interval": "5s"
         },
         {
           "datasource": {
@@ -4890,7 +4921,7 @@
               "editorMode": "code",
               "format": "table",
               "rawQuery": true,
-              "rawSql": "select \"timestamp\", va_net_mag\r\nfrom data\r\nwhere device_uuid = '00000001-0004-0020-0000-000000000001' AND $__timeFilter(\"timestamp\")\r\nORDER BY \"timestamp\" ASC;",
+              "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(va_net_mag) AS \"va_net_mag\"\nFROM public.data\nWHERE device_uuid = '00000001-0004-0020-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
               "refId": "A",
               "sql": {
                 "columns": [
@@ -4912,7 +4943,8 @@
             }
           ],
           "title": "FREQUENCY",
-          "type": "stat"
+          "type": "stat",
+          "interval": "5s"
         },
         {
           "datasource": {
@@ -5086,7 +5118,7 @@
               "editorMode": "code",
               "format": "table",
               "rawQuery": true,
-              "rawSql": "select \"timestamp\", pf_phsa_mag as \"Voltage L1N\", pf_phsb_mag as \"Voltage L2N\", pf_phsc_mag as \"Voltage L3N\", phv_net_mag as \"Voltage L-N Avg.\"\r\nfrom public.data\r\nwhere device_uuid = '00000001-0004-0020-0000-000000000001' AND $__timeFilter(\"timestamp\")\r\nORDER BY \"timestamp\" ASC;",
+              "rawSql": "SELECT\n  $__timeGroupAlias(\"timestamp\", $__interval),\n  avg(pf_phsa_mag) AS \"Voltage L1N\",\n  avg(pf_phsb_mag) AS \"Voltage L2N\",\n  avg(pf_phsc_mag) AS \"Voltage L3N\",\n  avg(phv_net_mag) AS \"Voltage L-N Avg.\"\nFROM public.data\nWHERE device_uuid = '00000001-0004-0020-0000-000000000001'\n  AND $__timeFilter(\"timestamp\")\nGROUP BY 1\nORDER BY 1;",
               "refId": "A",
               "sql": {
                 "columns": [
@@ -5108,7 +5140,8 @@
             }
           ],
           "title": "VOLTAGE",
-          "type": "timeseries"
+          "type": "timeseries",
+          "interval": "5s"
         }
       ],
       "title": "Meter - Medidor Inversor Quattro",
