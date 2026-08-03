@@ -23,24 +23,53 @@ logging.basicConfig(
 )
 log = logging.getLogger("sql-proxy")
 
-_NAN_RE = re.compile(r"(?<!')\bnan\b(?!')", re.IGNORECASE)
+# glibc imprime NaN como "nan"/"-nan" y los infinitos como "inf"/"-inf"
+# (otros runtimes usan "infinity"). El signo debe absorberse en el reemplazo,
+# o quedaria "-NULL" (error de sintaxis en PostgreSQL).
+#
+# Scanner de un solo paso: las alternativas de "protected" capturan regiones
+# que deben copiarse intactas (strings E'...', literales '...', identificadores
+# "..." y dollar-quoting); solo los tokens nan/inf que quedan fuera de esas
+# regiones se reemplazan por NULL. En el dollar-quoting, el tag admite vacio
+# ("|") en vez de "?" para que el backreference funcione con $$...$$.
+_SQL_SCAN_RE = re.compile(
+    r"""
+      (?P<protected>
+          E'(?:[^'\\]|\\.|'')*'                        # string E'...' (escapes \)
+        | '(?:[^']|'')*'                               # literal ('' = comilla)
+        | "(?:[^"]|"")*"                               # identificador "..."
+        | \$(?P<tag>[A-Za-z_]\w*|)\$.*?\$(?P=tag)\$    # dollar-quoting
+      )
+    | (?P<bad>[-+]?\b(?:nan|inf(?:inity)?)\b)
+    """,
+    re.IGNORECASE | re.VERBOSE | re.DOTALL,
+)
 
 
 def rewrite_sql(sql: str) -> tuple:
-    if "nan" not in sql.lower():
+    low = sql.lower()
+    if "nan" not in low and "inf" not in low:
         return sql, False
-    parts = sql.split("'")
-    result = []
     changed = False
-    for i, part in enumerate(parts):
-        if i % 2 == 0:
-            new_part = _NAN_RE.sub("NULL", part)
-            if new_part != part:
-                changed = True
-            result.append(new_part)
-        else:
-            result.append(part)
-    return "'".join(result), changed
+
+    def _replace(m):
+        nonlocal changed
+        if m.group("bad"):
+            changed = True
+            return "NULL"
+        return m.group(0)
+
+    return _SQL_SCAN_RE.sub(_replace, sql), changed
+
+
+# Limite superior del campo length; PostgreSQL impone el mismo (1 GiB).
+# Un length fuera de [4, MAX] solo puede venir de trafico corrupto o malicioso
+# y desincronizaria el framing (o intentaria reservar GBs de memoria).
+MAX_PG_MSG_LEN = 1 << 30
+
+
+class ProtocolError(Exception):
+    """Frame invalido en el wire protocol; la conexion no puede continuar."""
 
 
 async def read_exact(reader: asyncio.StreamReader, n: int) -> bytes:
@@ -61,34 +90,41 @@ async def read_pg_message(reader: asyncio.StreamReader, startup_done: bool) -> t
     
     startup_done=False: first message is StartupMessage (no type byte)
     startup_done=True: normal message with type byte
+
+    Lanza ProtocolError si el campo length es invalido. Un EOF a mitad de
+    mensaje descarta el fragmento y se reporta como EOF (b"").
     """
-    if not startup_done:
-        length_bytes = await read_exact(reader, 4)
-        if len(length_bytes) < 4:
-            return length_bytes, True
-        
-        length = struct.unpack("!I", length_bytes)[0]
-        payload_len = length - 4
-        payload = b""
-        if payload_len > 0:
-            payload = await read_exact(reader, payload_len)
-        return length_bytes + payload, True
-    else:
-        type_byte = await reader.read(1)
-        if not type_byte:
+    head = b""
+    if startup_done:
+        head = await reader.read(1)
+        if not head:
             return b"", False
-        
-        length_bytes = await read_exact(reader, 4)
-        if len(length_bytes) < 4:
-            return type_byte + length_bytes, True
-        
-        length = struct.unpack("!I", length_bytes)[0]
-        payload_len = length - 4
-        payload = b""
-        if payload_len > 0:
-            payload = await read_exact(reader, payload_len)
-        
-        return type_byte + length_bytes + payload, True
+
+    length_bytes = await read_exact(reader, 4)
+    if len(length_bytes) < 4:
+        if head or length_bytes:
+            log.warning(
+                "EOF a mitad de frame: %d bytes de cabecera descartados",
+                len(head) + len(length_bytes),
+            )
+        return b"", True
+
+    length = struct.unpack("!I", length_bytes)[0]
+    if not 4 <= length <= MAX_PG_MSG_LEN:
+        raise ProtocolError("campo length invalido: %d" % length)
+
+    payload_len = length - 4
+    payload = b""
+    if payload_len > 0:
+        payload = await read_exact(reader, payload_len)
+        if len(payload) < payload_len:
+            log.warning(
+                "EOF a mitad de frame: payload incompleto (%d de %d bytes), descartado",
+                len(payload), payload_len,
+            )
+            return b"", True
+
+    return head + length_bytes + payload, True
 
 
 def classify_client_msg(data: bytes) -> str:
@@ -249,6 +285,8 @@ async def relay_to_pg(
 
     except asyncio.CancelledError:
         log.info("adapter→PG: cancelled after %d msgs", count)
+    except ProtocolError as exc:
+        log.error("adapter→PG: frame invalido tras %d msgs, cerrando conexion: %s", count, exc)
     except (ConnectionResetError, BrokenPipeError) as exc:
         log.info("adapter→PG: connection lost after %d msgs: %s", count, exc)
     except Exception as exc:
@@ -298,15 +336,20 @@ async def handle_client(
     log.info("=== Nueva conexion desde %s ===", peer)
 
     try:
-        first_data = await asyncio.wait_for(client_reader.read(8), timeout=5.0)
-        if len(first_data) == 8:
-            code = struct.unpack("!I", first_data[4:8])[0]
-            if code == 80877103:
-                client_writer.write(b"N")
-                await client_writer.drain()
-                log.info("SSLRequest rechazado desde %s", peer)
-            else:
-                client_reader = _PrefixedReader(first_data, client_reader)
+        # Todo primer mensaje valido mide >= 8 bytes (SSLRequest=8,
+        # CancelRequest=16, StartupMessage>=9), asi que exigir 8 es seguro.
+        first_data = await asyncio.wait_for(client_reader.readexactly(8), timeout=5.0)
+        code = struct.unpack("!I", first_data[4:8])[0]
+        if code == 80877103:
+            client_writer.write(b"N")
+            await client_writer.drain()
+            log.info("SSLRequest rechazado desde %s", peer)
+        else:
+            client_reader = _PrefixedReader(first_data, client_reader)
+    except asyncio.IncompleteReadError:
+        log.warning("Conexion cerrada antes del primer mensaje completo desde %s", peer)
+        client_writer.close()
+        return
     except asyncio.TimeoutError:
         log.warning("Timeout esperando primer mensaje desde %s", peer)
         client_writer.close()
@@ -365,19 +408,19 @@ async def main():
     log.info("SQL NaN Proxy arrancado")
     log.info("  Escuchando en:  0.0.0.0:%d", LISTEN_PORT)
     log.info("  PostgreSQL en:  %s:%d", PG_HOST, PG_PORT)
-    log.info("  Funcion:        reemplazar nan -> NULL en INSERTs")
+    log.info("  Funcion:        reemplazar nan/inf -> NULL en INSERTs")
     log.info("  Framing:        message-by-message (proper wire protocol)")
     log.info("=" * 60)
 
+    # start_server() ya deja el servidor aceptando conexiones; se espera la
+    # senal con un Event en vez de serve_forever(), cuya cancelacion via
+    # server.close() propagaria CancelledError hasta asyncio.run.
+    stop = asyncio.Event()
     loop = asyncio.get_running_loop()
     for sig in (signal.SIGTERM, signal.SIGINT):
-        loop.add_signal_handler(sig, lambda: asyncio.create_task(shutdown(server)))
+        loop.add_signal_handler(sig, stop.set)
 
-    async with server:
-        await server.serve_forever()
-
-
-async def shutdown(server):
+    await stop.wait()
     log.info("Senal de apagado recibida, cerrando proxy...")
     server.close()
     await server.wait_closed()

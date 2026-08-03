@@ -122,15 +122,32 @@ services:
       - "3000:3000"
     environment:
       - GF_SECURITY_ALLOW_EMBEDDING=true
-      - GF_AUTH_ANONYMOUS_ENABLED=true
-      - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
-      - GF_AUTH_ANONYMOUS_ORG_NAME=Main Org.
+      # Login obligatorio. El acceso anonimo se deja apagado a proposito: con
+      # el encendido, cerrar el navegador y volver te devuelve como usuario
+      # "Anonymous" en vez de pedirte login, y parece que se hubiera caido la
+      # sesion. Ver GF_AUTH_LOGIN_MAXIMUM_* mas abajo para la persistencia.
+      - GF_AUTH_ANONYMOUS_ENABLED=false
       - GF_AUTH_DISABLE_LOGIN_FORM=false
       - GF_AUTH_BASIC_ENABLED=true
-      # Credenciales del admin. Grafana las reaplica en cada arranque, asi que
-      # el .env es la fuente de verdad de la clave de admin.
+      # OJO: Grafana aplica esta clave SOLO cuando crea el usuario admin por
+      # primera vez en un volumen vacio. En arranques posteriores NO la
+      # reescribe, asi que cambiar el .env no cambia la clave real. Para
+      # cambiarla en un volumen que ya existe:
+      #   ./scripts/grafana_reset_admin_password.sh
       - GF_SECURITY_ADMIN_USER=${GRAFANA_USER}
       - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
+      # --- Persistencia de la sesion iniciada ---
+      # La cookie grafana_session sobrevive a cerrar el navegador; estos dos
+      # valores marcan cuanto dura. Inactividad de 30 dias y tope absoluto de
+      # 90, para no tener que volver a loguearse cada semana (default: 7d/30d).
+      - GF_AUTH_LOGIN_MAXIMUM_INACTIVE_LIFETIME_DURATION=30d
+      - GF_AUTH_LOGIN_MAXIMUM_LIFETIME_DURATION=90d
+      - GF_AUTH_TOKEN_ROTATION_INTERVAL_MINUTES=60
+      # Se sirve por HTTP plano: con cookie_secure=true el navegador
+      # descartaria la cookie y la sesion no duraria nada. Si algun dia se pone
+      # detras de HTTPS, cambiar a true.
+      - GF_SECURITY_COOKIE_SECURE=false
+      - GF_SECURITY_COOKIE_SAMESITE=lax
       # Nadie se auto-registra ni crea organizaciones; el usuario de solo
       # lectura lo crea el servicio grafana-init.
       - GF_USERS_ALLOW_SIGN_UP=false

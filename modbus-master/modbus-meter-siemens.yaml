@@ -4,7 +4,7 @@ adapter: 0.0.0.0
 remote-ip: "?"
 port: "?"
 unit-identifier: "?"
-response_timeout_ms: 2000
+response_timeout_ms: 5000
 always-write-multiple-registers: false
 auto_polling:
   max_register_gaps: 0
@@ -17,7 +17,7 @@ file:
   plugin: modbus-master
 profiles:
 - name: MeterReadingProfile
-  poll_period_ms: 5000
+  poll_period_ms: 15000
   mapping:
     readingMessageInfo:
       messageInfo:
@@ -929,7 +929,12 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: ignored
+                double-field-type: mapped
+                source-type: holding_register
+                register-mapping: float32
+                scale: 1.0
+                lower_index: 56
+                upper_index: 55
             q:
               quality-field-type: ignored
             t:
@@ -951,7 +956,12 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: ignored
+                double-field-type: mapped
+                source-type: holding_register
+                register-mapping: float32
+                scale: 1.0
+                lower_index: 66
+                upper_index: 65
             q:
               quality-field-type: ignored
             t:
@@ -962,7 +972,12 @@ profiles:
                 value:
                   double-field-type: ignored
               mag:
-                double-field-type: ignored
+                double-field-type: mapped
+                source-type: holding_register
+                register-mapping: float32
+                scale: 1.0
+                lower_index: 68
+                upper_index: 67
             q:
               quality-field-type: ignored
             t:

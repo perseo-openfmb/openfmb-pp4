@@ -105,20 +105,24 @@ que parsea el type byte y el length field para leer la cantidad exacta de bytes:
 
 ```python
 async def read_pg_message(reader, startup_done):
-    if not startup_done:
-        # StartupMessage: sin type byte, solo [length:4][payload]
-        length_bytes = await read_exact(reader, 4)
-        length = struct.unpack("!I", length_bytes)[0]
-        payload = await read_exact(reader, length - 4)
-        return length_bytes + payload, True
-    else:
-        # Mensaje normal: [type:1][length:4][payload]
-        type_byte = await reader.read(1)
-        length_bytes = await read_exact(reader, 4)
-        length = struct.unpack("!I", length_bytes)[0]
-        payload = await read_exact(reader, length - 4)
-        return type_byte + length_bytes + payload, True
+    head = b""
+    if startup_done:
+        head = await reader.read(1)      # type byte ('Q', 'P', ...);
+                                         # el StartupMessage no lo tiene
+    length_bytes = await read_exact(reader, 4)
+    length = struct.unpack("!I", length_bytes)[0]
+    payload = await read_exact(reader, length - 4)
+    return head + length_bytes + payload, True
 ```
+
+Además, el framing se protege contra tráfico corrupto:
+
+- El campo `length` se valida en el rango `[4, 1 GiB]` (el mismo límite que
+  impone PostgreSQL). Un valor fuera de rango lanza `ProtocolError` y cierra
+  la conexión de forma controlada, en vez de desincronizar el framing o
+  intentar reservar GBs de memoria.
+- Un EOF a mitad de mensaje descarta el fragmento con un warning, en vez de
+  reenviar un frame truncado a PostgreSQL.
 
 Esto es crítico porque el proxy necesitaba reescribir mensajes individuales
 (reconstruir el `Query` con el SQL modificado). Si se leyera un chunk crudo de TCP
@@ -132,9 +136,11 @@ Antes del StartupMessage, el adapter (libpq) puede enviar un **SSLRequest**:
 [0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00]  (8 bytes, código 80877103)
 ```
 
-El proxy lee los primeros 8 bytes del adapter:
+El proxy lee los primeros 8 bytes del adapter (con `readexactly(8)`, esperando
+a que lleguen completos aunque el paquete venga fragmentado):
 - Si el código (bytes 4-7) es `80877103` → es SSLRequest → responde con `N` (no SSL)
 - El adapter luego envía el StartupMessage por el mismo reader
+- Si no es SSLRequest, los 8 bytes se re-inyectan con `_PrefixedReader`
 
 ### Intercepción de queries
 
@@ -158,17 +164,23 @@ Dentro de `relay_to_pg`, para cada mensaje:
 
 ### Reescritura de SQL (`rewrite_sql`)
 
-La función `rewrite_sql()` reemplaza tokens bare `nan` por `NULL`:
+La función `rewrite_sql()` reemplaza los tokens bare `nan`, `-nan`, `inf`,
+`-inf` e `infinity` por `NULL`:
 
-1. Verifica si `nan` aparece en algún lugar del SQL (check rápido, case-insensitive)
-2. Divide el SQL por comillas simples (`'`)
-3. Las partes en posiciones pares (0, 2, 4...) están **fuera de comillas** → se aplica regex
-4. Las partes en posiciones impares (1, 3, 5...) están **dentro de comillas** → no se tocan
+1. Descarte rápido: si el SQL no contiene `nan` ni `inf` (case-insensitive),
+   se devuelve intacto sin más trabajo.
+2. Un scanner regex de un solo paso recorre el SQL. Las regiones protegidas
+   se copian intactas: literales `'...'` (incluida la comilla doblada `''`),
+   strings `E'...'` (con escapes `\`), identificadores `"..."` y
+   dollar-quoting `$tag$...$tag$`.
+3. Fuera de esas regiones, todo token que matchee
+   `[-+]?\b(nan|inf(inity)?)\b` se reemplaza por `NULL`. El signo se absorbe
+   porque glibc imprime el NaN negativo como `-nan`: sin absorberlo quedaría
+   `-NULL`, que es un error de sintaxis en PostgreSQL.
 
-**Regex:** `(?<!')\bnan\b(?!')` con `re.IGNORECASE`
-
-Detecta `nan`, `NaN`, `NAN` como tokens standalone (word boundary \b), no dentro de
-palabras como "banana", y no entre comillas simples.
+Detecta `nan`, `NaN`, `-NAN`, `inf`, `-Infinity`, etc. como tokens standalone
+(word boundary `\b`), no dentro de palabras como `banana` o `info`, y nunca
+dentro de strings o identificadores quoted.
 
 ### Reconstrucción de mensajes (y el bug off-by-1)
 
@@ -257,6 +269,52 @@ La comparación `data[0] == b"Q"` falla porque `81 != b"Q"`.
 **Solución:** Leer los primeros 8 bytes. Si el código es `80877103` → responder con `N`.
 Si no es SSLRequest, preservar los bytes con `_PrefixedReader`.
 
+### 6. `-nan` se reescribía como `-NULL` (auditoría QA)
+
+**Problema:** La regex original no absorbía el signo. glibc imprime el NaN
+negativo como `-nan`; la reescritura producía `-NULL`, que PostgreSQL rechaza
+(`ERROR: operator is not unique: - unknown`) y el INSERT completo se perdía —
+exactamente el fallo que el proxy existe para evitar.
+
+**Solución:** La regex pasó a `[-+]?\b(nan|inf(inity)?)\b`, absorbiendo el
+signo y cubriendo también `inf`/`-inf`/`infinity` (que como bare tokens
+también rompen el INSERT).
+
+### 7. Lectura corta de los primeros 8 bytes (auditoría QA)
+
+**Problema:** `read(8)` devuelve *hasta* 8 bytes, no exactamente 8. Si el
+primer paquete llegaba fragmentado, los bytes leídos se descartaban sin
+re-inyectarse y el StartupMessage llegaba corrupto a PostgreSQL.
+
+**Solución:** `readexactly(8)` espera los 8 bytes completos (todo primer
+mensaje válido del protocolo mide ≥ 8 bytes); si el cliente cierra antes,
+la conexión se descarta con un warning (`IncompleteReadError`).
+
+---
+
+## Limitaciones conocidas
+
+El proxy está diseñado exclusivamente para el tráfico del adapter OpenFMB
+(Simple Query Protocol, verificado en producción). Fuera de ese uso aplican
+estas limitaciones:
+
+- **Extended Query Protocol (Bind):** solo se reescribe el SQL de los mensajes
+  `Q` (Query) y `P` (Parse). Si un cliente usa prepared statements con
+  parámetros, los valores viajan en mensajes `Bind` que el proxy no inspecciona
+  (un NaN en formato binario pasaría intacto; PostgreSQL lo acepta como float
+  binario, así que no genera error, pero tampoco se convierte en NULL).
+- **COPY:** los datos de `COPY FROM STDIN` (mensajes `CopyData`) pasan sin
+  inspección.
+- **TLS:** el proxy rechaza el SSLRequest (responde `N`); la conexión
+  adapter→proxy→PG viaja en claro. Aceptable dentro de la red interna de
+  Docker; no exponer el puerto 5433 fuera de ella.
+- **SQL inválido:** el scanner asume SQL bien formado; con una comilla sin
+  cerrar, el resto del statement queda expuesto a reescritura (ese SQL
+  fallaría en PostgreSQL de todos modos).
+- **Identificadores bare llamados `nan` o `inf`:** una columna o alias con ese
+  nombre exacto sin comillas dobles se reescribiría. No ocurre en el esquema
+  actual; con comillas dobles (`"nan"`) está protegido.
+
 ---
 
 ## Configuración de infraestructura (docker-compose)
@@ -290,8 +348,7 @@ el adapter puede acumular datos durante una caída y reenviarlos al reconectar.
 ```yaml
 sql-proxy:
   build:
-    context: ./scripts/sql-proxy
-    dockerfile: Dockerfile
+    context: ./app/sql-proxy
   container_name: sql-proxy
   restart: unless-stopped
   ports:
@@ -365,9 +422,9 @@ timescaledb:
 
 | Archivo | Rol |
 |---|---|
-| `scripts/sql-proxy/proxy.py` | Proxy TCP principal (~250 líneas Python, framing message-by-message) |
-| `scripts/sql-proxy/Dockerfile` | Imagen `python:3.11-alpine` standalone |
-| `scripts/sql-proxy/README.md` | Este documento |
+| `app/sql-proxy/proxy.py` | Proxy TCP principal (~400 líneas Python, framing message-by-message) |
+| `app/sql-proxy/Dockerfile` | Imagen `python:3.11-alpine` standalone |
+| `app/sql-proxy/README.md` | Este documento |
 | `docker-compose.yml` | Servicios timescale (image), sql-proxy (build), adapter, nats, etc. |
 | `config/adapter.yaml` | Línea 546: `database-url` → puerto 5433, línea 552: `max-queued-messages: 100000` |
 | `sql/timescaledb.sql` | Esquema de la tabla `data` (47 columnas, hypertable) |

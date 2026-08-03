@@ -15,22 +15,23 @@ from pymodbus.pdu import ExceptionResponse
 # ─── Device Configuration ───────────────────────────────────────────────────
 DEVICES = [
     # Schneider meters
-    {"name": "schneider-iluminacion",   "ip": "192.168.0.8",  "port": 26, "unit": 11, "test_regs": [3000, 3009, 3010, 3035, 3036]},
-    {"name": "schneider-microinv",      "ip": "192.168.0.10", "port": 26, "unit": 22, "test_regs": [3000, 3009, 3010, 3035, 3036]},
-    {"name": "schneider-fronius",       "ip": "192.168.0.10", "port": 26, "unit": 24, "test_regs": [3000, 3009, 3010, 3035, 3036]},
-    # Siemens meters
-    {"name": "siemens-red",             "ip": "192.168.0.8",  "port": 26, "unit": 14, "test_regs": [3000, 3009, 3010, 3035, 3036]},
-    {"name": "siemens-quattro",         "ip": "192.168.0.8",  "port": 26, "unit": 13, "test_regs": [3000, 3009, 3010, 3035, 3036]},
-    # Piranometro
-    {"name": "piranometro",             "ip": "192.168.0.10", "port": 26, "unit": 12, "test_regs": [3000, 3009, 3010]},
-    # Fronius inverter
-    {"name": "fronius",                 "ip": "192.168.0.9",  "port": 26, "unit": 21, "test_regs": [40001, 40002, 40003]},
-    # Modboxes
-    {"name": "modbox-centro",           "ip": "192.168.0.50", "port": 1503, "unit": 1, "test_regs": [0, 1, 2]},
-    {"name": "modbox-terraza",          "ip": "192.168.0.107","port": 1505, "unit": 1, "test_regs": [0, 1, 2]},
-    # Color Controls (Victron)
-    {"name": "color-control-100",       "ip": "192.168.0.105","port": 502, "unit": 100, "test_regs": [0, 1, 2]},
-    {"name": "color-control-246",       "ip": "192.168.0.105","port": 502, "unit": 246, "test_regs": [0, 1, 2]},
+    {"name": "schneider-iluminacion",   "ip": "192.168.0.10",  "port": 26, "unit": 21, "test_regs": [40243]},
+    #{"name": "schneider-iluminacion",   "ip": "192.168.0.8",  "port": 26, "unit": 11, "test_regs": [3000, 3009, 3010, 3035, 3036]},
+    # {"name": "schneider-microinv",      "ip": "192.168.0.10", "port": 26, "unit": 22, "test_regs": [3000, 3009, 3010, 3035, 3036]},
+    # {"name": "schneider-fronius",       "ip": "192.168.0.10", "port": 26, "unit": 24, "test_regs": [3000, 3009, 3010, 3035, 3036]},
+    # # Siemens meters
+    # {"name": "siemens-red",             "ip": "192.168.0.8",  "port": 26, "unit": 14, "test_regs": [3000, 3009, 3010, 3035, 3036]},
+    # {"name": "siemens-quattro",         "ip": "192.168.0.8",  "port": 26, "unit": 13, "test_regs": [3000, 3009, 3010, 3035, 3036]},
+    # # Piranometro
+    # {"name": "piranometro",             "ip": "192.168.0.10", "port": 26, "unit": 12, "test_regs": [3000, 3009, 3010]},
+    # # Fronius inverter
+    # {"name": "fronius",                 "ip": "192.168.0.9",  "port": 26, "unit": 21, "test_regs": [40001, 40002, 40003]},
+    # # Modboxes
+    # {"name": "modbox-centro",           "ip": "192.168.0.50", "port": 1503, "unit": 1, "test_regs": [0, 1, 2]},
+    # {"name": "modbox-terraza",          "ip": "192.168.0.107","port": 1505, "unit": 1, "test_regs": [0, 1, 2]},
+    # # Color Controls (Victron)
+    # {"name": "color-control-100",       "ip": "192.168.0.105","port": 502, "unit": 100, "test_regs": [0, 1, 2]},
+    # {"name": "color-control-246",       "ip": "192.168.0.105","port": 502, "unit": 246, "test_regs": [0, 1, 2]},
 ]
 
 TIMEOUT_SEC = 3.0

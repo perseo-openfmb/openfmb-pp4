@@ -4,7 +4,7 @@ adapter: 0.0.0.0
 remote-ip: 192.168.0.105
 port: 502
 unit-identifier: 100
-response_timeout_ms: 1500
+response_timeout_ms: 5000
 always-write-multiple-registers: false
 auto_polling:
   max_register_gaps: 0
@@ -17,7 +17,7 @@ file:
   plugin: modbus-master
 profiles:
 - name: MeterReadingProfile
-  poll_period_ms: 5000
+  poll_period_ms: 15000
   mapping:
     readingMessageInfo:
       messageInfo:
@@ -1056,7 +1056,7 @@ profiles:
             t:
               timestamp-field-type: message
 - name: MeterReadingProfile
-  poll_period_ms: 1000
+  poll_period_ms: 15000
   mapping:
     readingMessageInfo:
       messageInfo:
@@ -2096,7 +2096,7 @@ profiles:
             t:
               timestamp-field-type: message
 - name: MeterReadingProfile
-  poll_period_ms: 1000
+  poll_period_ms: 15000
   mapping:
     readingMessageInfo:
       messageInfo:
@@ -3095,7 +3095,7 @@ profiles:
             t:
               timestamp-field-type: message
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 5000
+  poll_period_ms: 15000
   command-order:
   - first
   tolerance-ms: 5000
@@ -3220,7 +3220,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 5000
+  poll_period_ms: 15000
   command-order:
   - first
   tolerance-ms: 5000
@@ -3345,7 +3345,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 5000
+  poll_period_ms: 15000
   command-order:
   - first
   tolerance-ms: 5000
@@ -3470,7 +3470,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 5000
+  poll_period_ms: 15000
   command-order:
   - first
   tolerance-ms: 5000
@@ -3595,7 +3595,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 5000
+  poll_period_ms: 15000
   command-order:
   - first
   tolerance-ms: 5000
@@ -3720,7 +3720,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 5000
+  poll_period_ms: 15000
   command-order:
   - first
   tolerance-ms: 5000
@@ -3845,7 +3845,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 5000
+  poll_period_ms: 15000
   command-order:
   - first
   tolerance-ms: 5000
@@ -3970,7 +3970,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 5000
+  poll_period_ms: 15000
   command-order:
   - first
   tolerance-ms: 5000
@@ -4095,7 +4095,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 5000
+  poll_period_ms: 15000
   command-order:
   - first
   tolerance-ms: 5000
@@ -4220,7 +4220,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 5000
+  poll_period_ms: 15000
   command-order:
   - first
   tolerance-ms: 5000
@@ -4345,7 +4345,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 5000
+  poll_period_ms: 15000
   command-order:
   - first
   tolerance-ms: 5000
@@ -4470,7 +4470,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 5000
+  poll_period_ms: 15000
   command-order:
   - first
   tolerance-ms: 5000
@@ -4595,7 +4595,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 5000
+  poll_period_ms: 15000
   command-order:
   - first
   tolerance-ms: 5000
@@ -4720,7 +4720,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 5000
+  poll_period_ms: 15000
   command-order:
   - first
   tolerance-ms: 5000
@@ -4845,7 +4845,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 5000
+  poll_period_ms: 15000
   command-order:
   - first
   tolerance-ms: 5000
@@ -4970,7 +4970,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 5000
+  poll_period_ms: 15000
   command-order:
   - first
   tolerance-ms: 5000
@@ -5095,7 +5095,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 5000
+  poll_period_ms: 15000
   command-order:
   - first
   tolerance-ms: 5000
@@ -5220,7 +5220,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 5000
+  poll_period_ms: 15000
   command-order:
   - first
   tolerance-ms: 5000
@@ -5345,7 +5345,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 5000
+  poll_period_ms: 15000
   command-order:
   - first
   tolerance-ms: 5000
@@ -5470,7 +5470,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 5000
+  poll_period_ms: 15000
   command-order:
   - first
   tolerance-ms: 5000
@@ -5595,7 +5595,7 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 5000
+  poll_period_ms: 15000
   command-order:
   - first
   tolerance-ms: 5000
@@ -5723,7 +5723,7 @@ profiles:
 # # ################# Lectura del 2700
 
 - name: MeterReadingProfile
-  poll_period_ms: 5000
+  poll_period_ms: 15000
   mapping:
     readingMessageInfo:
       messageInfo:
