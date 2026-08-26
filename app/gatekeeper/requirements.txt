@@ -1,0 +1,2 @@
+nats-py
+protobuf>=5.27,<7

@@ -17,7 +17,7 @@ file:
   plugin: modbus-master
 profiles:
 - name: SwitchStatusProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   mapping:
     statusMessageInfo:
       messageInfo:
@@ -171,7 +171,7 @@ profiles:
             t:
               timestamp-field-type: ignored
 - name: SwitchStatusProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   mapping:
     statusMessageInfo:
       messageInfo:
@@ -325,7 +325,7 @@ profiles:
             t:
               timestamp-field-type: ignored
 - name: SwitchStatusProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   mapping:
     statusMessageInfo:
       messageInfo:
@@ -479,7 +479,7 @@ profiles:
             t:
               timestamp-field-type: ignored
 - name: SwitchStatusProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   mapping:
     statusMessageInfo:
       messageInfo:
@@ -633,7 +633,7 @@ profiles:
             t:
               timestamp-field-type: ignored              
 - name: SwitchStatusProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   mapping:
     statusMessageInfo:
       messageInfo:
@@ -787,7 +787,7 @@ profiles:
             t:
               timestamp-field-type: ignored              
 - name: SwitchStatusProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   mapping:
     statusMessageInfo:
       messageInfo:
@@ -941,7 +941,7 @@ profiles:
             t:
               timestamp-field-type: ignored
 - name: SwitchStatusProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   mapping:
     statusMessageInfo:
       messageInfo:
@@ -1095,7 +1095,7 @@ profiles:
             t:
               timestamp-field-type: ignored
 - name: SwitchStatusProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   mapping:
     statusMessageInfo:
       messageInfo:
@@ -1249,7 +1249,7 @@ profiles:
             t:
               timestamp-field-type: ignored
 - name: SwitchStatusProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   mapping:
     statusMessageInfo:
       messageInfo:
@@ -1403,7 +1403,7 @@ profiles:
             t:
               timestamp-field-type: ignored
 - name: SwitchStatusProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   mapping:
     statusMessageInfo:
       messageInfo:
@@ -1557,7 +1557,7 @@ profiles:
             t:
               timestamp-field-type: ignored
 - name: SwitchStatusProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   mapping:
     statusMessageInfo:
       messageInfo:
@@ -1711,7 +1711,7 @@ profiles:
             t:
               timestamp-field-type: ignored
 - name: SwitchStatusProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   mapping:
     statusMessageInfo:
       messageInfo:
@@ -1869,7 +1869,7 @@ profiles:
   poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -1965,7 +1965,7 @@ profiles:
   poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -2061,7 +2061,7 @@ profiles:
   poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -2157,7 +2157,7 @@ profiles:
   poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -2253,7 +2253,7 @@ profiles:
   poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -2349,7 +2349,7 @@ profiles:
   poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -2445,7 +2445,7 @@ profiles:
   poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -2541,7 +2541,7 @@ profiles:
   poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -2637,7 +2637,7 @@ profiles:
   poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -2733,7 +2733,7 @@ profiles:
   poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -2829,7 +2829,7 @@ profiles:
   poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -2925,7 +2925,7 @@ profiles:
   poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:

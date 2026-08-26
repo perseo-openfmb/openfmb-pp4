@@ -19,10 +19,10 @@ file:
 profiles:
 #Control
 - name: ResourceDiscreteControlProfile #13 -12
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -144,10 +144,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -269,10 +269,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -394,10 +394,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -519,10 +519,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -644,10 +644,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -769,10 +769,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -894,10 +894,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -1019,10 +1019,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -1144,10 +1144,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -1269,10 +1269,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -1394,10 +1394,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -1519,10 +1519,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -1645,10 +1645,10 @@ profiles:
             string-field-type: ignored
 
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -1771,10 +1771,10 @@ profiles:
             string-field-type: ignored
 
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -1896,10 +1896,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -2021,10 +2021,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -2150,7 +2150,7 @@ profiles:
   poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 2000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -2244,10 +2244,10 @@ profiles:
             bool-field-type: ignored
 
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -2369,10 +2369,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -2494,10 +2494,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -2619,10 +2619,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -2744,10 +2744,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -2869,10 +2869,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -2994,10 +2994,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -3119,10 +3119,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -3244,10 +3244,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -3369,10 +3369,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -3494,10 +3494,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -3619,10 +3619,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -3744,10 +3744,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -3869,10 +3869,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -3994,10 +3994,10 @@ profiles:
           ctlVal:
             string-field-type: ignored
 - name: ResourceDiscreteControlProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   command-order:
   - first
-  tolerance-ms: 5000
+  tolerance-ms: 1000
   mapping:
     controlMessageInfo:
       messageInfo:
@@ -4121,7 +4121,7 @@ profiles:
 
 #Status del habilitador 
 - name: SwitchStatusProfile
-  poll_period_ms: 15000
+  poll_period_ms: 1000
   mapping:
     statusMessageInfo:
       messageInfo:

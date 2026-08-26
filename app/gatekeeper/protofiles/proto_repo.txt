@@ -1,0 +1,1 @@
+https://github.com/openenergysolutions/openfmb-schemas/tree/master/protobuf/openfmb

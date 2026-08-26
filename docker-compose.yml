@@ -33,7 +33,7 @@ services:
     logging: *default-logging
 
   hmi:
-    image: openfmb-hmi:latest
+    image: kdmzapata/openfmb-udea:v1.0
     container_name: hmi
     restart: unless-stopped
     depends_on:
@@ -61,6 +61,7 @@ services:
       POSTGRES_DB: ${DB_NAME}
     volumes:
       - ./timescale_data:/var/lib/postgresql/data
+      - ./sql/timescaledb.sql:/docker-entrypoint-initdb.d/timescaledb.sql
     command: ["postgres", "-c", "max_locks_per_transaction=256", "-c", "shared_buffers=1GB"]
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
@@ -236,6 +237,15 @@ services:
     networks:
       - openfmb_devv
     logging: *default-logging
+
+  gatekeeper:
+    build: ./app/gatekeeper
+    container_name: gatekeeper
+    restart: unless-stopped
+    depends_on:
+      - nats
+    networks:
+      - openfmb_devv
 
 networks:
   openfmb_devv:
